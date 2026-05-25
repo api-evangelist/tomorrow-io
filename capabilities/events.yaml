@@ -1,0 +1,24 @@
+apiVersion: naftiko/v1
+kind: Capability
+metadata:
+  name: events
+  description: Retrieve severe weather events, fires, floods, and lightning events for a location.
+spec:
+  api: tomorrow-io-events-api
+  operations:
+    - operationId: getEvents
+      method: GET
+      path: /events
+    - operationId: postEvents
+      method: POST
+      path: /events
+  inputs:
+    - name: location
+      required: true
+    - name: insights
+      required: false
+    - name: buffer
+      required: false
+  outputs:
+    - name: events
+      description: Array of weather event records with severity, geometry, and time window.

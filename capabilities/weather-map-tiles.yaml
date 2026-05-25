@@ -1,0 +1,25 @@
+apiVersion: naftiko/v1
+kind: Capability
+metadata:
+  name: weather-map-tiles
+  description: Render Tomorrow.io weather data layers as Web Mercator XYZ PNG tiles for slippy-map clients.
+spec:
+  api: tomorrow-io-map-tiles-api
+  operations:
+    - operationId: getMapTile
+      method: GET
+      path: /map/tile/{zoom}/{x}/{y}/{field}/{timeFormat}
+  inputs:
+    - name: zoom
+      required: true
+    - name: x
+      required: true
+    - name: y
+      required: true
+    - name: field
+      required: true
+    - name: timeFormat
+      required: true
+  outputs:
+    - name: tile
+      description: PNG image binary for the requested tile.

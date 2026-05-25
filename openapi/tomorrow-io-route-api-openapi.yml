@@ -1,0 +1,139 @@
+openapi: 3.1.0
+info:
+  title: Tomorrow.io Weather on Routes API
+  version: '4.0'
+  description: |
+    Retrieve weather conditions and forecast along an arbitrary route (polyline of
+    waypoints) at the times each segment is expected to be traversed. Powers route
+    optimization, logistics planning, and ETA-aware weather hazard detection.
+  contact:
+    name: Tomorrow.io Support
+    url: https://support.tomorrow.io
+servers:
+  - url: https://api.tomorrow.io/v4
+    description: Tomorrow.io Production
+security:
+  - apikeyAuth: []
+tags:
+  - name: Route
+    description: Weather along a route.
+paths:
+  /route:
+    post:
+      tags:
+        - Route
+      summary: Retrieve Weather Along Route
+      operationId: postRoute
+      description: |
+        Submit a polyline of waypoints with arrival times and receive weather data
+        layers at each waypoint at its predicted arrival time.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RouteRequest'
+      parameters:
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Per-waypoint weather payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RouteResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  securitySchemes:
+    apikeyAuth:
+      type: apiKey
+      in: query
+      name: apikey
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    RateLimited:
+      description: Rate limit exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    RouteRequest:
+      type: object
+      required:
+        - waypoints
+        - fields
+      properties:
+        waypoints:
+          type: array
+          items:
+            type: object
+            required:
+              - location
+              - time
+            properties:
+              location:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    enum: [Point]
+                  coordinates:
+                    type: array
+                    items:
+                      type: number
+              time:
+                type: string
+                format: date-time
+        fields:
+          type: array
+          items:
+            type: string
+        units:
+          type: string
+          enum: [metric, imperial]
+    RouteResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            waypoints:
+              type: array
+              items:
+                type: object
+                properties:
+                  location:
+                    type: object
+                    properties:
+                      lat:
+                        type: number
+                      lon:
+                        type: number
+                  time:
+                    type: string
+                    format: date-time
+                  values:
+                    type: object
+                    additionalProperties: true
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        type:
+          type: string
+        message:
+          type: string

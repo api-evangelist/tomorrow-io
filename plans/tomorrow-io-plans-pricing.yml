@@ -1,0 +1,120 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Tomorrow.io
+providerId: tomorrow-io
+created: '2026-05-24'
+modified: '2026-05-24'
+reconciled: false
+tags:
+  - Weather
+  - Forecast
+  - Climate
+  - Risk
+description: Plans and metered API capacity for the Tomorrow.io weather intelligence platform. Pricing is published for the Free tier; Basic, Professional, and Enterprise tiers are quoted by Tomorrow.io sales based on call volume, data layer entitlements, and SLA requirements.
+sources:
+  - https://www.tomorrow.io/weather-api/
+  - https://support.tomorrow.io/hc/en-us/articles/23554984091156-Tomorrow-io-Pricing-Overview
+  - https://support.tomorrow.io/hc/en-us/articles/20273728362644-Free-API-Plan-Rate-Limits
+plans:
+  - id: tomorrow-io-free
+    name: Free
+    type: free
+    description: Self-serve developer plan with core weather layers, 5-day forecast horizon, and 24h historical access. Includes 1 monitored location and 1 alert.
+    entries:
+      - label: API calls per day
+        name: calls_per_day
+        type: included
+        metric: requests
+        limit: 500
+        timeFrame: day
+        unit: 1
+        price: '0.00'
+      - label: API calls per hour
+        name: calls_per_hour
+        type: included
+        metric: requests
+        limit: 25
+        timeFrame: hour
+        unit: 1
+        price: '0.00'
+      - label: API calls per second
+        name: calls_per_second
+        type: included
+        metric: requests
+        limit: 3
+        timeFrame: second
+        unit: 1
+        price: '0.00'
+      - label: Forecast horizon
+        name: forecast_horizon_days
+        type: included
+        metric: days
+        limit: 5
+        timeFrame: usage
+      - label: Historical access
+        name: historical_window_hours
+        type: included
+        metric: hours
+        limit: 24
+        timeFrame: usage
+      - label: Monitored locations
+        name: locations
+        type: included
+        metric: locations
+        limit: 1
+        timeFrame: usage
+      - label: Active alerts
+        name: alerts
+        type: included
+        metric: alerts
+        limit: 1
+        timeFrame: usage
+  - id: tomorrow-io-basic
+    name: Basic
+    type: paid
+    description: Entry paid tier with expanded forecast, historical, and call volumes. Pricing quoted by sales.
+    entries:
+      - label: API calls
+        name: calls
+        type: metered
+        metric: requests
+        price: quote
+  - id: tomorrow-io-professional
+    name: Professional
+    type: paid
+    description: Higher call volumes, premium data layers (air quality, pollen, solar, land, lightning), polygon and polyline geometries, minutely resolution. Pricing quoted by sales.
+    entries:
+      - label: API calls
+        name: calls
+        type: metered
+        metric: requests
+        price: quote
+      - label: Premium data layers
+        name: premium_layers
+        type: addon
+        metric: layers
+        price: quote
+  - id: tomorrow-io-enterprise
+    name: Enterprise
+    type: paid
+    description: 14-day forecast, custom SLAs, premium layers, advanced historical, dedicated support, and rate-limit headers exposed for programmatic monitoring. Pricing quoted by sales.
+    entries:
+      - label: API calls
+        name: calls
+        type: metered
+        metric: requests
+        price: quote
+      - label: SLA
+        name: sla
+        type: included
+        metric: percent
+        limit: 99.9
+        timeFrame: usage
+      - label: Dedicated support
+        name: support
+        type: included
+discounts: []
+notes:
+  - All plans authenticate with the apikey query parameter.
+  - Enterprise customers receive rate-limit headers on every response for programmatic monitoring; lower tiers do not.

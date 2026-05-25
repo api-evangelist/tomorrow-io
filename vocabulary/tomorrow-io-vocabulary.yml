@@ -1,0 +1,79 @@
+name: Tomorrow.io Vocabulary
+description: Controlled vocabulary covering operational, capability, and domain dimensions of the Tomorrow.io weather intelligence platform.
+version: 0.1
+operationalDimensions:
+  authentication:
+    - apikeyQuery
+  versioning:
+    - urlPath
+    - v4
+  protocols:
+    - REST
+    - JSON
+    - PNG
+  geometries:
+    - Point
+    - Polygon
+    - LineString
+  timesteps:
+    - 1m
+    - 5m
+    - 15m
+    - 1h
+    - 1d
+capabilityDimensions:
+  weather:
+    - realtime
+    - forecast
+    - timelines
+    - historical
+    - climateNormals
+    - route
+    - mapTiles
+  resources:
+    - locations
+    - insights
+    - alerts
+    - events
+  notifications:
+    - webhook
+    - email
+domainVocabulary:
+  dataLayerCategories:
+    - core
+    - precipitation
+    - airQuality
+    - pollen
+    - solar
+    - soil
+    - aviation
+    - fire
+    - flood
+    - lightning
+    - maritime
+    - agriculture
+    - road
+  severity:
+    - info
+    - low
+    - medium
+    - high
+    - severe
+  weatherCodes:
+    - 1000-Clear
+    - 1100-MostlyClear
+    - 1101-PartlyCloudy
+    - 1102-MostlyCloudy
+    - 1001-Cloudy
+    - 2000-Fog
+    - 4000-Drizzle
+    - 4001-Rain
+    - 4200-LightRain
+    - 4201-HeavyRain
+    - 5000-Snow
+    - 5001-Flurries
+    - 5100-LightSnow
+    - 5101-HeavySnow
+    - 6000-FreezingDrizzle
+    - 7000-IcePellets
+    - 8000-Thunderstorm

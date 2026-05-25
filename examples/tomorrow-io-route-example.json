@@ -1,0 +1,22 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.tomorrow.io/v4/route?apikey=YOUR_API_KEY",
+    "body": {
+      "waypoints": [
+        { "location": { "type": "Point", "coordinates": [-71.0466, 42.3478] }, "time": "2026-05-24T15:00:00Z" },
+        { "location": { "type": "Point", "coordinates": [-73.9857, 40.7484] }, "time": "2026-05-24T19:30:00Z" }
+      ],
+      "fields": ["temperature", "precipitationIntensity", "visibility"],
+      "units": "metric"
+    }
+  },
+  "response": {
+    "data": {
+      "waypoints": [
+        { "location": { "lat": 42.3478, "lon": -71.0466 }, "time": "2026-05-24T15:00:00Z", "values": { "temperature": 18.1, "precipitationIntensity": 0, "visibility": 16 } },
+        { "location": { "lat": 40.7484, "lon": -73.9857 }, "time": "2026-05-24T19:30:00Z", "values": { "temperature": 21.3, "precipitationIntensity": 0.2, "visibility": 12 } }
+      ]
+    }
+  }
+}

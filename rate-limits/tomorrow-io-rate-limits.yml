@@ -1,0 +1,52 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Tomorrow.io
+providerId: tomorrow-io
+created: '2026-05-24'
+modified: '2026-05-24'
+reconciled: false
+tags:
+  - Rate Limiting
+  - Quotas
+  - Weather
+description: Rate-limit policy for the Tomorrow.io v4 API. The Free plan has published per-second, per-hour, and per-day limits. Basic, Professional, and Enterprise plans are quoted by sales; Enterprise additionally receives rate-limit response headers for programmatic monitoring.
+sources:
+  - https://docs.tomorrow.io/reference/rate-limiting
+  - https://support.tomorrow.io/hc/en-us/articles/20273728362644-Free-API-Plan-Rate-Limits
+  - https://support.tomorrow.io/hc/en-us/articles/5187600335124-What-is-the-difference-between-rate-limiting-and-concurrent-API-calls
+headers:
+  limit: x-ratelimit-limit
+  remaining: x-ratelimit-remaining
+  reset: x-ratelimit-reset
+  retryAfter: retry-after
+responseCodes:
+  throttled: 429
+  quotaExceeded: 429
+algorithm: leaky-bucket
+notes:
+  - Each weather field requested in a single call counts as one API call (e.g. a Timelines request for 4 fields counts as 4 calls).
+  - The Free plan does not return rate-limit headers; Enterprise responses include them.
+  - Per-second limits are enforced first, then per-hour, then per-day.
+limits:
+  - tier: Free
+    rps: 3
+    rph: 25
+    rpd: 500
+    concurrency: 1
+  - tier: Basic
+    rps: quote
+    rph: quote
+    rpd: quote
+    concurrency: quote
+  - tier: Professional
+    rps: quote
+    rph: quote
+    rpd: quote
+    concurrency: quote
+  - tier: Enterprise
+    rps: quote
+    rph: quote
+    rpd: quote
+    concurrency: quote
+    headersExposed: true

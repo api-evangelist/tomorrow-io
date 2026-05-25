@@ -1,0 +1,230 @@
+openapi: 3.1.0
+info:
+  title: Tomorrow.io Locations API
+  version: '4.0'
+  description: |
+    Manage saved locations (points, polygons, lines) that can be reused across the
+    Tomorrow.io APIs and referenced by ``locationId`` in realtime, timelines,
+    historical, alerts, and events requests. Supports tagging for cohort
+    organization.
+  contact:
+    name: Tomorrow.io Support
+    url: https://support.tomorrow.io
+servers:
+  - url: https://api.tomorrow.io/v4
+    description: Tomorrow.io Production
+security:
+  - apikeyAuth: []
+tags:
+  - name: Locations
+    description: Manage reusable location resources.
+paths:
+  /locations:
+    get:
+      tags:
+        - Locations
+      summary: List Locations
+      operationId: listLocations
+      description: List all saved locations for the authenticated account.
+      parameters:
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Location list.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocationList'
+    post:
+      tags:
+        - Locations
+      summary: Create a Location
+      operationId: createLocation
+      description: Create a new saved location resource.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Location'
+      parameters:
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: Location created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Location'
+  /locations/{locationId}:
+    get:
+      tags:
+        - Locations
+      summary: Retrieve a Location
+      operationId: getLocation
+      parameters:
+        - name: locationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Location resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Location'
+    put:
+      tags:
+        - Locations
+      summary: Update a Location
+      operationId: updateLocation
+      parameters:
+        - name: locationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Location'
+      responses:
+        '200':
+          description: Updated location.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Location'
+    delete:
+      tags:
+        - Locations
+      summary: Delete a Location
+      operationId: deleteLocation
+      parameters:
+        - name: locationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Deleted.
+  /locations/tags/add:
+    post:
+      tags:
+        - Locations
+      summary: Add Location Tags
+      operationId: addLocationTags
+      description: Attach one or more tags to a list of locations.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagRequest'
+      parameters:
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Tag operation complete.
+  /locations/tags/remove:
+    post:
+      tags:
+        - Locations
+      summary: Remove Location Tags
+      operationId: removeLocationTags
+      description: Detach one or more tags from a list of locations.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagRequest'
+      parameters:
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Tag operation complete.
+components:
+  securitySchemes:
+    apikeyAuth:
+      type: apiKey
+      in: query
+      name: apikey
+  schemas:
+    Location:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        location:
+          type: object
+          description: GeoJSON Point, Polygon, or LineString.
+          properties:
+            type:
+              type: string
+              enum: [Point, Polygon, LineString]
+            coordinates:
+              type: array
+        tags:
+          type: array
+          items:
+            type: string
+    LocationList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Location'
+    TagRequest:
+      type: object
+      required:
+        - locationIds
+        - tags
+      properties:
+        locationIds:
+          type: array
+          items:
+            type: string
+        tags:
+          type: array
+          items:
+            type: string

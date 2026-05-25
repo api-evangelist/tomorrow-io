@@ -1,0 +1,303 @@
+openapi: 3.1.0
+info:
+  title: Tomorrow.io Alerts API
+  version: '4.0'
+  description: |
+    Create, manage, and trigger weather-based alerts. Alerts evaluate Tomorrow.io
+    weather data layers against custom thresholds for one or more linked locations
+    and deliver notifications via webhook, email, and the Tomorrow.io app.
+  contact:
+    name: Tomorrow.io Support
+    url: https://support.tomorrow.io
+servers:
+  - url: https://api.tomorrow.io/v4
+    description: Tomorrow.io Production
+security:
+  - apikeyAuth: []
+tags:
+  - name: Alerts
+    description: Manage weather alerts and their location bindings.
+paths:
+  /alerts:
+    get:
+      tags:
+        - Alerts
+      summary: List Alerts
+      operationId: listAlerts
+      parameters:
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Alert list.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertList'
+    post:
+      tags:
+        - Alerts
+      summary: Create an Alert
+      operationId: createAlert
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Alert'
+      parameters:
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: Alert created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Alert'
+  /alerts/{alertId}:
+    get:
+      tags:
+        - Alerts
+      summary: Retrieve an Alert
+      operationId: getAlert
+      parameters:
+        - name: alertId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Alert resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Alert'
+    put:
+      tags:
+        - Alerts
+      summary: Update an Alert
+      operationId: updateAlert
+      parameters:
+        - name: alertId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Alert'
+      responses:
+        '200':
+          description: Updated alert.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Alert'
+    delete:
+      tags:
+        - Alerts
+      summary: Delete an Alert
+      operationId: deleteAlert
+      parameters:
+        - name: alertId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Deleted.
+  /alerts/{alertId}/locations:
+    get:
+      tags:
+        - Alerts
+      summary: List Alert Locations
+      operationId: listAlertLocations
+      parameters:
+        - name: alertId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Linked locations.
+  /alerts/{alertId}/locations/link:
+    post:
+      tags:
+        - Alerts
+      summary: Link Locations To Alert
+      operationId: linkAlertLocations
+      parameters:
+        - name: alertId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                locationIds:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Locations linked.
+  /alerts/{alertId}/locations/unlink:
+    post:
+      tags:
+        - Alerts
+      summary: Unlink Locations From Alert
+      operationId: unlinkAlertLocations
+      parameters:
+        - name: alertId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                locationIds:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Locations unlinked.
+  /alerts/{alertId}/activate:
+    post:
+      tags:
+        - Alerts
+      summary: Activate an Alert
+      operationId: activateAlert
+      parameters:
+        - name: alertId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Alert activated.
+  /alerts/{alertId}/deactivate:
+    post:
+      tags:
+        - Alerts
+      summary: Deactivate an Alert
+      operationId: deactivateAlert
+      parameters:
+        - name: alertId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Alert deactivated.
+components:
+  securitySchemes:
+    apikeyAuth:
+      type: apiKey
+      in: query
+      name: apikey
+  schemas:
+    Alert:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        active:
+          type: boolean
+        condition:
+          type: object
+          properties:
+            field:
+              type: string
+            operator:
+              type: string
+              enum: [gt, gte, lt, lte, eq, neq]
+            value:
+              type: number
+        notifications:
+          type: object
+          properties:
+            webhookUrl:
+              type: string
+            email:
+              type: array
+              items:
+                type: string
+        linkedLocationIds:
+          type: array
+          items:
+            type: string
+    AlertList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Alert'

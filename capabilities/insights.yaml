@@ -1,0 +1,23 @@
+apiVersion: naftiko/v1
+kind: Capability
+metadata:
+  name: insights
+  description: Manage reusable weather insight definitions that power the Events and Alerts APIs.
+spec:
+  api: tomorrow-io-insights-api
+  operations:
+    - operationId: listInsights
+      method: GET
+      path: /insights
+    - operationId: getInsight
+      method: GET
+      path: /insights/{insightId}
+    - operationId: createInsight
+      method: POST
+      path: /insights
+    - operationId: updateInsight
+      method: PUT
+      path: /insights/{insightId}
+    - operationId: deleteInsight
+      method: DELETE
+      path: /insights/{insightId}

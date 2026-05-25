@@ -1,0 +1,29 @@
+apiVersion: naftiko/v1
+kind: Capability
+metadata:
+  name: locations
+  description: Manage saved locations (points, polygons, lines) and tag-based cohorts on Tomorrow.io.
+spec:
+  api: tomorrow-io-locations-api
+  operations:
+    - operationId: listLocations
+      method: GET
+      path: /locations
+    - operationId: getLocation
+      method: GET
+      path: /locations/{locationId}
+    - operationId: createLocation
+      method: POST
+      path: /locations
+    - operationId: updateLocation
+      method: PUT
+      path: /locations/{locationId}
+    - operationId: deleteLocation
+      method: DELETE
+      path: /locations/{locationId}
+    - operationId: addLocationTags
+      method: POST
+      path: /locations/tags/add
+    - operationId: removeLocationTags
+      method: POST
+      path: /locations/tags/remove

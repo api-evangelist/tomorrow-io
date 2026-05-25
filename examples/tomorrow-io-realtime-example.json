@@ -1,0 +1,30 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.tomorrow.io/v4/weather/realtime?location=42.3478,-71.0466&units=metric&apikey=YOUR_API_KEY",
+    "description": "Realtime weather at Tomorrow.io HQ (Boston, MA)."
+  },
+  "response": {
+    "data": {
+      "time": "2026-05-24T14:00:00Z",
+      "values": {
+        "temperature": 18.2,
+        "temperatureApparent": 17.8,
+        "humidity": 64,
+        "windSpeed": 3.4,
+        "windDirection": 215,
+        "precipitationIntensity": 0,
+        "precipitationProbability": 5,
+        "cloudCover": 35,
+        "uvIndex": 6,
+        "weatherCode": 1101
+      }
+    },
+    "location": {
+      "lat": 42.3478,
+      "lon": -71.0466,
+      "name": "Boston, Massachusetts, United States",
+      "type": "administrative"
+    }
+  }
+}

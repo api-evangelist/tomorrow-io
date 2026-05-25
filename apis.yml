@@ -1,0 +1,399 @@
+aid: tomorrow-io
+url: https://raw.githubusercontent.com/api-evangelist/tomorrow-io/refs/heads/main/apis.yml
+name: Tomorrow.io
+description: Tomorrow.io is a Boston-based weather intelligence platform combining a global proprietary numerical weather model, a constellation of microsatellite weather radars, and a developer-facing v4 REST API. The platform exposes 60+ hyperlocal data layers — core weather, air quality, pollen, solar, soil, fire, flood, lightning, maritime, aviation, road — together with map tiles, severe-weather event detection, routable forecast queries, climate normals, historical archive access, customer-defined locations, named insights, and threshold-based webhook alerts. Used by airlines, on-demand logistics platforms, agriculture, energy, and the US Air Force, Tomorrow.io's API is designed for ETA-aware route planning, geofenced alerting, agentic workflows, and large-scale operational decisioning under weather risk.
+image: https://www.tomorrow.io/favicon-32x32.png
+humanURL: https://www.tomorrow.io
+baseURL: https://api.tomorrow.io/v4
+tags:
+  - Weather
+  - Forecast
+  - Climate
+  - Risk
+  - Air Quality
+  - Pollen
+  - Lightning
+  - Severe Weather
+  - Maps
+  - Routing
+  - Satellite
+  - Microsatellites
+  - Radar
+  - Geospatial
+  - Alerts
+kind: contract
+access: 3rd-Party
+created: '2026-05-24'
+modified: '2026-05-24'
+specificationVersion: '0.16'
+type: Index
+apis:
+  - aid: tomorrow-io:tomorrow-io-weather-api
+    name: Tomorrow.io Weather API
+    tags:
+      - Weather
+      - Realtime
+      - Forecast
+      - Timelines
+    humanURL: https://docs.tomorrow.io/reference/welcome
+    baseURL: https://api.tomorrow.io/v4
+    properties:
+      - url: https://docs.tomorrow.io/reference/welcome
+        type: Documentation
+      - url: https://docs.tomorrow.io/reference/realtime-weather
+        type: APIReference
+      - url: https://docs.tomorrow.io/reference/weather-forecast
+        type: APIReference
+      - url: https://docs.tomorrow.io/reference/timelines-overview
+        type: APIReference
+      - url: openapi/tomorrow-io-weather-api-openapi.yml
+        type: OpenAPI
+      - url: json-schema/tomorrow-io-weather-values-schema.json
+        type: JSONSchema
+      - url: json-structure/tomorrow-io-weather-values-structure.json
+        type: JSONStructure
+      - url: examples/tomorrow-io-realtime-example.json
+        type: Example
+      - url: examples/tomorrow-io-timelines-example.json
+        type: Example
+      - url: capabilities/realtime-weather.yaml
+        type: NaftikoCapability
+      - url: capabilities/weather-forecast.yaml
+        type: NaftikoCapability
+      - url: capabilities/timelines.yaml
+        type: NaftikoCapability
+    description: Realtime conditions, 14-day forecast (minutely, hourly, daily), and flexible timeline retrieval across the full Tomorrow.io 60+ data-layer catalog for any point, polygon, or polyline on Earth.
+  - aid: tomorrow-io:tomorrow-io-historical-api
+    name: Tomorrow.io Historical Weather API
+    tags:
+      - Weather
+      - Historical
+      - Climate
+      - Climate Normals
+    humanURL: https://docs.tomorrow.io/reference/historical
+    baseURL: https://api.tomorrow.io/v4
+    properties:
+      - url: https://docs.tomorrow.io/reference/historical
+        type: Documentation
+      - url: https://docs.tomorrow.io/reference/historical-weather-retrieval
+        type: APIReference
+      - url: https://docs.tomorrow.io/reference/climate-normals
+        type: APIReference
+      - url: openapi/tomorrow-io-historical-api-openapi.yml
+        type: OpenAPI
+      - url: capabilities/historical-weather.yaml
+        type: NaftikoCapability
+    description: Retrieve historical weather observations and monthly climate normals for any point or polygon on Earth using the same field catalog as the realtime and forecast APIs.
+  - aid: tomorrow-io:tomorrow-io-events-api
+    name: Tomorrow.io Events API
+    tags:
+      - Weather
+      - Events
+      - Severe Weather
+      - Lightning
+      - Floods
+      - Fire
+    humanURL: https://docs.tomorrow.io/reference/retrieve-events-basic
+    baseURL: https://api.tomorrow.io/v4
+    properties:
+      - url: https://docs.tomorrow.io/reference/retrieve-events-basic
+        type: APIReference
+      - url: https://docs.tomorrow.io/reference/severe-weather-events
+        type: Documentation
+      - url: openapi/tomorrow-io-events-api-openapi.yml
+        type: OpenAPI
+      - url: json-schema/tomorrow-io-event-schema.json
+        type: JSONSchema
+      - url: examples/tomorrow-io-events-example.json
+        type: Example
+      - url: capabilities/events.yaml
+        type: NaftikoCapability
+    description: Retrieve severe weather events, fires, floods, lightning swarms, and custom vector events affecting a point or geometry.
+  - aid: tomorrow-io:tomorrow-io-route-api
+    name: Tomorrow.io Weather on Routes API
+    tags:
+      - Weather
+      - Route
+      - Logistics
+      - ETA
+    humanURL: https://docs.tomorrow.io/reference/route
+    baseURL: https://api.tomorrow.io/v4
+    properties:
+      - url: https://docs.tomorrow.io/reference/route
+        type: APIReference
+      - url: openapi/tomorrow-io-route-api-openapi.yml
+        type: OpenAPI
+      - url: examples/tomorrow-io-route-example.json
+        type: Example
+      - url: capabilities/weather-on-route.yaml
+        type: NaftikoCapability
+    description: Retrieve weather along an arbitrary polyline of waypoints at the times each segment is expected to be traversed — powers route optimization, logistics planning, and ETA-aware hazard detection.
+  - aid: tomorrow-io:tomorrow-io-map-tiles-api
+    name: Tomorrow.io Weather Maps API
+    tags:
+      - Weather
+      - Maps
+      - Tiles
+      - Visualization
+    humanURL: https://docs.tomorrow.io/reference/map-overview
+    baseURL: https://api.tomorrow.io/v4
+    properties:
+      - url: https://docs.tomorrow.io/reference/map-overview
+        type: Documentation
+      - url: https://docs.tomorrow.io/reference/retrieve-a-tile-basic
+        type: APIReference
+      - url: openapi/tomorrow-io-map-tiles-api-openapi.yml
+        type: OpenAPI
+      - url: capabilities/weather-map-tiles.yaml
+        type: NaftikoCapability
+    description: Web Mercator (XYZ) PNG tile service for rendering Tomorrow.io weather data layers — precipitation radar, temperature, wind, clouds, air quality — directly into Mapbox, MapLibre, Leaflet, OpenLayers, or Google Maps.
+  - aid: tomorrow-io:tomorrow-io-locations-api
+    name: Tomorrow.io Locations API
+    tags:
+      - Weather
+      - Locations
+      - Geometry
+    humanURL: https://docs.tomorrow.io/reference/list-locations
+    baseURL: https://api.tomorrow.io/v4
+    properties:
+      - url: https://docs.tomorrow.io/reference/list-locations
+        type: APIReference
+      - url: openapi/tomorrow-io-locations-api-openapi.yml
+        type: OpenAPI
+      - url: json-schema/tomorrow-io-location-schema.json
+        type: JSONSchema
+      - url: capabilities/locations.yaml
+        type: NaftikoCapability
+    description: Manage saved locations (points, polygons, lines) referenced by ``locationId`` across the Tomorrow.io APIs, with tag-based cohorts for fleet, customer, or asset organization.
+  - aid: tomorrow-io:tomorrow-io-alerts-api
+    name: Tomorrow.io Alerts API
+    tags:
+      - Weather
+      - Alerts
+      - Webhooks
+      - Notifications
+    humanURL: https://docs.tomorrow.io/reference/create-alerts
+    baseURL: https://api.tomorrow.io/v4
+    properties:
+      - url: https://docs.tomorrow.io/reference/create-alerts
+        type: APIReference
+      - url: openapi/tomorrow-io-alerts-api-openapi.yml
+        type: OpenAPI
+      - url: json-schema/tomorrow-io-alert-schema.json
+        type: JSONSchema
+      - url: examples/tomorrow-io-alert-example.json
+        type: Example
+      - url: capabilities/alerts.yaml
+        type: NaftikoCapability
+    description: Create and manage threshold-based weather alerts that evaluate Tomorrow.io data layers against custom rules for linked locations and deliver notifications via webhook, email, and the Tomorrow.io app.
+  - aid: tomorrow-io:tomorrow-io-insights-api
+    name: Tomorrow.io Insights API
+    tags:
+      - Weather
+      - Insights
+      - Rules
+    humanURL: https://docs.tomorrow.io/reference/list-insights
+    baseURL: https://api.tomorrow.io/v4
+    properties:
+      - url: https://docs.tomorrow.io/reference/list-insights
+        type: APIReference
+      - url: openapi/tomorrow-io-insights-api-openapi.yml
+        type: OpenAPI
+      - url: json-schema/tomorrow-io-insight-schema.json
+        type: JSONSchema
+      - url: capabilities/insights.yaml
+        type: NaftikoCapability
+    description: Define and manage reusable Insights — named rules combining Tomorrow.io data layers, operators, and thresholds — that power the Events and Alerts APIs.
+common:
+  - url: https://www.tomorrow.io
+    type: Portal
+  - url: https://docs.tomorrow.io
+    name: Tomorrow.io API Documentation
+    type: Documentation
+  - url: https://docs.tomorrow.io/reference/welcome
+    name: API Reference
+    type: APIReference
+  - url: https://app.tomorrow.io/development/keys
+    name: API Keys
+    type: Authentication
+  - url: https://app.tomorrow.io/signup
+    name: Sign Up
+    type: SignUp
+  - url: https://app.tomorrow.io/signin
+    name: Console
+    type: Console
+  - url: https://docs.tomorrow.io/recipes
+    name: Recipes Sandbox
+    type: Sandbox
+  - url: https://docs.tomorrow.io/reference/getting-started
+    name: Getting Started
+    type: GettingStarted
+  - url: https://docs.tomorrow.io/reference/rate-limiting
+    name: Rate Limiting & Tokens
+    type: RateLimits
+  - url: https://docs.tomorrow.io/reference/error-handling
+    name: Error Handling
+    type: Errors
+  - url: https://docs.tomorrow.io/reference/release-notes
+    name: Release Notes
+    type: ChangeLog
+  - url: https://docs.tomorrow.io/llms.txt
+    name: LLMs.txt
+    type: Documentation
+  - url: https://docs.tomorrow.io/reference/tomorrow-io-mcp
+    name: Tomorrow.io MCP Server
+    type: Documentation
+  - url: https://www.tomorrow.io/pricing/
+    name: Pricing
+    type: Pricing
+  - url: https://www.tomorrow.io/legal/tos/
+    name: Terms of Service
+    type: TermsOfService
+  - url: https://www.tomorrow.io/legal/privacy-policy/
+    name: Privacy Policy
+    type: PrivacyPolicy
+  - url: https://support.tomorrow.io
+    name: Help Center
+    type: Support
+  - url: https://www.tomorrow.io/blog/
+    name: Blog
+    type: Blog
+  - url: https://github.com/Tomorrow-IO-API
+    name: Tomorrow.io API GitHub Organization
+    type: GitHubOrganization
+  - url: https://github.com/Tomorrow-IO-API/tomorrow-postman
+    name: Official Postman Collection
+    type: SDK
+  - url: https://github.com/Tomorrow-IO-API/tomorrow-samples
+    name: Official Code Samples
+    type: SDK
+  - url: https://github.com/Tomorrow-IO-API/tomorrow-route-mapbox
+    name: Weather Navigator Sample (Mapbox)
+    type: SDK
+  - url: https://github.com/Tomorrow-IO-API/tomorrow-timelines-widget
+    name: Tomorrow.io Timelines Widget
+    type: SDK
+  - url: https://github.com/Tomorrow-IO-API/tomorrow-events-charts
+    name: Insights Dashboard Sample
+    type: SDK
+  - url: https://github.com/Tomorrow-IO-API/tomorrow-api-proxy
+    name: Google Cloud Function API Proxy Sample
+    type: SDK
+  - url: https://github.com/Tomorrow-IO-API/tomorrow-netlify
+    name: Netlify Edge Sample
+    type: SDK
+  - url: https://github.com/Tomorrow-IO-API/tomorrow-map-spectrums
+    name: Map Spectrums and Legends
+    type: SDK
+  - url: https://github.com/Tomorrow-IO-API/tomorrow-weather-codes
+    name: Official Weather Icons
+    type: SDK
+  - url: https://github.com/Tomorrow-IO-API/climate-normals
+    name: Climate Normals Visualization (Python)
+    type: SDK
+  - url: https://www.linkedin.com/company/tomorrow-io
+    type: LinkedIn
+  - url: https://twitter.com/tomorrow_io
+    type: Twitter
+  - url: rules/tomorrow-io-rules.yml
+    type: SpectralRules
+  - url: vocabulary/tomorrow-io-vocabulary.yml
+    type: Vocabulary
+  - url: json-ld/tomorrow-io-context.jsonld
+    type: JSONLD
+  - url: plans/tomorrow-io-plans-pricing.yml
+    type: Plans
+  - url: rate-limits/tomorrow-io-rate-limits.yml
+    type: RateLimits
+  - url: finops/tomorrow-io-finops.yml
+    type: FinOps
+  - name: Features
+    type: Features
+    data:
+      - name: 60+ Hyperlocal Data Layers
+        description: Core weather, air quality, pollen, solar, soil, fire, flood, lightning, maritime, aviation, and road layers retrievable at point, polygon, or polyline geometry.
+      - name: Proprietary Microsatellite Weather Radar Constellation
+        description: Tomorrow.io operates its own constellation of space-based weather radars to fill gaps in terrestrial radar coverage, especially over oceans and the developing world.
+      - name: Minutely Forecast Resolution
+        description: 60-minute minute-by-minute precipitation forecast in addition to hourly and daily timelines (Enterprise tier).
+      - name: 14-Day Forecast Horizon
+        description: Daily forecast out to 14 days on Enterprise plans, 5 days on Free.
+      - name: Climate Normals
+        description: Monthly long-term averages for benchmarking current conditions against typical patterns.
+      - name: Severe Weather and Custom Events
+        description: First-class API for severe weather phenomena plus customer-defined vector events for proprietary hazard models.
+      - name: Threshold Alerts with Webhooks
+        description: Define rule-based alerts that fire webhooks and emails when conditions cross thresholds for linked locations.
+      - name: Weather Map Tiles
+        description: Web Mercator PNG tiles for visualizing every data layer in Mapbox, MapLibre, Leaflet, OpenLayers, Google Maps.
+      - name: Weather on Routes
+        description: ETA-aware weather retrieval along a polyline of waypoints for logistics, aviation, and maritime planning.
+      - name: MCP Server
+        description: Official Tomorrow.io Model Context Protocol server for agentic AI access to the Weather API.
+      - name: 99.9% Uptime SLA
+        description: Enterprise SLA with rate-limit response headers exposed for programmatic monitoring.
+      - name: LLMs.txt Indexed Documentation
+        description: Tomorrow.io publishes an LLMs.txt index of every documentation page and endpoint for AI agents.
+  - name: UseCases
+    type: UseCases
+    data:
+      - name: Route Optimization and Logistics
+        description: ETA-aware weather along truck, drone, and last-mile routes to avoid storms, ice, and visibility hazards.
+      - name: Aviation Planning
+        description: Airline operations centers and dispatch use Tomorrow.io for icing, turbulence, low-level wind shear, and aerodrome forecasts.
+      - name: Energy Forecasting
+        description: Wind and solar generation forecasting, load forecasting under heat events, and outage management.
+      - name: Agriculture
+        description: Soil moisture, evapotranspiration, frost, and growing-degree-day analytics for farm operations.
+      - name: Severe Weather Alerting
+        description: Geofenced alerting for tropical storms, severe thunderstorms, hail, lightning, and flash floods.
+      - name: Sports and Outdoor Events
+        description: Game-day, race-day, and venue operations under lightning, heat, and precipitation risk.
+      - name: Insurance and Climate Risk
+        description: Historical and climate-normals data for parametric insurance pricing and physical climate risk modeling.
+      - name: Data Science
+        description: Bulk historical timelines for training operational decision models and backtesting weather-sensitive workflows.
+      - name: Maritime Operations
+        description: Wave height, swell direction, and sea-state forecasting for shipping, offshore energy, and fisheries.
+      - name: On-Demand Platforms
+        description: Surge demand modeling and worker-safety alerting for rideshare, delivery, and on-demand services.
+  - name: Integrations
+    type: Integrations
+    data:
+      - name: Mapbox
+        description: Drop Tomorrow.io map tiles directly into Mapbox GL JS basemaps; official tomorrow-route-mapbox sample.
+      - name: MapLibre
+        description: Open-source slippy-map client compatible with the Tomorrow.io Maps API.
+      - name: Leaflet
+        description: Compatible with the Tomorrow.io Maps XYZ tile service.
+      - name: Google Cloud Functions
+        description: Official tomorrow-api-proxy sample demonstrates key-safe proxy deployment on GCP.
+      - name: Netlify Edge
+        description: Official tomorrow-netlify sample for serverless edge proxying.
+      - name: Postman
+        description: Official Tomorrow.io Postman collection covering every v4 endpoint.
+      - name: Model Context Protocol (MCP)
+        description: Official Tomorrow.io MCP server for plugging Weather, Forecast, Timelines, and Events into AI agents.
+      - name: Webhooks
+        description: First-class webhook delivery for alert notifications.
+      - name: Insights Dashboard
+        description: tomorrow-events-charts open-source dashboard demonstrating the Events API.
+  - name: Solutions
+    type: Solutions
+    data:
+      - name: Weather API for Developers
+        description: Self-serve developer API with 60+ data layers, Postman collection, and MCP server.
+      - name: Tomorrow.io Resilience Platform
+        description: Operational dashboards, alerts, and decision automation built on top of the Tomorrow.io Weather API.
+      - name: Aviation Resilience
+        description: Vertical solution for airline operations centers, dispatch, and aerodrome operations.
+      - name: Energy Resilience
+        description: Vertical solution for utility load forecasting, generation forecasting, and outage management.
+      - name: Logistics Resilience
+        description: Vertical solution for fleet, freight, and last-mile delivery routing under weather risk.
+      - name: Government and Defense
+        description: Tomorrow.io serves the US Air Force and other defense and government customers with operational weather intelligence and proprietary space-based weather radar.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+    'X-twitter': https://x.com/kinlane

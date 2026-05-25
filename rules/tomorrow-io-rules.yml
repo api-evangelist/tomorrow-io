@@ -1,0 +1,56 @@
+extends:
+  - spectral:oas
+rules:
+  tomorrow-io-base-url:
+    description: All Tomorrow.io OpenAPI specs must declare https://api.tomorrow.io/v4 as a server.
+    severity: error
+    given: $.servers
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+          contains:
+            type: object
+            properties:
+              url:
+                const: https://api.tomorrow.io/v4
+  tomorrow-io-apikey-query-auth:
+    description: All operations must authenticate with the apikey query parameter (apikeyAuth securityScheme).
+    severity: warn
+    given: $.components.securitySchemes.apikeyAuth
+    then:
+      field: in
+      function: enumeration
+      functionOptions:
+        values: [query]
+  tomorrow-io-operation-summary:
+    description: Every operation must have a Title Case summary.
+    severity: warn
+    given: $.paths.*[get,post,put,delete,patch]
+    then:
+      field: summary
+      function: truthy
+  tomorrow-io-operationid-required:
+    description: Every operation must declare an operationId.
+    severity: error
+    given: $.paths.*[get,post,put,delete,patch]
+    then:
+      field: operationId
+      function: truthy
+  tomorrow-io-tag-required:
+    description: Every operation must declare at least one tag.
+    severity: warn
+    given: $.paths.*[get,post,put,delete,patch].tags
+    then:
+      function: length
+      functionOptions:
+        min: 1
+  tomorrow-io-version-v4:
+    description: The OpenAPI spec must declare API version 4.x.
+    severity: info
+    given: $.info.version
+    then:
+      function: pattern
+      functionOptions:
+        match: '^4'

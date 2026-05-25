@@ -1,0 +1,27 @@
+{
+  "name": "TomorrowIoWeatherValues",
+  "description": "JSON Structure 0.1 description of the Tomorrow.io weather values payload returned in realtime, forecast, timelines, historical, and route responses.",
+  "version": "0.1",
+  "fields": [
+    { "name": "temperature", "type": "number", "unit": "celsius|fahrenheit", "category": "core" },
+    { "name": "temperatureApparent", "type": "number", "category": "core" },
+    { "name": "humidity", "type": "number", "unit": "percent", "category": "core" },
+    { "name": "windSpeed", "type": "number", "category": "core" },
+    { "name": "windDirection", "type": "number", "unit": "degrees", "category": "core" },
+    { "name": "windGust", "type": "number", "category": "core" },
+    { "name": "precipitationIntensity", "type": "number", "category": "precipitation" },
+    { "name": "precipitationProbability", "type": "number", "unit": "percent", "category": "precipitation" },
+    { "name": "precipitationType", "type": "integer", "category": "precipitation" },
+    { "name": "cloudCover", "type": "number", "unit": "percent", "category": "core" },
+    { "name": "visibility", "type": "number", "category": "core" },
+    { "name": "pressureSurfaceLevel", "type": "number", "category": "core" },
+    { "name": "uvIndex", "type": "integer", "category": "core" },
+    { "name": "weatherCode", "type": "integer", "category": "core" },
+    { "name": "epaIndex", "type": "integer", "category": "air-quality" },
+    { "name": "treeIndex", "type": "integer", "category": "pollen" },
+    { "name": "grassIndex", "type": "integer", "category": "pollen" },
+    { "name": "weedIndex", "type": "integer", "category": "pollen" },
+    { "name": "fireIndex", "type": "integer", "category": "fire" },
+    { "name": "lightningFlashRateDensity", "type": "number", "category": "lightning" }
+  ]
+}

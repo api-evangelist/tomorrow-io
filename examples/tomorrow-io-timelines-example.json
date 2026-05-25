@@ -1,0 +1,31 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.tomorrow.io/v4/timelines?apikey=YOUR_API_KEY",
+    "body": {
+      "location": "42.3478,-71.0466",
+      "fields": ["temperature", "precipitationIntensity", "windSpeed"],
+      "timesteps": ["1h"],
+      "startTime": "2026-05-24T00:00:00Z",
+      "endTime": "2026-05-25T00:00:00Z",
+      "units": "metric"
+    }
+  },
+  "response": {
+    "data": {
+      "timelines": [
+        {
+          "timestep": "1h",
+          "startTime": "2026-05-24T00:00:00Z",
+          "endTime": "2026-05-25T00:00:00Z",
+          "intervals": [
+            { "startTime": "2026-05-24T00:00:00Z", "values": { "temperature": 14.1, "precipitationIntensity": 0, "windSpeed": 2.1 } },
+            { "startTime": "2026-05-24T06:00:00Z", "values": { "temperature": 12.8, "precipitationIntensity": 0, "windSpeed": 1.9 } },
+            { "startTime": "2026-05-24T12:00:00Z", "values": { "temperature": 17.4, "precipitationIntensity": 0, "windSpeed": 3.2 } },
+            { "startTime": "2026-05-24T18:00:00Z", "values": { "temperature": 19.0, "precipitationIntensity": 0.4, "windSpeed": 4.0 } }
+          ]
+        }
+      ]
+    }
+  }
+}

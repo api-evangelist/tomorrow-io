@@ -1,0 +1,173 @@
+openapi: 3.1.0
+info:
+  title: Tomorrow.io Insights API
+  version: '4.0'
+  description: |
+    Define and manage Insights — named, reusable rules that combine Tomorrow.io
+    data layers with thresholds and time windows to describe a weather condition
+    of interest (e.g. "Heavy Rain", "Frost Risk", "Hurricane-Force Wind"). Insights
+    power the Events and Alerts APIs.
+  contact:
+    name: Tomorrow.io Support
+    url: https://support.tomorrow.io
+servers:
+  - url: https://api.tomorrow.io/v4
+    description: Tomorrow.io Production
+security:
+  - apikeyAuth: []
+tags:
+  - name: Insights
+    description: Manage custom weather insight definitions.
+paths:
+  /insights:
+    get:
+      tags:
+        - Insights
+      summary: List Insights
+      operationId: listInsights
+      parameters:
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Insight list.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InsightList'
+    post:
+      tags:
+        - Insights
+      summary: Create an Insight
+      operationId: createInsight
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Insight'
+      parameters:
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: Insight created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Insight'
+  /insights/{insightId}:
+    get:
+      tags:
+        - Insights
+      summary: Retrieve an Insight
+      operationId: getInsight
+      parameters:
+        - name: insightId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Insight resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Insight'
+    put:
+      tags:
+        - Insights
+      summary: Update an Insight
+      operationId: updateInsight
+      parameters:
+        - name: insightId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Insight'
+      responses:
+        '200':
+          description: Updated insight.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Insight'
+    delete:
+      tags:
+        - Insights
+      summary: Delete an Insight
+      operationId: deleteInsight
+      parameters:
+        - name: insightId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Deleted.
+components:
+  securitySchemes:
+    apikeyAuth:
+      type: apiKey
+      in: query
+      name: apikey
+  schemas:
+    Insight:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        conditions:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              operator:
+                type: string
+              value:
+                type: number
+        severity:
+          type: string
+          enum: [info, low, medium, high, severe]
+    InsightList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Insight'

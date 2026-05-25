@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/tomorrow-io/main/json-schema/tomorrow-io-weather-values-schema.json",
+  "title": "Tomorrow.io Weather Values",
+  "description": "Subset of the 60+ Tomorrow.io data layers that may appear inside the values object of a realtime, forecast, timelines, historical, or route response.",
+  "type": "object",
+  "properties": {
+    "temperature": { "type": "number", "description": "Air temperature in C or F depending on units." },
+    "temperatureApparent": { "type": "number" },
+    "humidity": { "type": "number", "minimum": 0, "maximum": 100 },
+    "windSpeed": { "type": "number" },
+    "windDirection": { "type": "number", "minimum": 0, "maximum": 360 },
+    "windGust": { "type": "number" },
+    "precipitationIntensity": { "type": "number" },
+    "precipitationProbability": { "type": "number", "minimum": 0, "maximum": 100 },
+    "precipitationType": { "type": "integer", "description": "0 N/A, 1 Rain, 2 Snow, 3 Freezing Rain, 4 Ice Pellets." },
+    "cloudCover": { "type": "number", "minimum": 0, "maximum": 100 },
+    "visibility": { "type": "number" },
+    "pressureSurfaceLevel": { "type": "number" },
+    "uvIndex": { "type": "integer", "minimum": 0 },
+    "weatherCode": { "type": "integer", "description": "Tomorrow.io weather code." },
+    "epaIndex": { "type": "integer", "description": "US EPA air quality index." },
+    "treeIndex": { "type": "integer", "description": "Tree pollen index." },
+    "grassIndex": { "type": "integer", "description": "Grass pollen index." },
+    "weedIndex": { "type": "integer", "description": "Weed pollen index." },
+    "fireIndex": { "type": "integer" },
+    "lightningFlashRateDensity": { "type": "number" }
+  }
+}

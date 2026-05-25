@@ -1,0 +1,22 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.tomorrow.io/v4/events?location=42.3478,-71.0466&insights=severeStorm,flood&buffer=50&apikey=YOUR_API_KEY"
+  },
+  "response": {
+    "data": {
+      "events": [
+        {
+          "eventId": "evt_8f1c3",
+          "insight": "severeStorm",
+          "title": "Severe Thunderstorm Watch",
+          "severity": "high",
+          "startTime": "2026-05-24T20:00:00Z",
+          "endTime": "2026-05-25T02:00:00Z",
+          "location": { "type": "Polygon", "coordinates": [[[-71.2,42.2],[-70.9,42.2],[-70.9,42.5],[-71.2,42.5],[-71.2,42.2]]] },
+          "eventValues": { "maxWindGust": 28.4, "maxPrecipitationIntensity": 12.1 }
+        }
+      ]
+    }
+  }
+}

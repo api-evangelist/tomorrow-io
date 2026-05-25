@@ -1,0 +1,68 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Tomorrow.io
+providerId: tomorrow-io
+created: '2026-05-24'
+modified: '2026-05-24'
+reconciled: false
+tags:
+  - FinOps
+  - Cost Management
+  - FOCUS
+  - Weather
+  - Quota
+description: FOCUS-aligned FinOps definition for the Tomorrow.io v4 weather API. Billing is request-based with per-field call accounting and quoted commercial tiers (Basic, Professional, Enterprise) beyond the published Free tier.
+sources:
+  - https://www.tomorrow.io/weather-api/
+  - https://support.tomorrow.io/hc/en-us/articles/23554984091156-Tomorrow-io-Pricing-Overview
+  - https://support.tomorrow.io/hc/en-us/articles/5188003525908-How-an-API-Call-Is-Counted
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Tomorrow.io
+serviceCategory: Weather Intelligence
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Tax
+    - Adjustment
+  primaryUnit: request
+  secondaryUnits:
+    - field
+    - location
+    - alert
+focusColumns:
+  ServiceName: Tomorrow.io Weather API
+  ServiceCategory: Weather Intelligence
+  ProviderName: Tomorrow.io
+  PublisherName: Tomorrow.io
+  InvoiceIssuerName: Tomorrow.io
+  PricingCategory: Usage-Based
+  ChargeCategory: Usage
+  PricingUnit: request
+  ConsumedUnit: field-request
+  BillingCurrency: USD
+costModels:
+  - id: free
+    name: Free
+    type: included
+    description: 500 requests/day, 25/hour, 3/second at no charge.
+    rate: 0.00
+  - id: tiered
+    name: Basic / Professional / Enterprise
+    type: usage-based
+    description: Quoted by Tomorrow.io sales based on monthly request volume, data layer entitlements, geometries, and SLA.
+    rate: quote
+optimization:
+  - Cache repeated point lookups locally; the Tomorrow.io billing model counts each requested field as one call.
+  - Request only the fields you need in Timelines and Forecast calls.
+  - Use saved Locations to avoid repeating long polygon coordinates and to tag cohorts for cost attribution.
+  - Use Map Tiles for visualization rather than per-point Realtime calls in dashboards.

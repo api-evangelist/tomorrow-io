@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/tomorrow-io/main/json-schema/tomorrow-io-location-schema.json",
+  "title": "Tomorrow.io Location",
+  "description": "A reusable saved location resource — point, polygon, or polyline geometry — that can be referenced by locationId in Tomorrow.io API requests.",
+  "type": "object",
+  "required": ["name", "location"],
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "location": {
+      "type": "object",
+      "required": ["type", "coordinates"],
+      "properties": {
+        "type": { "type": "string", "enum": ["Point", "Polygon", "LineString"] },
+        "coordinates": { "type": "array" }
+      }
+    },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" }
+  }
+}

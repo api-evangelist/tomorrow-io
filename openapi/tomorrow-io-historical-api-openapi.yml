@@ -1,0 +1,205 @@
+openapi: 3.1.0
+info:
+  title: Tomorrow.io Historical Weather API
+  version: '4.0'
+  description: |
+    Retrieve historical weather observations and climate normals for any point or
+    polygon on Earth. Covers recent history (hourly), long-term archives (going
+    back decades), and monthly climate normals, all with the same field catalog as
+    the realtime and forecast APIs.
+  contact:
+    name: Tomorrow.io Support
+    url: https://support.tomorrow.io
+servers:
+  - url: https://api.tomorrow.io/v4
+    description: Tomorrow.io Production
+security:
+  - apikeyAuth: []
+tags:
+  - name: Historical
+    description: Retrieve historical weather data and climate normals.
+paths:
+  /historical:
+    post:
+      tags:
+        - Historical
+      summary: Retrieve Historical Timeline
+      operationId: postHistorical
+      description: |
+        Retrieve a historical weather timeline for a point, polygon, or polyline
+        across a given start and end time window. Supports the full field catalog
+        and minute, hour, and day timesteps depending on plan tier.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HistoricalRequest'
+      parameters:
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Historical timeline payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoricalResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /historical/climate/normals:
+    get:
+      tags:
+        - Historical
+      summary: Get Climate Normals
+      operationId: getClimateNormals
+      description: |
+        Retrieve monthly climate normals (long-term averages and percentiles) for a
+        given point. Useful for benchmarking current conditions against typical
+        conditions for the location and season.
+      parameters:
+        - name: location
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: fields
+          in: query
+          schema:
+            type: string
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Climate normals payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClimateNormalsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  securitySchemes:
+    apikeyAuth:
+      type: apiKey
+      in: query
+      name: apikey
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    RateLimited:
+      description: Rate limit exceeded for the plan tier.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    HistoricalRequest:
+      type: object
+      required:
+        - location
+        - fields
+        - timesteps
+        - startTime
+        - endTime
+      properties:
+        location:
+          oneOf:
+            - type: string
+            - type: object
+              description: GeoJSON Point/Polygon/LineString
+        fields:
+          type: array
+          items:
+            type: string
+        timesteps:
+          type: array
+          items:
+            type: string
+            enum: [1m, 5m, 15m, 1h, 1d]
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        units:
+          type: string
+          enum: [metric, imperial]
+        timezone:
+          type: string
+    HistoricalResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            timelines:
+              type: array
+              items:
+                type: object
+                properties:
+                  timestep:
+                    type: string
+                  startTime:
+                    type: string
+                  endTime:
+                    type: string
+                  intervals:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        startTime:
+                          type: string
+                          format: date-time
+                        values:
+                          type: object
+                          additionalProperties: true
+    ClimateNormalsResponse:
+      type: object
+      properties:
+        location:
+          type: object
+          properties:
+            lat:
+              type: number
+            lon:
+              type: number
+        data:
+          type: object
+          properties:
+            months:
+              type: array
+              items:
+                type: object
+                properties:
+                  month:
+                    type: integer
+                  values:
+                    type: object
+                    additionalProperties:
+                      type: number
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        type:
+          type: string
+        message:
+          type: string

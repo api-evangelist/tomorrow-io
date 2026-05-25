@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/tomorrow-io/main/json-schema/tomorrow-io-insight-schema.json",
+  "title": "Tomorrow.io Insight",
+  "description": "A reusable named rule combining one or more Tomorrow.io data-layer thresholds. Insights power the Events and Alerts APIs.",
+  "type": "object",
+  "required": ["name", "conditions"],
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "severity": { "type": "string", "enum": ["info", "low", "medium", "high", "severe"] },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["field", "operator", "value"],
+        "properties": {
+          "field": { "type": "string" },
+          "operator": { "type": "string", "enum": ["gt", "gte", "lt", "lte", "eq", "neq"] },
+          "value": { "type": "number" }
+        }
+      }
+    }
+  }
+}

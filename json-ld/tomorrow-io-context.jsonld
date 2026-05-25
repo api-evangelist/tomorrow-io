@@ -1,0 +1,29 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "tomorrow": "https://docs.tomorrow.io/reference/",
+    "schema": "https://schema.org/",
+    "geo": "https://www.opengis.net/ont/geosparql#",
+    "qudt": "https://qudt.org/vocab/unit/",
+    "Location": "schema:Place",
+    "Event": "schema:Event",
+    "Alert": "tomorrow:Alert",
+    "Insight": "tomorrow:Insight",
+    "lat": { "@id": "schema:latitude", "@type": "xsd:double" },
+    "lon": { "@id": "schema:longitude", "@type": "xsd:double" },
+    "temperature": { "@id": "tomorrow:temperature", "@type": "qudt:DEG_C" },
+    "humidity": { "@id": "tomorrow:humidity", "@type": "xsd:double" },
+    "windSpeed": { "@id": "tomorrow:windSpeed", "@type": "qudt:M-PER-SEC" },
+    "windDirection": { "@id": "tomorrow:windDirection", "@type": "xsd:double" },
+    "precipitationIntensity": { "@id": "tomorrow:precipitationIntensity" },
+    "precipitationProbability": { "@id": "tomorrow:precipitationProbability" },
+    "weatherCode": { "@id": "tomorrow:weatherCode" },
+    "uvIndex": { "@id": "tomorrow:uvIndex" },
+    "epaIndex": { "@id": "tomorrow:epaIndex" },
+    "treeIndex": { "@id": "tomorrow:treeIndex" },
+    "startTime": { "@id": "schema:startDate", "@type": "xsd:dateTime" },
+    "endTime": { "@id": "schema:endDate", "@type": "xsd:dateTime" },
+    "severity": { "@id": "tomorrow:severity" },
+    "insight": { "@id": "tomorrow:insight" }
+  }
+}

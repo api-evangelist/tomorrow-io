@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/tomorrow-io/main/json-schema/tomorrow-io-alert-schema.json",
+  "title": "Tomorrow.io Alert",
+  "description": "A threshold-based weather alert. Evaluates a Tomorrow.io data-layer condition against one or more linked locations and emits notifications when the condition is satisfied.",
+  "type": "object",
+  "required": ["name", "condition"],
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "active": { "type": "boolean" },
+    "condition": {
+      "type": "object",
+      "required": ["field", "operator", "value"],
+      "properties": {
+        "field": { "type": "string" },
+        "operator": { "type": "string", "enum": ["gt", "gte", "lt", "lte", "eq", "neq"] },
+        "value": { "type": "number" }
+      }
+    },
+    "notifications": {
+      "type": "object",
+      "properties": {
+        "webhookUrl": { "type": "string", "format": "uri" },
+        "email": { "type": "array", "items": { "type": "string", "format": "email" } }
+      }
+    },
+    "linkedLocationIds": { "type": "array", "items": { "type": "string" } }
+  }
+}

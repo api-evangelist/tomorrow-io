@@ -1,0 +1,24 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.tomorrow.io/v4/alerts?apikey=YOUR_API_KEY",
+    "body": {
+      "name": "Heavy Rain Warning",
+      "description": "Trigger when hourly precipitation exceeds 10 mm.",
+      "active": true,
+      "condition": { "field": "precipitationIntensity", "operator": "gt", "value": 10 },
+      "notifications": {
+        "webhookUrl": "https://example.com/hooks/tomorrow-io",
+        "email": ["ops@example.com"]
+      },
+      "linkedLocationIds": ["6183d156022c1b0008685cc6"]
+    }
+  },
+  "response": {
+    "id": "alr_2a91d",
+    "name": "Heavy Rain Warning",
+    "active": true,
+    "condition": { "field": "precipitationIntensity", "operator": "gt", "value": 10 },
+    "linkedLocationIds": ["6183d156022c1b0008685cc6"]
+  }
+}

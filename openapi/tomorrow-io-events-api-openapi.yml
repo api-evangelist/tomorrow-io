@@ -1,0 +1,182 @@
+openapi: 3.1.0
+info:
+  title: Tomorrow.io Events API
+  version: '4.0'
+  description: |
+    Severe weather events, on-demand events, and custom vector events. Returns
+    high-impact weather phenomena (tropical storms, lightning, severe thunderstorms,
+    floods, wildfires) and customer-defined event geometries for the requested
+    location.
+  contact:
+    name: Tomorrow.io Support
+    url: https://support.tomorrow.io
+servers:
+  - url: https://api.tomorrow.io/v4
+    description: Tomorrow.io Production
+security:
+  - apikeyAuth: []
+tags:
+  - name: Events
+    description: Severe weather and custom event retrieval.
+paths:
+  /events:
+    get:
+      tags:
+        - Events
+      summary: Retrieve Events (Basic)
+      operationId: getEvents
+      description: |
+        Retrieve weather events for a point or location, filtered by insight
+        category (severe weather, fires, floods, lightning, custom).
+      parameters:
+        - name: location
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: insights
+          in: query
+          description: Comma separated event insight ids.
+          schema:
+            type: string
+        - name: buffer
+          in: query
+          description: Buffer radius around the location in km.
+          schema:
+            type: number
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Event list.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+    post:
+      tags:
+        - Events
+      summary: Retrieve Events (Advanced)
+      operationId: postEvents
+      description: Advanced event retrieval with polygon/polyline geometries and complex filters.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventsRequest'
+      parameters:
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Event list.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  securitySchemes:
+    apikeyAuth:
+      type: apiKey
+      in: query
+      name: apikey
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    RateLimited:
+      description: Rate limit exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    EventsRequest:
+      type: object
+      required:
+        - location
+      properties:
+        location:
+          oneOf:
+            - type: string
+            - type: object
+        insights:
+          type: array
+          items:
+            type: string
+        buffer:
+          type: number
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+    EventsResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            events:
+              type: array
+              items:
+                $ref: '#/components/schemas/Event'
+    Event:
+      type: object
+      properties:
+        eventId:
+          type: string
+        eventValues:
+          type: object
+          additionalProperties: true
+        insight:
+          type: string
+        location:
+          type: object
+          properties:
+            type:
+              type: string
+            coordinates:
+              type: array
+              items:
+                type: number
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        severity:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        type:
+          type: string
+        message:
+          type: string
