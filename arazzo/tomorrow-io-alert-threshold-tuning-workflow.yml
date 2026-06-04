@@ -1,0 +1,108 @@
+arazzo: 1.0.1
+info:
+  title: Tomorrow.io Alert Threshold Tuning
+  summary: Inspect an existing alert, retune its threshold, and confirm the updated definition.
+  description: >-
+    A maintenance flow for an alert that is firing too often or not enough. The
+    workflow reads the current alert definition, applies a new threshold value
+    and operator through an update, and re-reads the alert to confirm the change
+    took effect. This is the read-modify-confirm pattern applied to alert
+    tuning. Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: alertsApi
+  url: ../openapi/tomorrow-io-alerts-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: alert-threshold-tuning
+  summary: Read an alert, update its condition, and confirm the new definition.
+  description: >-
+    Retrieves an existing alert, updates its threshold field, operator, and
+    value, then re-reads it to verify the tuned condition.
+  inputs:
+    type: object
+    required:
+    - apikey
+    - alertId
+    - field
+    - operator
+    - value
+    properties:
+      apikey:
+        type: string
+        description: Tomorrow.io API key passed as the apikey query parameter.
+      alertId:
+        type: string
+        description: Identifier of the alert to retune.
+      field:
+        type: string
+        description: Weather data layer the condition evaluates.
+      operator:
+        type: string
+        description: Comparison operator (gt, gte, lt, lte, eq, neq).
+      value:
+        type: number
+        description: New threshold value for the condition.
+  steps:
+  - stepId: getAlert
+    description: >-
+      Read the current alert definition before applying any changes.
+    operationId: getAlert
+    parameters:
+    - name: alertId
+      in: path
+      value: $inputs.alertId
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      name: $response.body#/name
+      description: $response.body#/description
+      active: $response.body#/active
+  - stepId: updateAlert
+    description: >-
+      Apply the new threshold condition to the alert while preserving its name,
+      description, and active state.
+    operationId: updateAlert
+    parameters:
+    - name: alertId
+      in: path
+      value: $inputs.alertId
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $steps.getAlert.outputs.name
+        description: $steps.getAlert.outputs.description
+        active: $steps.getAlert.outputs.active
+        condition:
+          field: $inputs.field
+          operator: $inputs.operator
+          value: $inputs.value
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      alertId: $response.body#/id
+  - stepId: confirmAlert
+    description: >-
+      Re-read the alert to confirm the updated condition is in effect.
+    operationId: getAlert
+    parameters:
+    - name: alertId
+      in: path
+      value: $inputs.alertId
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      condition: $response.body#/condition
+  outputs:
+    alertId: $steps.updateAlert.outputs.alertId
+    confirmedCondition: $steps.confirmAlert.outputs.condition

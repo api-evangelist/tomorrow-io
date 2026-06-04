@@ -1,0 +1,98 @@
+arazzo: 1.0.1
+info:
+  title: Tomorrow.io Realtime Snapshot then Timelines Deep Dive
+  summary: Take a realtime reading, then pull a multi-field timeline window over the same location.
+  description: >-
+    A drill-down flow that pairs a quick realtime snapshot with a richer timeline
+    query. The workflow first reads current conditions for a location, then
+    issues an advanced timelines request for a configurable field set and time
+    range over the same point, letting a caller move from "what is it now" to
+    "how does it evolve across the requested fields". Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: weatherApi
+  url: ../openapi/tomorrow-io-weather-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: realtime-then-timelines-deep-dive
+  summary: Snapshot current conditions, then query a detailed timeline for the same point.
+  description: >-
+    Reads realtime weather for a location and follows with an advanced timelines
+    request covering a configurable field list, timestep, and time window.
+  inputs:
+    type: object
+    required:
+    - apikey
+    - location
+    - fields
+    - timesteps
+    properties:
+      apikey:
+        type: string
+        description: Tomorrow.io API key passed as the apikey query parameter.
+      location:
+        type: string
+        description: Either 'lat,lng' or a Tomorrow.io locationId.
+      fields:
+        type: array
+        description: Data layer field names to retrieve in the timeline.
+      timesteps:
+        type: array
+        description: Timesteps for the timeline (e.g. ['1h','1d']).
+      startTime:
+        type: string
+        description: ISO-8601 start of the timeline window.
+      endTime:
+        type: string
+        description: ISO-8601 end of the timeline window.
+      units:
+        type: string
+        description: Unit system (metric or imperial).
+        default: metric
+  steps:
+  - stepId: getRealtime
+    description: >-
+      Capture the current conditions for the location as a baseline snapshot.
+    operationId: getRealtimeWeather
+    parameters:
+    - name: location
+      in: query
+      value: $inputs.location
+    - name: units
+      in: query
+      value: $inputs.units
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      observedAt: $response.body#/data/time
+      temperature: $response.body#/data/values/temperature
+  - stepId: getTimelines
+    description: >-
+      Issue an advanced timelines request for the configured fields and window
+      over the same location.
+    operationId: postTimelines
+    parameters:
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    requestBody:
+      contentType: application/json
+      payload:
+        location: $inputs.location
+        fields: $inputs.fields
+        timesteps: $inputs.timesteps
+        startTime: $inputs.startTime
+        endTime: $inputs.endTime
+        units: $inputs.units
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      timelines: $response.body#/data/timelines
+  outputs:
+    snapshotTemperature: $steps.getRealtime.outputs.temperature
+    timelines: $steps.getTimelines.outputs.timelines

@@ -1,0 +1,92 @@
+arazzo: 1.0.1
+info:
+  title: Tomorrow.io Decommission a Monitored Location
+  summary: Confirm a location exists, unlink it from an alert, then delete the saved location.
+  description: >-
+    A clean teardown flow for a location that is no longer monitored. The
+    workflow first confirms the saved location resource exists, detaches it from
+    a specified alert so the alert stops evaluating it, and finally deletes the
+    saved location. This is the safe-removal pattern that avoids dangling alert
+    bindings. Every step spells out its request inline so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: locationsApi
+  url: ../openapi/tomorrow-io-locations-api-openapi.yml
+  type: openapi
+- name: alertsApi
+  url: ../openapi/tomorrow-io-alerts-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: decommission-location
+  summary: Verify a location, unlink it from an alert, and delete it.
+  description: >-
+    Reads the saved location to confirm it exists, unlinks it from the supplied
+    alert, then deletes the location resource.
+  inputs:
+    type: object
+    required:
+    - apikey
+    - locationId
+    - alertId
+    properties:
+      apikey:
+        type: string
+        description: Tomorrow.io API key passed as the apikey query parameter.
+      locationId:
+        type: string
+        description: Identifier of the saved location to decommission.
+      alertId:
+        type: string
+        description: Identifier of the alert the location should be detached from.
+  steps:
+  - stepId: confirmLocation
+    description: >-
+      Confirm the saved location resource exists before unlinking and deleting
+      it.
+    operationId: getLocation
+    parameters:
+    - name: locationId
+      in: path
+      value: $inputs.locationId
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      name: $response.body#/name
+  - stepId: unlinkFromAlert
+    description: >-
+      Detach the location from the alert so the alert stops evaluating it.
+    operationId: unlinkAlertLocations
+    parameters:
+    - name: alertId
+      in: path
+      value: $inputs.alertId
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    requestBody:
+      contentType: application/json
+      payload:
+        locationIds:
+        - $inputs.locationId
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: deleteLocation
+    description: >-
+      Delete the saved location resource now that it is no longer bound to the
+      alert.
+    operationId: deleteLocation
+    parameters:
+    - name: locationId
+      in: path
+      value: $inputs.locationId
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    successCriteria:
+    - condition: $statusCode == 204
+  outputs:
+    decommissionedLocation: $steps.confirmLocation.outputs.name

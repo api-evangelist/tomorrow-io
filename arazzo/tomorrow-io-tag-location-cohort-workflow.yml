@@ -1,0 +1,122 @@
+arazzo: 1.0.1
+info:
+  title: Tomorrow.io Tag and Monitor a Location Cohort
+  summary: Create a location, tag it into a cohort, confirm the tag, and read its current conditions.
+  description: >-
+    A cohort-organization flow for fleets of monitored points. The workflow
+    creates a saved location, attaches a cohort tag to it, re-reads the location
+    to confirm the tag landed, and finishes by pulling the current conditions for
+    the newly tagged point. This is the setup pattern for grouping and operating
+    on sets of locations. Every step spells out its request inline so the flow
+    can be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: locationsApi
+  url: ../openapi/tomorrow-io-locations-api-openapi.yml
+  type: openapi
+- name: weatherApi
+  url: ../openapi/tomorrow-io-weather-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: tag-location-cohort
+  summary: Create a location, tag it, verify the tag, and read realtime conditions.
+  description: >-
+    Persists a location, adds it to a tagged cohort, confirms the tag by
+    re-reading the resource, and retrieves current conditions for it.
+  inputs:
+    type: object
+    required:
+    - apikey
+    - name
+    - coordinates
+    - tags
+    properties:
+      apikey:
+        type: string
+        description: Tomorrow.io API key passed as the apikey query parameter.
+      name:
+        type: string
+        description: Human-readable name for the saved location.
+      coordinates:
+        type: array
+        description: GeoJSON Point coordinates as [lng, lat].
+      tags:
+        type: array
+        description: Cohort tags to attach to the location.
+      units:
+        type: string
+        description: Unit system for the realtime response (metric or imperial).
+        default: metric
+  steps:
+  - stepId: createLocation
+    description: >-
+      Create the saved location that will join the tagged cohort.
+    operationId: createLocation
+    parameters:
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        location:
+          type: Point
+          coordinates: $inputs.coordinates
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      locationId: $response.body#/id
+  - stepId: addTags
+    description: >-
+      Attach the supplied cohort tags to the new location.
+    operationId: addLocationTags
+    parameters:
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    requestBody:
+      contentType: application/json
+      payload:
+        locationIds:
+        - $steps.createLocation.outputs.locationId
+        tags: $inputs.tags
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: confirmTags
+    description: >-
+      Re-read the location resource to confirm the cohort tags were applied.
+    operationId: getLocation
+    parameters:
+    - name: locationId
+      in: path
+      value: $steps.createLocation.outputs.locationId
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      tags: $response.body#/tags
+  - stepId: getRealtime
+    description: >-
+      Read the current conditions for the newly tagged location.
+    operationId: getRealtimeWeather
+    parameters:
+    - name: location
+      in: query
+      value: $steps.createLocation.outputs.locationId
+    - name: units
+      in: query
+      value: $inputs.units
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      temperature: $response.body#/data/values/temperature
+  outputs:
+    locationId: $steps.createLocation.outputs.locationId
+    appliedTags: $steps.confirmTags.outputs.tags
+    temperature: $steps.getRealtime.outputs.temperature

@@ -205,6 +205,45 @@ apis:
         type: NaftikoCapability
     description: Define and manage reusable Insights — named rules combining Tomorrow.io data layers, operators, and thresholds — that power the Events and Alerts APIs.
 common:
+  - type: ArazzoWorkflows
+    url: arazzo/
+    workflows:
+    - url: arazzo/tomorrow-io-alert-threshold-tuning-workflow.yml
+      name: Tomorrow.io Alert Threshold Tuning
+      summary: Inspect an existing alert, retune its threshold, and confirm the updated definition.
+    - url: arazzo/tomorrow-io-decommission-location-workflow.yml
+      name: Tomorrow.io Decommission a Monitored Location
+      summary: Confirm a location exists, unlink it from an alert, then delete the saved location.
+    - url: arazzo/tomorrow-io-historical-and-normals-analysis-workflow.yml
+      name: Tomorrow.io Historical and Climate Normals Analysis
+      summary: Save a location, pull its historical weather timeline, and compare against climate normals.
+    - url: arazzo/tomorrow-io-insight-driven-alert-setup-workflow.yml
+      name: Tomorrow.io Insight-Driven Alert Setup
+      summary: Define a reusable insight, build an alert from it, bind locations, and activate monitoring.
+    - url: arazzo/tomorrow-io-insight-scoped-event-query-workflow.yml
+      name: Tomorrow.io Insight-Scoped Event Query
+      summary: Define an insight, then run an advanced event query filtered to that insight over an area.
+    - url: arazzo/tomorrow-io-location-severe-weather-events-workflow.yml
+      name: Tomorrow.io Location Severe Weather Events
+      summary: Save a location, scan it for severe weather events, and branch on whether any are active.
+    - url: arazzo/tomorrow-io-map-tile-precipitation-overlay-workflow.yml
+      name: Tomorrow.io Map Tile Precipitation Overlay
+      summary: Read realtime precipitation for a point, then fetch the matching weather map tile.
+    - url: arazzo/tomorrow-io-realtime-then-timelines-deep-dive-workflow.yml
+      name: Tomorrow.io Realtime Snapshot then Timelines Deep Dive
+      summary: Take a realtime reading, then pull a multi-field timeline window over the same location.
+    - url: arazzo/tomorrow-io-realtime-vs-climate-normals-workflow.yml
+      name: Tomorrow.io Realtime vs Climate Normals Benchmark
+      summary: Compare current conditions for a location against its long-term monthly climate normals.
+    - url: arazzo/tomorrow-io-route-weather-hazard-scan-workflow.yml
+      name: Tomorrow.io Route Weather Hazard Scan
+      summary: Retrieve weather along a planned route, then scan the destination for severe events.
+    - url: arazzo/tomorrow-io-saved-location-realtime-forecast-workflow.yml
+      name: Tomorrow.io Saved Location Realtime and Forecast
+      summary: Create a reusable saved location, then pull realtime conditions and a multi-day forecast for it.
+    - url: arazzo/tomorrow-io-tag-location-cohort-workflow.yml
+      name: Tomorrow.io Tag and Monitor a Location Cohort
+      summary: Create a location, tag it into a cohort, confirm the tag, and read its current conditions.
   - url: https://www.tomorrow.io
     type: Portal
   - url: https://docs.tomorrow.io

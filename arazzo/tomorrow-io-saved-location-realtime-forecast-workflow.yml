@@ -1,0 +1,121 @@
+arazzo: 1.0.1
+info:
+  title: Tomorrow.io Saved Location Realtime and Forecast
+  summary: Create a reusable saved location, then pull realtime conditions and a multi-day forecast for it.
+  description: >-
+    A foundational Tomorrow.io pattern that turns an ad-hoc coordinate into a
+    durable, reusable location resource and immediately exercises it. The
+    workflow creates a saved location, captures the returned locationId, fetches
+    the current conditions for that location, and then retrieves a structured
+    hourly and daily forecast for the same point. Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: locationsApi
+  url: ../openapi/tomorrow-io-locations-api-openapi.yml
+  type: openapi
+- name: weatherApi
+  url: ../openapi/tomorrow-io-weather-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: saved-location-realtime-forecast
+  summary: Persist a location and chain realtime plus forecast retrieval against it.
+  description: >-
+    Creates a saved location from a GeoJSON point, then uses the persisted
+    locationId to fetch realtime conditions and a forecast in a single linear
+    flow.
+  inputs:
+    type: object
+    required:
+    - apikey
+    - name
+    - coordinates
+    properties:
+      apikey:
+        type: string
+        description: Tomorrow.io API key passed as the apikey query parameter.
+      name:
+        type: string
+        description: Human-readable name for the saved location.
+      coordinates:
+        type: array
+        description: GeoJSON Point coordinates as [lng, lat].
+      units:
+        type: string
+        description: Unit system for weather responses (metric or imperial).
+        default: metric
+      timesteps:
+        type: string
+        description: Comma separated forecast timesteps (e.g. 1h,1d).
+        default: 1h,1d
+  steps:
+  - stepId: createLocation
+    description: >-
+      Create a reusable saved location resource from the supplied name and
+      GeoJSON Point coordinates.
+    operationId: createLocation
+    parameters:
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        location:
+          type: Point
+          coordinates: $inputs.coordinates
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      locationId: $response.body#/id
+  - stepId: getRealtime
+    description: >-
+      Fetch the current weather conditions for the freshly created location
+      using its locationId.
+    operationId: getRealtimeWeather
+    parameters:
+    - name: location
+      in: query
+      value: $steps.createLocation.outputs.locationId
+    - name: units
+      in: query
+      value: $inputs.units
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      observedAt: $response.body#/data/time
+      temperature: $response.body#/data/values/temperature
+      weatherCode: $response.body#/data/values/weatherCode
+  - stepId: getForecast
+    description: >-
+      Retrieve an hourly and daily forecast for the same saved location to pair
+      current conditions with the road ahead.
+    operationId: getWeatherForecast
+    parameters:
+    - name: location
+      in: query
+      value: $steps.createLocation.outputs.locationId
+    - name: timesteps
+      in: query
+      value: $inputs.timesteps
+    - name: units
+      in: query
+      value: $inputs.units
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      hourly: $response.body#/timelines/hourly
+      daily: $response.body#/timelines/daily
+  outputs:
+    locationId: $steps.createLocation.outputs.locationId
+    currentTemperature: $steps.getRealtime.outputs.temperature
+    hourly: $steps.getForecast.outputs.hourly
+    daily: $steps.getForecast.outputs.daily

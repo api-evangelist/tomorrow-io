@@ -1,0 +1,106 @@
+arazzo: 1.0.1
+info:
+  title: Tomorrow.io Realtime vs Climate Normals Benchmark
+  summary: Compare current conditions for a location against its long-term monthly climate normals.
+  description: >-
+    Anomaly detection in two calls. The workflow reads the realtime temperature
+    for a point, then retrieves the monthly climate normals for the same point,
+    and branches on whether current conditions are notably warmer than the
+    typical seasonal baseline. This is the building block for "is today unusual?"
+    dashboards and seasonal benchmarking. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: weatherApi
+  url: ../openapi/tomorrow-io-weather-api-openapi.yml
+  type: openapi
+- name: historicalApi
+  url: ../openapi/tomorrow-io-historical-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: realtime-vs-climate-normals
+  summary: Read realtime conditions and benchmark them against climate normals.
+  description: >-
+    Fetches current temperature for a location, retrieves long-term monthly
+    climate normals for the same location, and branches on whether the present
+    reading is anomalously warm.
+  inputs:
+    type: object
+    required:
+    - apikey
+    - location
+    properties:
+      apikey:
+        type: string
+        description: Tomorrow.io API key passed as the apikey query parameter.
+      location:
+        type: string
+        description: Either 'lat,lng' or a Tomorrow.io locationId.
+      fields:
+        type: string
+        description: Comma separated climate normal fields to retrieve.
+        default: temperature
+      units:
+        type: string
+        description: Unit system for the realtime response (metric or imperial).
+        default: metric
+      anomalyThreshold:
+        type: number
+        description: Temperature delta above which the current reading is treated as anomalous.
+        default: 5
+  steps:
+  - stepId: getRealtime
+    description: >-
+      Retrieve the current temperature and conditions for the target location.
+    operationId: getRealtimeWeather
+    parameters:
+    - name: location
+      in: query
+      value: $inputs.location
+    - name: units
+      in: query
+      value: $inputs.units
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      currentTemperature: $response.body#/data/values/temperature
+      observedAt: $response.body#/data/time
+  - stepId: getNormals
+    description: >-
+      Retrieve the monthly climate normals for the same location to establish a
+      seasonal baseline.
+    operationId: getClimateNormals
+    parameters:
+    - name: location
+      in: query
+      value: $inputs.location
+    - name: fields
+      in: query
+      value: $inputs.fields
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      months: $response.body#/data/months
+    onSuccess:
+    - name: flagAnomaly
+      type: end
+      criteria:
+      - context: $steps.getRealtime.outputs.currentTemperature
+        condition: $ > $inputs.anomalyThreshold
+        type: jsonpath
+    - name: withinNormals
+      type: end
+      criteria:
+      - context: $steps.getRealtime.outputs.currentTemperature
+        condition: $ <= $inputs.anomalyThreshold
+        type: jsonpath
+  outputs:
+    currentTemperature: $steps.getRealtime.outputs.currentTemperature
+    climateMonths: $steps.getNormals.outputs.months

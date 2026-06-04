@@ -1,0 +1,108 @@
+arazzo: 1.0.1
+info:
+  title: Tomorrow.io Route Weather Hazard Scan
+  summary: Retrieve weather along a planned route, then scan the destination for severe events.
+  description: >-
+    A logistics-planning flow that combines ETA-aware route weather with
+    destination event awareness. The workflow submits a polyline of timed
+    waypoints to the Weather on Routes API to get conditions at each leg, then
+    queries the Events API at the final waypoint for severe weather that could
+    disrupt arrival. This chains route forecasting into destination hazard
+    detection. Every step spells out its request inline so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: routeApi
+  url: ../openapi/tomorrow-io-route-api-openapi.yml
+  type: openapi
+- name: eventsApi
+  url: ../openapi/tomorrow-io-events-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: route-weather-hazard-scan
+  summary: Get per-waypoint route weather, then scan the destination for severe events.
+  description: >-
+    Submits timed route waypoints for weather retrieval, then checks the
+    destination coordinate for severe weather events within a buffer.
+  inputs:
+    type: object
+    required:
+    - apikey
+    - waypoints
+    - fields
+    - destination
+    properties:
+      apikey:
+        type: string
+        description: Tomorrow.io API key passed as the apikey query parameter.
+      waypoints:
+        type: array
+        description: Ordered route waypoints, each a GeoJSON Point location with an arrival time.
+      fields:
+        type: array
+        description: Weather data layer fields to retrieve at each waypoint.
+      units:
+        type: string
+        description: Unit system (metric or imperial).
+        default: metric
+      destination:
+        type: string
+        description: Destination as 'lat,lng' for the event scan.
+      buffer:
+        type: number
+        description: Buffer radius around the destination in km.
+        default: 25
+  steps:
+  - stepId: getRouteWeather
+    description: >-
+      Retrieve weather data layers at each timed waypoint along the route.
+    operationId: postRoute
+    parameters:
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    requestBody:
+      contentType: application/json
+      payload:
+        waypoints: $inputs.waypoints
+        fields: $inputs.fields
+        units: $inputs.units
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      waypoints: $response.body#/data/waypoints
+  - stepId: scanDestinationEvents
+    description: >-
+      Scan the destination coordinate for severe weather events that could
+      disrupt arrival.
+    operationId: getEvents
+    parameters:
+    - name: location
+      in: query
+      value: $inputs.destination
+    - name: buffer
+      in: query
+      value: $inputs.buffer
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      events: $response.body#/data/events
+    onSuccess:
+    - name: hazardsAtDestination
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.data.events.length > 0
+        type: jsonpath
+    - name: clearDestination
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.data.events.length == 0
+        type: jsonpath
+  outputs:
+    routeWaypoints: $steps.getRouteWeather.outputs.waypoints
+    destinationEvents: $steps.scanDestinationEvents.outputs.events

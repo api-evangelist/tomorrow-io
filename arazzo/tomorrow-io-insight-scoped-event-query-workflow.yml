@@ -1,0 +1,128 @@
+arazzo: 1.0.1
+info:
+  title: Tomorrow.io Insight-Scoped Event Query
+  summary: Define an insight, then run an advanced event query filtered to that insight over an area.
+  description: >-
+    A flow that ties custom insight definitions to event retrieval. The workflow
+    creates a reusable insight, captures its id, and then issues an advanced
+    events request scoped to that insight over a geometry and time window,
+    branching on whether matching events were detected. This demonstrates how an
+    insight authored in one call drives event filtering in the next. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: insightsApi
+  url: ../openapi/tomorrow-io-insights-api-openapi.yml
+  type: openapi
+- name: eventsApi
+  url: ../openapi/tomorrow-io-events-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: insight-scoped-event-query
+  summary: Create an insight, then query events filtered to it with branching.
+  description: >-
+    Defines an insight and uses its id to filter an advanced events query over a
+    location and time window, branching on whether events were returned.
+  inputs:
+    type: object
+    required:
+    - apikey
+    - insightName
+    - field
+    - operator
+    - value
+    - location
+    properties:
+      apikey:
+        type: string
+        description: Tomorrow.io API key passed as the apikey query parameter.
+      insightName:
+        type: string
+        description: Name for the reusable insight rule.
+      field:
+        type: string
+        description: Weather data layer the insight condition evaluates.
+      operator:
+        type: string
+        description: Comparison operator for the insight condition.
+      value:
+        type: number
+        description: Threshold value for the insight condition.
+      severity:
+        type: string
+        description: Insight severity (info, low, medium, high, severe).
+        default: medium
+      location:
+        type: string
+        description: Either 'lat,lng' or a Tomorrow.io locationId, or a GeoJSON geometry.
+      buffer:
+        type: number
+        description: Buffer radius around the location in km.
+        default: 50
+      startTime:
+        type: string
+        description: ISO-8601 start of the event window.
+      endTime:
+        type: string
+        description: ISO-8601 end of the event window.
+  steps:
+  - stepId: createInsight
+    description: >-
+      Define the reusable insight whose id will scope the event query.
+    operationId: createInsight
+    parameters:
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.insightName
+        severity: $inputs.severity
+        conditions:
+        - field: $inputs.field
+          operator: $inputs.operator
+          value: $inputs.value
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      insightId: $response.body#/id
+  - stepId: queryEvents
+    description: >-
+      Run an advanced events query filtered to the new insight over the supplied
+      location, buffer, and time window.
+    operationId: postEvents
+    parameters:
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    requestBody:
+      contentType: application/json
+      payload:
+        location: $inputs.location
+        insights:
+        - $steps.createInsight.outputs.insightId
+        buffer: $inputs.buffer
+        startTime: $inputs.startTime
+        endTime: $inputs.endTime
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      events: $response.body#/data/events
+    onSuccess:
+    - name: matchesFound
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.data.events.length > 0
+        type: jsonpath
+    - name: noMatches
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.data.events.length == 0
+        type: jsonpath
+  outputs:
+    insightId: $steps.createInsight.outputs.insightId
+    events: $steps.queryEvents.outputs.events

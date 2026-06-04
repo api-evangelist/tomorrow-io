@@ -1,0 +1,155 @@
+arazzo: 1.0.1
+info:
+  title: Tomorrow.io Insight-Driven Alert Setup
+  summary: Define a reusable insight, build an alert from it, bind locations, and activate monitoring.
+  description: >-
+    The end-to-end provisioning flow for Tomorrow.io weather monitoring. The
+    workflow first defines a reusable insight (a named threshold rule), then
+    creates an alert that evaluates a matching condition, links one or more saved
+    locations to that alert, and finally activates it so notifications begin
+    firing. This chains four resource-creating operations across two specs into a
+    single monitoring setup. Every step spells out its request inline so the flow
+    can be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: insightsApi
+  url: ../openapi/tomorrow-io-insights-api-openapi.yml
+  type: openapi
+- name: alertsApi
+  url: ../openapi/tomorrow-io-alerts-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: insight-driven-alert-setup
+  summary: Create an insight, build an alert, link locations, and activate it.
+  description: >-
+    Provisions a complete monitoring chain — insight definition, alert with a
+    threshold condition and webhook notification, location bindings, and
+    activation.
+  inputs:
+    type: object
+    required:
+    - apikey
+    - insightName
+    - field
+    - operator
+    - value
+    - alertName
+    - locationIds
+    properties:
+      apikey:
+        type: string
+        description: Tomorrow.io API key passed as the apikey query parameter.
+      insightName:
+        type: string
+        description: Name for the reusable insight rule.
+      insightDescription:
+        type: string
+        description: Optional human-readable description of the insight.
+        default: ''
+      field:
+        type: string
+        description: Weather data layer the condition evaluates (e.g. precipitationIntensity).
+      operator:
+        type: string
+        description: Comparison operator (gt, gte, lt, lte, eq, neq).
+      value:
+        type: number
+        description: Threshold value the field is compared against.
+      severity:
+        type: string
+        description: Insight severity (info, low, medium, high, severe).
+        default: high
+      alertName:
+        type: string
+        description: Name for the alert built from the insight condition.
+      webhookUrl:
+        type: string
+        description: Optional webhook URL to receive alert notifications.
+        default: ''
+      locationIds:
+        type: array
+        description: Saved location ids to bind to the alert.
+  steps:
+  - stepId: createInsight
+    description: >-
+      Define a reusable insight that combines a data layer, operator, and
+      threshold into a named condition.
+    operationId: createInsight
+    parameters:
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.insightName
+        description: $inputs.insightDescription
+        severity: $inputs.severity
+        conditions:
+        - field: $inputs.field
+          operator: $inputs.operator
+          value: $inputs.value
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      insightId: $response.body#/id
+  - stepId: createAlert
+    description: >-
+      Create an alert that evaluates the same threshold condition and delivers a
+      webhook notification when it is met.
+    operationId: createAlert
+    parameters:
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.alertName
+        description: $inputs.insightDescription
+        active: false
+        condition:
+          field: $inputs.field
+          operator: $inputs.operator
+          value: $inputs.value
+        notifications:
+          webhookUrl: $inputs.webhookUrl
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      alertId: $response.body#/id
+  - stepId: linkLocations
+    description: >-
+      Bind the supplied saved locations to the new alert so it evaluates the
+      condition at each location.
+    operationId: linkAlertLocations
+    parameters:
+    - name: alertId
+      in: path
+      value: $steps.createAlert.outputs.alertId
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    requestBody:
+      contentType: application/json
+      payload:
+        locationIds: $inputs.locationIds
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: activateAlert
+    description: >-
+      Activate the fully configured alert so notifications begin firing for the
+      linked locations.
+    operationId: activateAlert
+    parameters:
+    - name: alertId
+      in: path
+      value: $steps.createAlert.outputs.alertId
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    successCriteria:
+    - condition: $statusCode == 200
+  outputs:
+    insightId: $steps.createInsight.outputs.insightId
+    alertId: $steps.createAlert.outputs.alertId

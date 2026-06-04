@@ -1,0 +1,108 @@
+arazzo: 1.0.1
+info:
+  title: Tomorrow.io Location Severe Weather Events
+  summary: Save a location, scan it for severe weather events, and branch on whether any are active.
+  description: >-
+    A situational-awareness flow for a point of interest. The workflow creates a
+    saved location, then queries the Events API for high-impact weather
+    phenomena (severe weather, fires, floods, lightning) within a buffer around
+    that location, and branches on whether any events were returned so callers
+    can route to escalation or all-clear handling. Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: locationsApi
+  url: ../openapi/tomorrow-io-locations-api-openapi.yml
+  type: openapi
+- name: eventsApi
+  url: ../openapi/tomorrow-io-events-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: location-severe-weather-events
+  summary: Persist a location and scan it for severe weather events with branching.
+  description: >-
+    Creates a saved location, retrieves weather events for it within a buffer
+    radius, and branches on whether any active events were found.
+  inputs:
+    type: object
+    required:
+    - apikey
+    - name
+    - coordinates
+    properties:
+      apikey:
+        type: string
+        description: Tomorrow.io API key passed as the apikey query parameter.
+      name:
+        type: string
+        description: Human-readable name for the saved location.
+      coordinates:
+        type: array
+        description: GeoJSON Point coordinates as [lng, lat].
+      insights:
+        type: string
+        description: Comma separated event insight ids to filter on.
+        default: ''
+      buffer:
+        type: number
+        description: Buffer radius around the location in km.
+        default: 50
+  steps:
+  - stepId: createLocation
+    description: >-
+      Create a reusable saved location to anchor the event scan.
+    operationId: createLocation
+    parameters:
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        location:
+          type: Point
+          coordinates: $inputs.coordinates
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      locationId: $response.body#/id
+  - stepId: getEvents
+    description: >-
+      Retrieve severe weather and custom events within the buffer radius around
+      the saved location.
+    operationId: getEvents
+    parameters:
+    - name: location
+      in: query
+      value: $steps.createLocation.outputs.locationId
+    - name: insights
+      in: query
+      value: $inputs.insights
+    - name: buffer
+      in: query
+      value: $inputs.buffer
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      events: $response.body#/data/events
+    onSuccess:
+    - name: eventsFound
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.data.events.length > 0
+        type: jsonpath
+    - name: noEvents
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.data.events.length == 0
+        type: jsonpath
+  outputs:
+    locationId: $steps.createLocation.outputs.locationId
+    events: $steps.getEvents.outputs.events

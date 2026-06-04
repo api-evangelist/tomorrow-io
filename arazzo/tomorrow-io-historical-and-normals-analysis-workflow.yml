@@ -1,0 +1,134 @@
+arazzo: 1.0.1
+info:
+  title: Tomorrow.io Historical and Climate Normals Analysis
+  summary: Save a location, pull its historical weather timeline, and compare against climate normals.
+  description: >-
+    A climatology workflow that establishes a reusable location and then assembles
+    the two halves of a historical analysis: an observed historical timeline over
+    a chosen window and the long-term monthly climate normals for the same point.
+    Together they let a caller measure how a real period compared to the typical
+    baseline. Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: locationsApi
+  url: ../openapi/tomorrow-io-locations-api-openapi.yml
+  type: openapi
+- name: historicalApi
+  url: ../openapi/tomorrow-io-historical-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: historical-and-normals-analysis
+  summary: Persist a location, retrieve a historical timeline, and pull climate normals.
+  description: >-
+    Creates a saved location, requests a historical weather timeline for it over
+    a window, and retrieves monthly climate normals for the same coordinate.
+  inputs:
+    type: object
+    required:
+    - apikey
+    - name
+    - coordinates
+    - locationString
+    - fields
+    - timesteps
+    - startTime
+    - endTime
+    properties:
+      apikey:
+        type: string
+        description: Tomorrow.io API key passed as the apikey query parameter.
+      name:
+        type: string
+        description: Human-readable name for the saved location.
+      coordinates:
+        type: array
+        description: GeoJSON Point coordinates as [lng, lat].
+      locationString:
+        type: string
+        description: The same point as 'lat,lng' for the climate normals query.
+      fields:
+        type: array
+        description: Data layer fields to retrieve in the historical timeline.
+      timesteps:
+        type: array
+        description: Historical timesteps (e.g. ['1h','1d']).
+      startTime:
+        type: string
+        description: ISO-8601 start of the historical window.
+      endTime:
+        type: string
+        description: ISO-8601 end of the historical window.
+      normalsFields:
+        type: string
+        description: Comma separated climate normal fields.
+        default: temperature
+      units:
+        type: string
+        description: Unit system (metric or imperial).
+        default: metric
+  steps:
+  - stepId: createLocation
+    description: >-
+      Create a reusable saved location to anchor the historical analysis.
+    operationId: createLocation
+    parameters:
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        location:
+          type: Point
+          coordinates: $inputs.coordinates
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      locationId: $response.body#/id
+  - stepId: getHistorical
+    description: >-
+      Retrieve a historical weather timeline for the saved location over the
+      requested window and field set.
+    operationId: postHistorical
+    parameters:
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    requestBody:
+      contentType: application/json
+      payload:
+        location: $steps.createLocation.outputs.locationId
+        fields: $inputs.fields
+        timesteps: $inputs.timesteps
+        startTime: $inputs.startTime
+        endTime: $inputs.endTime
+        units: $inputs.units
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      timelines: $response.body#/data/timelines
+  - stepId: getNormals
+    description: >-
+      Retrieve the monthly climate normals for the same coordinate to benchmark
+      the observed history against the typical baseline.
+    operationId: getClimateNormals
+    parameters:
+    - name: location
+      in: query
+      value: $inputs.locationString
+    - name: fields
+      in: query
+      value: $inputs.normalsFields
+    - name: apikey
+      in: query
+      value: $inputs.apikey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      months: $response.body#/data/months
+  outputs:
+    locationId: $steps.createLocation.outputs.locationId
+    historicalTimelines: $steps.getHistorical.outputs.timelines
+    climateMonths: $steps.getNormals.outputs.months
