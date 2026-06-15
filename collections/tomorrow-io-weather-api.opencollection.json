@@ -1,0 +1,181 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tomorrow.io Weather API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Realtime",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Realtime Weather",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tomorrow.io/v4/weather/realtime",
+            "params": [
+              {
+                "name": "location",
+                "value": "",
+                "type": "query",
+                "description": "Either 'lat,lng' or a Tomorrow.io locationId."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve the current weather conditions for a given latitude/longitude or\nnamed location, including temperature, wind, precipitation, humidity, UV,\nand 60+ optional data layers.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Forecast",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Weather Forecast",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tomorrow.io/v4/weather/forecast",
+            "params": [
+              {
+                "name": "location",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "timesteps",
+                "value": "",
+                "type": "query",
+                "description": "Comma separated steps from minutely, 1h, 1d."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a structured forecast for a point or location, broken into\n``minutely`` (60m), ``hourly`` (up to 120h), and ``daily`` (up to 14d)\nintervals depending on plan tier.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Timelines",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Timelines (Basic)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tomorrow.io/v4/timelines",
+            "params": [
+              {
+                "name": "location",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma separated list of data layer field names (e.g. temperature,windSpeed,precipitationIntensity)."
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "timesteps",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Query weather, air quality, pollen, fire, and other data layers across an\narbitrary time range and timestep with a simple query-string request.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve Timelines (Advanced)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tomorrow.io/v4/timelines",
+            "params": [
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Advanced timelines request supporting polygon and polyline geometries,\nlarge field lists, and complex unit and timezone configuration in the\nrequest body.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,780 @@
+{
+  "info": {
+    "_postman_id": "fe6d171b-9b07-47b1-8a42-ffbf42c90a33",
+    "name": "Tomorrow.io Locations API",
+    "description": "Manage saved locations (points, polygons, lines) that can be reused across the\nTomorrow.io APIs and referenced by ``locationId`` in realtime, timelines,\nhistorical, alerts, and events requests. Supports tagging for cohort\norganization.\n\n\nContact Support:\n Name: Tomorrow.io Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:02:00.000Z",
+    "updatedAt": "2026-06-05T15:02:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fe6d171b-9b07-47b1-8a42-ffbf42c90a33"
+  },
+  "item": [
+    {
+      "name": "locations",
+      "item": [
+        {
+          "name": "{locationId}",
+          "item": [
+            {
+              "name": "Retrieve a Location",
+              "id": "ba9989ef-81e4-4982-93c7-54bf53c72923",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/locations/:locationId?apikey=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "locations",
+                    ":locationId"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "96034a61-b760-4533-8e14-6fac978b86ea",
+                      "key": "locationId",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "5cfeade2-9d0e-4bfc-a686-a9471fd3a94e",
+                  "name": "Location resource.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/locations/:locationId?apikey=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "locations",
+                        ":locationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "apikey",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "locationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"location\": {\n    \"type\": \"LineString\",\n    \"coordinates\": \"<array>\"\n  },\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:02:01.000Z",
+                  "updatedAt": "2026-06-05T15:02:01.000Z",
+                  "uid": "35240-5cfeade2-9d0e-4bfc-a686-a9471fd3a94e"
+                }
+              ],
+              "createdAt": "2026-06-05T15:02:01.000Z",
+              "updatedAt": "2026-06-05T15:02:01.000Z",
+              "uid": "35240-ba9989ef-81e4-4982-93c7-54bf53c72923"
+            },
+            {
+              "name": "Update a Location",
+              "id": "bfc71796-8f20-4809-a8e3-9e3701a0b1db",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"location\": {\n    \"type\": \"LineString\",\n    \"coordinates\": \"<array>\"\n  },\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/locations/:locationId?apikey=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "locations",
+                    ":locationId"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "58f25b1f-d93e-4967-a739-f699c8b5526c",
+                      "key": "locationId",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "8dafa492-4a30-4506-aba0-9900fe84b779",
+                  "name": "Updated location.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"location\": {\n    \"type\": \"LineString\",\n    \"coordinates\": \"<array>\"\n  },\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/locations/:locationId?apikey=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "locations",
+                        ":locationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "apikey",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "locationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"location\": {\n    \"type\": \"LineString\",\n    \"coordinates\": \"<array>\"\n  },\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:02:01.000Z",
+                  "updatedAt": "2026-06-05T15:02:01.000Z",
+                  "uid": "35240-8dafa492-4a30-4506-aba0-9900fe84b779"
+                }
+              ],
+              "createdAt": "2026-06-05T15:02:01.000Z",
+              "updatedAt": "2026-06-05T15:02:01.000Z",
+              "uid": "35240-bfc71796-8f20-4809-a8e3-9e3701a0b1db"
+            },
+            {
+              "name": "Delete a Location",
+              "id": "6223f1ce-8435-4949-b07b-bc394e914e69",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/locations/:locationId?apikey=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "locations",
+                    ":locationId"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "a9804cf2-1965-41dc-807a-c4b27ef83845",
+                      "key": "locationId",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "163b0186-3805-4c78-8638-cc395e05fa41",
+                  "name": "Deleted.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/locations/:locationId?apikey=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "locations",
+                        ":locationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "apikey",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "locationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:02:01.000Z",
+                  "updatedAt": "2026-06-05T15:02:01.000Z",
+                  "uid": "35240-163b0186-3805-4c78-8638-cc395e05fa41"
+                }
+              ],
+              "createdAt": "2026-06-05T15:02:01.000Z",
+              "updatedAt": "2026-06-05T15:02:01.000Z",
+              "uid": "35240-6223f1ce-8435-4949-b07b-bc394e914e69"
+            }
+          ],
+          "id": "c2bc78fc-ee0f-4f89-9d8e-5e252b58380e",
+          "createdAt": "2026-06-05T15:02:01.000Z",
+          "updatedAt": "2026-06-05T15:02:01.000Z",
+          "uid": "35240-c2bc78fc-ee0f-4f89-9d8e-5e252b58380e"
+        },
+        {
+          "name": "tags",
+          "item": [
+            {
+              "name": "add",
+              "item": [
+                {
+                  "name": "Add Location Tags",
+                  "id": "d6b8dc2f-573b-41e3-a3b7-ec7970655e06",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"locationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/locations/tags/add?apikey=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "locations",
+                        "tags",
+                        "add"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "apikey",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Attach one or more tags to a list of locations."
+                  },
+                  "response": [
+                    {
+                      "id": "97d11449-000c-4562-9af9-9fa82f40df34",
+                      "name": "Tag operation complete.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"locationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/locations/tags/add?apikey=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "locations",
+                            "tags",
+                            "add"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "apikey",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:02:01.000Z",
+                      "updatedAt": "2026-06-05T15:02:01.000Z",
+                      "uid": "35240-97d11449-000c-4562-9af9-9fa82f40df34"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:02:01.000Z",
+                  "updatedAt": "2026-06-05T15:02:01.000Z",
+                  "uid": "35240-d6b8dc2f-573b-41e3-a3b7-ec7970655e06"
+                }
+              ],
+              "id": "1d8a2e61-eb08-475b-8cd7-188f046a6cfc",
+              "createdAt": "2026-06-05T15:02:01.000Z",
+              "updatedAt": "2026-06-05T15:02:01.000Z",
+              "uid": "35240-1d8a2e61-eb08-475b-8cd7-188f046a6cfc"
+            },
+            {
+              "name": "remove",
+              "item": [
+                {
+                  "name": "Remove Location Tags",
+                  "id": "79f10c87-9f27-49d6-a1ba-bdaa0e6c4ce9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"locationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/locations/tags/remove?apikey=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "locations",
+                        "tags",
+                        "remove"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "apikey",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Detach one or more tags from a list of locations."
+                  },
+                  "response": [
+                    {
+                      "id": "31e2bc6d-b094-4631-8fee-0e6ca6fcbf6c",
+                      "name": "Tag operation complete.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"locationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/locations/tags/remove?apikey=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "locations",
+                            "tags",
+                            "remove"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "apikey",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:02:01.000Z",
+                      "updatedAt": "2026-06-05T15:02:01.000Z",
+                      "uid": "35240-31e2bc6d-b094-4631-8fee-0e6ca6fcbf6c"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:02:01.000Z",
+                  "updatedAt": "2026-06-05T15:02:01.000Z",
+                  "uid": "35240-79f10c87-9f27-49d6-a1ba-bdaa0e6c4ce9"
+                }
+              ],
+              "id": "80a39d8e-5dbe-4265-97ba-1f14f682a7ff",
+              "createdAt": "2026-06-05T15:02:01.000Z",
+              "updatedAt": "2026-06-05T15:02:01.000Z",
+              "uid": "35240-80a39d8e-5dbe-4265-97ba-1f14f682a7ff"
+            }
+          ],
+          "id": "b8754736-fb18-485b-bfa9-52b9654748e2",
+          "createdAt": "2026-06-05T15:02:01.000Z",
+          "updatedAt": "2026-06-05T15:02:01.000Z",
+          "uid": "35240-b8754736-fb18-485b-bfa9-52b9654748e2"
+        },
+        {
+          "name": "List Locations",
+          "id": "cb8a9b66-988b-4a75-a9fb-7459701bf149",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/locations?apikey=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "locations"
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "apikey",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "List all saved locations for the authenticated account."
+          },
+          "response": [
+            {
+              "id": "4f840103-094d-4652-a056-48d1621df7e2",
+              "name": "Location list.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/locations?apikey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "locations"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"location\": {\n        \"type\": \"LineString\",\n        \"coordinates\": \"<array>\"\n      },\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"location\": {\n        \"type\": \"LineString\",\n        \"coordinates\": \"<array>\"\n      },\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:02:01.000Z",
+              "updatedAt": "2026-06-05T15:02:01.000Z",
+              "uid": "35240-4f840103-094d-4652-a056-48d1621df7e2"
+            }
+          ],
+          "createdAt": "2026-06-05T15:02:01.000Z",
+          "updatedAt": "2026-06-05T15:02:01.000Z",
+          "uid": "35240-cb8a9b66-988b-4a75-a9fb-7459701bf149"
+        },
+        {
+          "name": "Create a Location",
+          "id": "0539b735-7e72-448a-8b5b-0e3a914e0a01",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"location\": {\n    \"type\": \"LineString\",\n    \"coordinates\": \"<array>\"\n  },\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/locations?apikey=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "locations"
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "apikey",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Create a new saved location resource."
+          },
+          "response": [
+            {
+              "id": "0dbdbb7d-23d8-44c4-afdb-de7f1996a815",
+              "name": "Location created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"location\": {\n    \"type\": \"LineString\",\n    \"coordinates\": \"<array>\"\n  },\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/locations?apikey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "locations"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"location\": {\n    \"type\": \"LineString\",\n    \"coordinates\": \"<array>\"\n  },\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-06-05T15:02:01.000Z",
+              "updatedAt": "2026-06-05T15:02:01.000Z",
+              "uid": "35240-0dbdbb7d-23d8-44c4-afdb-de7f1996a815"
+            }
+          ],
+          "createdAt": "2026-06-05T15:02:01.000Z",
+          "updatedAt": "2026-06-05T15:02:01.000Z",
+          "uid": "35240-0539b735-7e72-448a-8b5b-0e3a914e0a01"
+        }
+      ],
+      "id": "f4f5bc55-2d4b-43e1-9c26-1886e1c0c20b",
+      "createdAt": "2026-06-05T15:02:01.000Z",
+      "updatedAt": "2026-06-05T15:02:01.000Z",
+      "uid": "35240-f4f5bc55-2d4b-43e1-9c26-1886e1c0c20b"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tomorrow.io/v4"
+    }
+  ]
+}

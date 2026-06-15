@@ -1,0 +1,505 @@
+{
+  "info": {
+    "_postman_id": "015c617b-8f7d-4efe-927d-cabb45938179",
+    "name": "Tomorrow.io Events API",
+    "description": "Severe weather events, on-demand events, and custom vector events. Returns\nhigh-impact weather phenomena (tropical storms, lightning, severe thunderstorms,\nfloods, wildfires) and customer-defined event geometries for the requested\nlocation.\n\n\nContact Support:\n Name: Tomorrow.io Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:01:57.000Z",
+    "updatedAt": "2026-06-05T15:01:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-015c617b-8f7d-4efe-927d-cabb45938179"
+  },
+  "item": [
+    {
+      "name": "events",
+      "item": [
+        {
+          "name": "Retrieve Events (Basic)",
+          "id": "c065e240-467e-4c0d-8198-14c86e975c90",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/events?location=<string>&insights=<string>&buffer=<number>&apikey=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events"
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "location",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma separated event insight ids.",
+                  "key": "insights",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Buffer radius around the location in km.",
+                  "key": "buffer",
+                  "value": "<number>"
+                },
+                {
+                  "description": "(Required) ",
+                  "key": "apikey",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieve weather events for a point or location, filtered by insight\ncategory (severe weather, fires, floods, lightning, custom).\n"
+          },
+          "response": [
+            {
+              "id": "dd12bbe1-2401-4754-8c0c-aa6c58b4c204",
+              "name": "Event list.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/events?location=<string>&insights=<string>&buffer=<number>&apikey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma separated event insight ids.",
+                      "key": "insights",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Buffer radius around the location in km.",
+                      "key": "buffer",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": {\n    \"events\": [\n      {\n        \"eventId\": \"<string>\",\n        \"eventValues\": {\n          \"Ut5_\": false\n        },\n        \"insight\": \"<string>\",\n        \"location\": {\n          \"type\": \"<string>\",\n          \"coordinates\": [\n            \"<number>\",\n            \"<number>\"\n          ]\n        },\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"severity\": \"<string>\",\n        \"title\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      {\n        \"eventId\": \"<string>\",\n        \"eventValues\": {\n          \"elit_a0d\": \"ea et quis nulla\",\n          \"cillum820\": 55852906.75955656\n        },\n        \"insight\": \"<string>\",\n        \"location\": {\n          \"type\": \"<string>\",\n          \"coordinates\": [\n            \"<number>\",\n            \"<number>\"\n          ]\n        },\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"severity\": \"<string>\",\n        \"title\": \"<string>\",\n        \"description\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-06-05T15:01:58.000Z",
+              "updatedAt": "2026-06-05T15:01:58.000Z",
+              "uid": "35240-dd12bbe1-2401-4754-8c0c-aa6c58b4c204"
+            },
+            {
+              "id": "1274e1e9-2556-4a43-927f-509234444e31",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/events?location=<string>&insights=<string>&buffer=<number>&apikey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma separated event insight ids.",
+                      "key": "insights",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Buffer radius around the location in km.",
+                      "key": "buffer",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:01:58.000Z",
+              "updatedAt": "2026-06-05T15:01:58.000Z",
+              "uid": "35240-1274e1e9-2556-4a43-927f-509234444e31"
+            },
+            {
+              "id": "e3cb0ab6-3d1c-44b2-87e4-010b458a1c4c",
+              "name": "Rate limit exceeded.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/events?location=<string>&insights=<string>&buffer=<number>&apikey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma separated event insight ids.",
+                      "key": "insights",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Buffer radius around the location in km.",
+                      "key": "buffer",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:01:58.000Z",
+              "updatedAt": "2026-06-05T15:01:58.000Z",
+              "uid": "35240-e3cb0ab6-3d1c-44b2-87e4-010b458a1c4c"
+            }
+          ],
+          "createdAt": "2026-06-05T15:01:58.000Z",
+          "updatedAt": "2026-06-05T15:01:58.000Z",
+          "uid": "35240-c065e240-467e-4c0d-8198-14c86e975c90"
+        },
+        {
+          "name": "Retrieve Events (Advanced)",
+          "id": "f7f29131-cd8b-4857-bee3-6eb4b1740dc1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"location\": \"<string>\",\n  \"insights\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"buffer\": \"<number>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/events?apikey=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events"
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "apikey",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Advanced event retrieval with polygon/polyline geometries and complex filters."
+          },
+          "response": [
+            {
+              "id": "aa53d375-26b2-4007-96f1-31892e009d66",
+              "name": "Event list.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"insights\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"buffer\": \"<number>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/events?apikey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": {\n    \"events\": [\n      {\n        \"eventId\": \"<string>\",\n        \"eventValues\": {\n          \"Ut5_\": false\n        },\n        \"insight\": \"<string>\",\n        \"location\": {\n          \"type\": \"<string>\",\n          \"coordinates\": [\n            \"<number>\",\n            \"<number>\"\n          ]\n        },\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"severity\": \"<string>\",\n        \"title\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      {\n        \"eventId\": \"<string>\",\n        \"eventValues\": {\n          \"elit_a0d\": \"ea et quis nulla\",\n          \"cillum820\": 55852906.75955656\n        },\n        \"insight\": \"<string>\",\n        \"location\": {\n          \"type\": \"<string>\",\n          \"coordinates\": [\n            \"<number>\",\n            \"<number>\"\n          ]\n        },\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"severity\": \"<string>\",\n        \"title\": \"<string>\",\n        \"description\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-06-05T15:01:58.000Z",
+              "updatedAt": "2026-06-05T15:01:58.000Z",
+              "uid": "35240-aa53d375-26b2-4007-96f1-31892e009d66"
+            },
+            {
+              "id": "3f045b07-938d-432d-abd2-15eb4946a6cb",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"insights\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"buffer\": \"<number>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/events?apikey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:01:58.000Z",
+              "updatedAt": "2026-06-05T15:01:58.000Z",
+              "uid": "35240-3f045b07-938d-432d-abd2-15eb4946a6cb"
+            },
+            {
+              "id": "d72bd9ee-e1d9-4b81-8076-c7d368bb72e1",
+              "name": "Rate limit exceeded.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"insights\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"buffer\": \"<number>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/events?apikey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:01:58.000Z",
+              "updatedAt": "2026-06-05T15:01:58.000Z",
+              "uid": "35240-d72bd9ee-e1d9-4b81-8076-c7d368bb72e1"
+            }
+          ],
+          "createdAt": "2026-06-05T15:01:58.000Z",
+          "updatedAt": "2026-06-05T15:01:58.000Z",
+          "uid": "35240-f7f29131-cd8b-4857-bee3-6eb4b1740dc1"
+        }
+      ],
+      "id": "2e69a9b3-edd8-4444-a31e-128788137bb8",
+      "createdAt": "2026-06-05T15:01:58.000Z",
+      "updatedAt": "2026-06-05T15:01:58.000Z",
+      "uid": "35240-2e69a9b3-edd8-4444-a31e-128788137bb8"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tomorrow.io/v4"
+    }
+  ]
+}

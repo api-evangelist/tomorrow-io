@@ -1,0 +1,488 @@
+{
+  "item": [
+    {
+      "id": "79ba0120-30bb-4d56-ad64-98edc267de6a",
+      "name": "Events",
+      "description": {
+        "content": "Severe weather and custom event retrieval.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "43749e2d-15d5-41e8-8009-49766a4b52dd",
+          "name": "Retrieve Events (Basic)",
+          "request": {
+            "name": "Retrieve Events (Basic)",
+            "description": {
+              "content": "Retrieve weather events for a point or location, filtered by insight\ncategory (severe weather, fires, floods, lightning, custom).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "location",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "insights",
+                  "value": "<string>",
+                  "description": "Comma separated event insight ids."
+                },
+                {
+                  "disabled": false,
+                  "key": "buffer",
+                  "value": "<number>",
+                  "description": "Buffer radius around the location in km."
+                },
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ae7d4182-6229-4652-82df-a8ecc923bf4b",
+              "name": "Event list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "insights",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buffer",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"events\": [\n      {\n        \"eventId\": \"string\",\n        \"eventValues\": {\n          \"key_0\": 5810.8813939834145,\n          \"key_1\": 1672.1329342806391\n        },\n        \"insight\": \"string\",\n        \"location\": {\n          \"type\": \"string\",\n          \"coordinates\": [\n            9069.314385782745,\n            8756.015919028185\n          ]\n        },\n        \"startTime\": \"2008-03-18T04:25:47.561Z\",\n        \"endTime\": \"1976-06-28T14:30:05.450Z\",\n        \"severity\": \"string\",\n        \"title\": \"string\",\n        \"description\": \"string\"\n      },\n      {\n        \"eventId\": \"string\",\n        \"eventValues\": {\n          \"key_0\": true\n        },\n        \"insight\": \"string\",\n        \"location\": {\n          \"type\": \"string\",\n          \"coordinates\": [\n            641.4563460813239,\n            425.2180147383922\n          ]\n        },\n        \"startTime\": \"2003-11-16T11:10:10.424Z\",\n        \"endTime\": \"1959-04-02T14:20:27.953Z\",\n        \"severity\": \"string\",\n        \"title\": \"string\",\n        \"description\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d5f3478-03e3-46bb-92fd-d8773d90b671",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "insights",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buffer",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7482,\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58580b99-73c6-49b8-91a7-8577349406fc",
+              "name": "Rate limit exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "insights",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buffer",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7482,\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f0e29a9f-9280-42fc-b250-d190ad3b810e",
+          "name": "Retrieve Events (Advanced)",
+          "request": {
+            "name": "Retrieve Events (Advanced)",
+            "description": {
+              "content": "Advanced event retrieval with polygon/polyline geometries and complex filters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"location\": \"<string>\",\n  \"insights\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"buffer\": \"<number>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3da980fa-4e6a-4f22-b382-f2046e3c4f8b",
+              "name": "Event list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"insights\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"buffer\": \"<number>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"events\": [\n      {\n        \"eventId\": \"string\",\n        \"eventValues\": {\n          \"key_0\": 5810.8813939834145,\n          \"key_1\": 1672.1329342806391\n        },\n        \"insight\": \"string\",\n        \"location\": {\n          \"type\": \"string\",\n          \"coordinates\": [\n            9069.314385782745,\n            8756.015919028185\n          ]\n        },\n        \"startTime\": \"2008-03-18T04:25:47.561Z\",\n        \"endTime\": \"1976-06-28T14:30:05.450Z\",\n        \"severity\": \"string\",\n        \"title\": \"string\",\n        \"description\": \"string\"\n      },\n      {\n        \"eventId\": \"string\",\n        \"eventValues\": {\n          \"key_0\": true\n        },\n        \"insight\": \"string\",\n        \"location\": {\n          \"type\": \"string\",\n          \"coordinates\": [\n            641.4563460813239,\n            425.2180147383922\n          ]\n        },\n        \"startTime\": \"2003-11-16T11:10:10.424Z\",\n        \"endTime\": \"1959-04-02T14:20:27.953Z\",\n        \"severity\": \"string\",\n        \"title\": \"string\",\n        \"description\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a1fb2fe4-2bd2-46be-bb99-b06010d2728e",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"insights\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"buffer\": \"<number>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7482,\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f9719bd9-e46c-418b-9328-aa3b35ee7460",
+              "name": "Rate limit exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"insights\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"buffer\": \"<number>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7482,\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tomorrow.io/v4",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "00ee9736-d9f9-4309-96c3-80a23a2b6572",
+    "name": "Tomorrow.io Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Severe weather events, on-demand events, and custom vector events. Returns\nhigh-impact weather phenomena (tropical storms, lightning, severe thunderstorms,\nfloods, wildfires) and customer-defined event geometries for the requested\nlocation.\n\n\nContact Support:\n Name: Tomorrow.io Support",
+      "type": "text/plain"
+    }
+  }
+}

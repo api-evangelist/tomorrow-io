@@ -1,0 +1,549 @@
+{
+  "info": {
+    "_postman_id": "54959f31-62e2-4be7-86a0-6cc6b15976fe",
+    "name": "Tomorrow.io Insights API",
+    "description": "Define and manage Insights \u2014 named, reusable rules that combine Tomorrow.io\ndata layers with thresholds and time windows to describe a weather condition\nof interest (e.g. \"Heavy Rain\", \"Frost Risk\", \"Hurricane-Force Wind\"). Insights\npower the Events and Alerts APIs.\n\n\nContact Support:\n Name: Tomorrow.io Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:02:04.000Z",
+    "updatedAt": "2026-06-05T15:02:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-54959f31-62e2-4be7-86a0-6cc6b15976fe"
+  },
+  "item": [
+    {
+      "name": "insights",
+      "item": [
+        {
+          "name": "{insightId}",
+          "item": [
+            {
+              "name": "Retrieve an Insight",
+              "id": "c1e6e656-693f-472d-8935-bcb0df49ec1c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/insights/:insightId?apikey=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "insights",
+                    ":insightId"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "d9784896-7134-4c9b-b543-c047eedb1a79",
+                      "key": "insightId",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "297a0538-6bd6-44b1-a984-60d9ac937655",
+                  "name": "Insight resource.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/insights/:insightId?apikey=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "insights",
+                        ":insightId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "apikey",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "insightId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"conditions\": [\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": \"<number>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": \"<number>\"\n    }\n  ],\n  \"severity\": \"low\"\n}",
+                  "createdAt": "2026-06-05T15:02:05.000Z",
+                  "updatedAt": "2026-06-05T15:02:05.000Z",
+                  "uid": "35240-297a0538-6bd6-44b1-a984-60d9ac937655"
+                }
+              ],
+              "createdAt": "2026-06-05T15:02:04.000Z",
+              "updatedAt": "2026-06-05T15:02:04.000Z",
+              "uid": "35240-c1e6e656-693f-472d-8935-bcb0df49ec1c"
+            },
+            {
+              "name": "Update an Insight",
+              "id": "3b694fe7-cefa-4466-8993-e03b62e6a18b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"conditions\": [\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": \"<number>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": \"<number>\"\n    }\n  ],\n  \"severity\": \"low\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/insights/:insightId?apikey=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "insights",
+                    ":insightId"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "1e24ff91-4c81-4f15-9026-ca042a17ee03",
+                      "key": "insightId",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "cf2d7a6b-0023-46fa-9459-ca4ca0858e50",
+                  "name": "Updated insight.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"conditions\": [\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": \"<number>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": \"<number>\"\n    }\n  ],\n  \"severity\": \"low\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/insights/:insightId?apikey=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "insights",
+                        ":insightId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "apikey",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "insightId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"conditions\": [\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": \"<number>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": \"<number>\"\n    }\n  ],\n  \"severity\": \"low\"\n}",
+                  "createdAt": "2026-06-05T15:02:05.000Z",
+                  "updatedAt": "2026-06-05T15:02:05.000Z",
+                  "uid": "35240-cf2d7a6b-0023-46fa-9459-ca4ca0858e50"
+                }
+              ],
+              "createdAt": "2026-06-05T15:02:04.000Z",
+              "updatedAt": "2026-06-05T15:02:04.000Z",
+              "uid": "35240-3b694fe7-cefa-4466-8993-e03b62e6a18b"
+            },
+            {
+              "name": "Delete an Insight",
+              "id": "18090f76-5d00-4f61-8ea0-5de3cea4296b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/insights/:insightId?apikey=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "insights",
+                    ":insightId"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "a8d7b3c8-8a13-41a3-a318-c259d00a3fd6",
+                      "key": "insightId",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "5591192d-e621-45de-9329-01dc318f49c7",
+                  "name": "Deleted.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/insights/:insightId?apikey=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "insights",
+                        ":insightId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "apikey",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "insightId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:02:05.000Z",
+                  "updatedAt": "2026-06-05T15:02:05.000Z",
+                  "uid": "35240-5591192d-e621-45de-9329-01dc318f49c7"
+                }
+              ],
+              "createdAt": "2026-06-05T15:02:04.000Z",
+              "updatedAt": "2026-06-05T15:02:04.000Z",
+              "uid": "35240-18090f76-5d00-4f61-8ea0-5de3cea4296b"
+            }
+          ],
+          "id": "64b806ac-f295-4be9-83f0-69d8ee24f580",
+          "createdAt": "2026-06-05T15:02:04.000Z",
+          "updatedAt": "2026-06-05T15:02:04.000Z",
+          "uid": "35240-64b806ac-f295-4be9-83f0-69d8ee24f580"
+        },
+        {
+          "name": "List Insights",
+          "id": "7493f24d-fb50-42c9-abca-69c5811340b1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/insights?apikey=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "insights"
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "apikey",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "03dd7803-bddb-4d56-a9fc-e5df60a3ab99",
+              "name": "Insight list.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/insights?apikey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "insights"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"conditions\": [\n        {\n          \"field\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": \"<number>\"\n        },\n        {\n          \"field\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": \"<number>\"\n        }\n      ],\n      \"severity\": \"low\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"conditions\": [\n        {\n          \"field\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": \"<number>\"\n        },\n        {\n          \"field\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": \"<number>\"\n        }\n      ],\n      \"severity\": \"info\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:02:05.000Z",
+              "updatedAt": "2026-06-05T15:02:05.000Z",
+              "uid": "35240-03dd7803-bddb-4d56-a9fc-e5df60a3ab99"
+            }
+          ],
+          "createdAt": "2026-06-05T15:02:04.000Z",
+          "updatedAt": "2026-06-05T15:02:04.000Z",
+          "uid": "35240-7493f24d-fb50-42c9-abca-69c5811340b1"
+        },
+        {
+          "name": "Create an Insight",
+          "id": "1a1c77ce-1d73-4f62-b11e-df3b7122c3df",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"conditions\": [\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": \"<number>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": \"<number>\"\n    }\n  ],\n  \"severity\": \"low\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/insights?apikey=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "insights"
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "apikey",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e577334d-99ab-472c-81b8-84fddd244223",
+              "name": "Insight created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"conditions\": [\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": \"<number>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": \"<number>\"\n    }\n  ],\n  \"severity\": \"low\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/insights?apikey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "insights"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"conditions\": [\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": \"<number>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": \"<number>\"\n    }\n  ],\n  \"severity\": \"low\"\n}",
+              "createdAt": "2026-06-05T15:02:05.000Z",
+              "updatedAt": "2026-06-05T15:02:05.000Z",
+              "uid": "35240-e577334d-99ab-472c-81b8-84fddd244223"
+            }
+          ],
+          "createdAt": "2026-06-05T15:02:04.000Z",
+          "updatedAt": "2026-06-05T15:02:04.000Z",
+          "uid": "35240-1a1c77ce-1d73-4f62-b11e-df3b7122c3df"
+        }
+      ],
+      "id": "247dc88d-6f71-4198-8ecc-ba489583c6ab",
+      "createdAt": "2026-06-05T15:02:04.000Z",
+      "updatedAt": "2026-06-05T15:02:04.000Z",
+      "uid": "35240-247dc88d-6f71-4198-8ecc-ba489583c6ab"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tomorrow.io/v4"
+    }
+  ]
+}

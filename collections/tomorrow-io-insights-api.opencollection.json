@@ -1,0 +1,139 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tomorrow.io Insights API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Insights",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Insights",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tomorrow.io/v4/insights",
+            "params": [
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Insights"
+        },
+        {
+          "info": {
+            "name": "Create an Insight",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tomorrow.io/v4/insights",
+            "params": [
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an Insight"
+        },
+        {
+          "info": {
+            "name": "Retrieve an Insight",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tomorrow.io/v4/insights/:insightId",
+            "params": [
+              {
+                "name": "insightId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve an Insight"
+        },
+        {
+          "info": {
+            "name": "Update an Insight",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tomorrow.io/v4/insights/:insightId",
+            "params": [
+              {
+                "name": "insightId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an Insight"
+        },
+        {
+          "info": {
+            "name": "Delete an Insight",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tomorrow.io/v4/insights/:insightId",
+            "params": [
+              {
+                "name": "insightId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete an Insight"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

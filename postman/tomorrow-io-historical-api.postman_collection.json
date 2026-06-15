@@ -1,0 +1,507 @@
+{
+  "info": {
+    "_postman_id": "3349a6fe-2410-4375-9578-c0db48c810ff",
+    "name": "Tomorrow.io Historical Weather API",
+    "description": "Retrieve historical weather observations and climate normals for any point or\npolygon on Earth. Covers recent history (hourly), long-term archives (going\nback decades), and monthly climate normals, all with the same field catalog as\nthe realtime and forecast APIs.\n\n\nContact Support:\n Name: Tomorrow.io Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:01:50.000Z",
+    "updatedAt": "2026-06-05T15:01:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3349a6fe-2410-4375-9578-c0db48c810ff"
+  },
+  "item": [
+    {
+      "name": "historical",
+      "item": [
+        {
+          "name": "climate",
+          "item": [
+            {
+              "name": "normals",
+              "item": [
+                {
+                  "name": "Get Climate Normals",
+                  "id": "ab9b4211-ac4b-4f91-834c-86436bee926a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/historical/climate/normals?location=<string>&fields=<string>&apikey=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "historical",
+                        "climate",
+                        "normals"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "location",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "apikey",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve monthly climate normals (long-term averages and percentiles) for a\ngiven point. Useful for benchmarking current conditions against typical\nconditions for the location and season.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "bbdb2730-c505-4947-9399-f7481c46f013",
+                      "name": "Climate normals payload.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/historical/climate/normals?location=<string>&fields=<string>&apikey=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "historical",
+                            "climate",
+                            "normals"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "location",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "apikey",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"location\": {\n    \"lat\": \"<number>\",\n    \"lon\": \"<number>\"\n  },\n  \"data\": {\n    \"months\": [\n      {\n        \"month\": \"<integer>\",\n        \"values\": {\n          \"dolore6b\": \"<number>\",\n          \"pariatur_8\": \"<number>\",\n          \"consequatc2\": \"<number>\",\n          \"dolore_e6\": \"<number>\",\n          \"fugiat_\": \"<number>\"\n        }\n      },\n      {\n        \"month\": \"<integer>\",\n        \"values\": {\n          \"dolor_ec\": \"<number>\",\n          \"irure2c\": \"<number>\",\n          \"nulla95\": \"<number>\",\n          \"voluptate09\": \"<number>\"\n        }\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-06-05T15:01:51.000Z",
+                      "updatedAt": "2026-06-05T15:01:51.000Z",
+                      "uid": "35240-bbdb2730-c505-4947-9399-f7481c46f013"
+                    },
+                    {
+                      "id": "019060b0-12df-4da1-9959-38b43c837542",
+                      "name": "Missing or invalid API key.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/historical/climate/normals?location=<string>&fields=<string>&apikey=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "historical",
+                            "climate",
+                            "normals"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "location",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "apikey",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:01:51.000Z",
+                      "updatedAt": "2026-06-05T15:01:51.000Z",
+                      "uid": "35240-019060b0-12df-4da1-9959-38b43c837542"
+                    },
+                    {
+                      "id": "30dc800c-48f5-4a96-adc6-764af85f79f5",
+                      "name": "Rate limit exceeded for the plan tier.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/historical/climate/normals?location=<string>&fields=<string>&apikey=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "historical",
+                            "climate",
+                            "normals"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "location",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "apikey",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:01:51.000Z",
+                      "updatedAt": "2026-06-05T15:01:51.000Z",
+                      "uid": "35240-30dc800c-48f5-4a96-adc6-764af85f79f5"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:01:51.000Z",
+                  "updatedAt": "2026-06-05T15:01:51.000Z",
+                  "uid": "35240-ab9b4211-ac4b-4f91-834c-86436bee926a"
+                }
+              ],
+              "id": "986dfe90-e033-4920-abb6-b576634d775e",
+              "createdAt": "2026-06-05T15:01:51.000Z",
+              "updatedAt": "2026-06-05T15:01:51.000Z",
+              "uid": "35240-986dfe90-e033-4920-abb6-b576634d775e"
+            }
+          ],
+          "id": "7b1ecbf4-0cd2-44e9-b447-a62750aa16dd",
+          "createdAt": "2026-06-05T15:01:51.000Z",
+          "updatedAt": "2026-06-05T15:01:51.000Z",
+          "uid": "35240-7b1ecbf4-0cd2-44e9-b447-a62750aa16dd"
+        },
+        {
+          "name": "Retrieve Historical Timeline",
+          "id": "e6a034e4-4910-499c-82f4-8f9e89524083",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"location\": \"<string>\",\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"timesteps\": [\n    \"1m\",\n    \"1h\"\n  ],\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"units\": \"metric\",\n  \"timezone\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/historical?apikey=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "historical"
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "apikey",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieve a historical weather timeline for a point, polygon, or polyline\nacross a given start and end time window. Supports the full field catalog\nand minute, hour, and day timesteps depending on plan tier.\n"
+          },
+          "response": [
+            {
+              "id": "c8ad472e-ed7b-42ec-9458-6ac45fd2de6d",
+              "name": "Historical timeline payload.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"timesteps\": [\n    \"1m\",\n    \"1h\"\n  ],\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"units\": \"metric\",\n  \"timezone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/historical?apikey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "historical"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": {\n    \"timelines\": [\n      {\n        \"timestep\": \"<string>\",\n        \"startTime\": \"<string>\",\n        \"endTime\": \"<string>\",\n        \"intervals\": [\n          {\n            \"startTime\": \"<dateTime>\",\n            \"values\": {\n              \"deserunt99\": \"velit voluptate\",\n              \"ea90\": true\n            }\n          },\n          {\n            \"startTime\": \"<dateTime>\",\n            \"values\": {\n              \"nostrud17\": -4791079.372115985\n            }\n          }\n        ]\n      },\n      {\n        \"timestep\": \"<string>\",\n        \"startTime\": \"<string>\",\n        \"endTime\": \"<string>\",\n        \"intervals\": [\n          {\n            \"startTime\": \"<dateTime>\",\n            \"values\": {\n              \"ea__f\": -28873782.18509662,\n              \"id61\": true,\n              \"culpa_c9\": 52945617\n            }\n          },\n          {\n            \"startTime\": \"<dateTime>\",\n            \"values\": {\n              \"autec\": \"dolore aute voluptate et laboris\",\n              \"ipsum_ceb\": \"ea Lorem veniam pariatur sed\"\n            }\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-06-05T15:01:51.000Z",
+              "updatedAt": "2026-06-05T15:01:51.000Z",
+              "uid": "35240-c8ad472e-ed7b-42ec-9458-6ac45fd2de6d"
+            },
+            {
+              "id": "186424b0-7fa7-4867-9e35-e49c3704adc8",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"timesteps\": [\n    \"1m\",\n    \"1h\"\n  ],\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"units\": \"metric\",\n  \"timezone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/historical?apikey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "historical"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:01:51.000Z",
+              "updatedAt": "2026-06-05T15:01:51.000Z",
+              "uid": "35240-186424b0-7fa7-4867-9e35-e49c3704adc8"
+            },
+            {
+              "id": "b0d479c2-7477-4353-854c-3041fe2ce798",
+              "name": "Rate limit exceeded for the plan tier.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"timesteps\": [\n    \"1m\",\n    \"1h\"\n  ],\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"units\": \"metric\",\n  \"timezone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/historical?apikey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "historical"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:01:51.000Z",
+              "updatedAt": "2026-06-05T15:01:51.000Z",
+              "uid": "35240-b0d479c2-7477-4353-854c-3041fe2ce798"
+            }
+          ],
+          "createdAt": "2026-06-05T15:01:51.000Z",
+          "updatedAt": "2026-06-05T15:01:51.000Z",
+          "uid": "35240-e6a034e4-4910-499c-82f4-8f9e89524083"
+        }
+      ],
+      "id": "3d31491a-9f30-465b-a820-8143cd02a01d",
+      "createdAt": "2026-06-05T15:01:51.000Z",
+      "updatedAt": "2026-06-05T15:01:51.000Z",
+      "uid": "35240-3d31491a-9f30-465b-a820-8143cd02a01d"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tomorrow.io/v4"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tomorrow.io Weather Maps API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Maps",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a Weather Map Tile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tomorrow.io/v4/map/tile/:zoom/:x/:y/:field/:timeFormat",
+            "params": [
+              {
+                "name": "zoom",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "x",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "y",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "field",
+                "value": "",
+                "type": "path",
+                "description": "Data layer field (e.g. precipitationIntensity, temperature, windSpeed, cloudCover)."
+              },
+              {
+                "name": "timeFormat",
+                "value": "",
+                "type": "path",
+                "description": "ISO-8601 timestamp or 'now'."
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a 256x256 PNG tile rendering the requested data layer at the given\nXYZ Web Mercator address and time. Supports past, current, and forecast\ntime references via the ``timeFormat`` path parameter.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,183 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tomorrow.io Locations API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Locations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Locations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tomorrow.io/v4/locations",
+            "params": [
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List all saved locations for the authenticated account."
+        },
+        {
+          "info": {
+            "name": "Create a Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tomorrow.io/v4/locations",
+            "params": [
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new saved location resource."
+        },
+        {
+          "info": {
+            "name": "Retrieve a Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tomorrow.io/v4/locations/:locationId",
+            "params": [
+              {
+                "name": "locationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a Location"
+        },
+        {
+          "info": {
+            "name": "Update a Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tomorrow.io/v4/locations/:locationId",
+            "params": [
+              {
+                "name": "locationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Location"
+        },
+        {
+          "info": {
+            "name": "Delete a Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tomorrow.io/v4/locations/:locationId",
+            "params": [
+              {
+                "name": "locationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete a Location"
+        },
+        {
+          "info": {
+            "name": "Add Location Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tomorrow.io/v4/locations/tags/add",
+            "params": [
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Attach one or more tags to a list of locations."
+        },
+        {
+          "info": {
+            "name": "Remove Location Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tomorrow.io/v4/locations/tags/remove",
+            "params": [
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Detach one or more tags from a list of locations."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

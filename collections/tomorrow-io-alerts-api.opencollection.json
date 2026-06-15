@@ -1,0 +1,262 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tomorrow.io Alerts API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Alerts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Alerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tomorrow.io/v4/alerts",
+            "params": [
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Alerts"
+        },
+        {
+          "info": {
+            "name": "Create an Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tomorrow.io/v4/alerts",
+            "params": [
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an Alert"
+        },
+        {
+          "info": {
+            "name": "Retrieve an Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tomorrow.io/v4/alerts/:alertId",
+            "params": [
+              {
+                "name": "alertId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve an Alert"
+        },
+        {
+          "info": {
+            "name": "Update an Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tomorrow.io/v4/alerts/:alertId",
+            "params": [
+              {
+                "name": "alertId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an Alert"
+        },
+        {
+          "info": {
+            "name": "Delete an Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tomorrow.io/v4/alerts/:alertId",
+            "params": [
+              {
+                "name": "alertId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete an Alert"
+        },
+        {
+          "info": {
+            "name": "List Alert Locations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tomorrow.io/v4/alerts/:alertId/locations",
+            "params": [
+              {
+                "name": "alertId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Alert Locations"
+        },
+        {
+          "info": {
+            "name": "Link Locations To Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tomorrow.io/v4/alerts/:alertId/locations/link",
+            "params": [
+              {
+                "name": "alertId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Link Locations To Alert"
+        },
+        {
+          "info": {
+            "name": "Unlink Locations From Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tomorrow.io/v4/alerts/:alertId/locations/unlink",
+            "params": [
+              {
+                "name": "alertId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Unlink Locations From Alert"
+        },
+        {
+          "info": {
+            "name": "Activate an Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tomorrow.io/v4/alerts/:alertId/activate",
+            "params": [
+              {
+                "name": "alertId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Activate an Alert"
+        },
+        {
+          "info": {
+            "name": "Deactivate an Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tomorrow.io/v4/alerts/:alertId/deactivate",
+            "params": [
+              {
+                "name": "alertId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Deactivate an Alert"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

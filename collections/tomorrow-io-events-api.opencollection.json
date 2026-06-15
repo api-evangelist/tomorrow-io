@@ -1,0 +1,83 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tomorrow.io Events API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Events (Basic)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tomorrow.io/v4/events",
+            "params": [
+              {
+                "name": "location",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "insights",
+                "value": "",
+                "type": "query",
+                "description": "Comma separated event insight ids."
+              },
+              {
+                "name": "buffer",
+                "value": "",
+                "type": "query",
+                "description": "Buffer radius around the location in km."
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve weather events for a point or location, filtered by insight\ncategory (severe weather, fires, floods, lightning, custom).\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve Events (Advanced)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tomorrow.io/v4/events",
+            "params": [
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Advanced event retrieval with polygon/polyline geometries and complex filters."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

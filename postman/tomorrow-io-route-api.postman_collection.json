@@ -1,0 +1,275 @@
+{
+  "info": {
+    "_postman_id": "2f7f18d9-f734-44ab-964c-a661d5b3db6b",
+    "name": "Tomorrow.io Weather on Routes API",
+    "description": "Retrieve weather conditions and forecast along an arbitrary route (polyline of\nwaypoints) at the times each segment is expected to be traversed. Powers route\noptimization, logistics planning, and ETA-aware weather hazard detection.\n\n\nContact Support:\n Name: Tomorrow.io Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:01:58.000Z",
+    "updatedAt": "2026-06-05T15:01:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2f7f18d9-f734-44ab-964c-a661d5b3db6b"
+  },
+  "item": [
+    {
+      "name": "route",
+      "item": [
+        {
+          "name": "Retrieve Weather Along Route",
+          "id": "30da9087-f7b7-44aa-9286-b3f128584583",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"waypoints\": [\n    {\n      \"location\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          \"<number>\",\n          \"<number>\"\n        ]\n      },\n      \"time\": \"<dateTime>\"\n    },\n    {\n      \"location\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          \"<number>\",\n          \"<number>\"\n        ]\n      },\n      \"time\": \"<dateTime>\"\n    }\n  ],\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"units\": \"imperial\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/route?apikey=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "route"
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "apikey",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Submit a polyline of waypoints with arrival times and receive weather data\nlayers at each waypoint at its predicted arrival time.\n"
+          },
+          "response": [
+            {
+              "id": "dc758f59-be3c-4661-8b60-ddaacc5e1746",
+              "name": "Per-waypoint weather payload.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"waypoints\": [\n    {\n      \"location\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          \"<number>\",\n          \"<number>\"\n        ]\n      },\n      \"time\": \"<dateTime>\"\n    },\n    {\n      \"location\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          \"<number>\",\n          \"<number>\"\n        ]\n      },\n      \"time\": \"<dateTime>\"\n    }\n  ],\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"units\": \"imperial\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/route?apikey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "route"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": {\n    \"waypoints\": [\n      {\n        \"location\": {\n          \"lat\": \"<number>\",\n          \"lon\": \"<number>\"\n        },\n        \"time\": \"<dateTime>\",\n        \"values\": {\n          \"deserunt_498\": true\n        }\n      },\n      {\n        \"location\": {\n          \"lat\": \"<number>\",\n          \"lon\": \"<number>\"\n        },\n        \"time\": \"<dateTime>\",\n        \"values\": {\n          \"cupidatat_e2\": \"dolor\",\n          \"voluptate1\": \"labore\"\n        }\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-06-05T15:01:59.000Z",
+              "updatedAt": "2026-06-05T15:01:59.000Z",
+              "uid": "35240-dc758f59-be3c-4661-8b60-ddaacc5e1746"
+            },
+            {
+              "id": "5bc549d6-5d56-4218-b871-929f19343237",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"waypoints\": [\n    {\n      \"location\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          \"<number>\",\n          \"<number>\"\n        ]\n      },\n      \"time\": \"<dateTime>\"\n    },\n    {\n      \"location\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          \"<number>\",\n          \"<number>\"\n        ]\n      },\n      \"time\": \"<dateTime>\"\n    }\n  ],\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"units\": \"imperial\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/route?apikey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "route"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:01:59.000Z",
+              "updatedAt": "2026-06-05T15:01:59.000Z",
+              "uid": "35240-5bc549d6-5d56-4218-b871-929f19343237"
+            },
+            {
+              "id": "23c78fac-4b4c-400a-8c7e-4fb27e5ad9cc",
+              "name": "Rate limit exceeded.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"waypoints\": [\n    {\n      \"location\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          \"<number>\",\n          \"<number>\"\n        ]\n      },\n      \"time\": \"<dateTime>\"\n    },\n    {\n      \"location\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          \"<number>\",\n          \"<number>\"\n        ]\n      },\n      \"time\": \"<dateTime>\"\n    }\n  ],\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"units\": \"imperial\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/route?apikey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "route"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:01:59.000Z",
+              "updatedAt": "2026-06-05T15:01:59.000Z",
+              "uid": "35240-23c78fac-4b4c-400a-8c7e-4fb27e5ad9cc"
+            }
+          ],
+          "createdAt": "2026-06-05T15:01:59.000Z",
+          "updatedAt": "2026-06-05T15:01:59.000Z",
+          "uid": "35240-30da9087-f7b7-44aa-9286-b3f128584583"
+        }
+      ],
+      "id": "c4e2776d-97f6-45ff-a1c7-1662f255e8a3",
+      "createdAt": "2026-06-05T15:01:59.000Z",
+      "updatedAt": "2026-06-05T15:01:59.000Z",
+      "uid": "35240-c4e2776d-97f6-45ff-a1c7-1662f255e8a3"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tomorrow.io/v4"
+    }
+  ]
+}

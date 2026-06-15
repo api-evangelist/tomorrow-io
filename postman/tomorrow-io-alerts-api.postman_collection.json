@@ -1,0 +1,1073 @@
+{
+  "info": {
+    "_postman_id": "9dc04e0e-30ac-4241-b687-36417cc29636",
+    "name": "Tomorrow.io Alerts API",
+    "description": "Create, manage, and trigger weather-based alerts. Alerts evaluate Tomorrow.io\nweather data layers against custom thresholds for one or more linked locations\nand deliver notifications via webhook, email, and the Tomorrow.io app.\n\n\nContact Support:\n Name: Tomorrow.io Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:02:01.000Z",
+    "updatedAt": "2026-06-05T15:02:02.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9dc04e0e-30ac-4241-b687-36417cc29636"
+  },
+  "item": [
+    {
+      "name": "alerts",
+      "item": [
+        {
+          "name": "{alertId}",
+          "item": [
+            {
+              "name": "locations",
+              "item": [
+                {
+                  "name": "link",
+                  "item": [
+                    {
+                      "name": "Link Locations To Alert",
+                      "id": "354b01b0-1a06-4404-9bfd-7d9040d7a81d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"locationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/alerts/:alertId/locations/link?apikey=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "alerts",
+                            ":alertId",
+                            "locations",
+                            "link"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "apikey",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "5a13fd1c-7006-4254-8d6f-c4004d619eb8",
+                              "key": "alertId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "dab49a2a-7a93-45da-b2c8-6a69614b3c92",
+                          "name": "Locations linked.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"locationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/alerts/:alertId/locations/link?apikey=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "alerts",
+                                ":alertId",
+                                "locations",
+                                "link"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "apikey",
+                                  "value": "<API Key>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "alertId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:02:02.000Z",
+                          "updatedAt": "2026-06-05T15:02:02.000Z",
+                          "uid": "35240-dab49a2a-7a93-45da-b2c8-6a69614b3c92"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:02:02.000Z",
+                      "updatedAt": "2026-06-05T15:02:02.000Z",
+                      "uid": "35240-354b01b0-1a06-4404-9bfd-7d9040d7a81d"
+                    }
+                  ],
+                  "id": "240abaa4-517f-4f75-b0ad-1f33ae3e4665",
+                  "createdAt": "2026-06-05T15:02:02.000Z",
+                  "updatedAt": "2026-06-05T15:02:02.000Z",
+                  "uid": "35240-240abaa4-517f-4f75-b0ad-1f33ae3e4665"
+                },
+                {
+                  "name": "unlink",
+                  "item": [
+                    {
+                      "name": "Unlink Locations From Alert",
+                      "id": "610736b5-fab0-4db9-a900-141c7919cd0d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"locationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/alerts/:alertId/locations/unlink?apikey=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "alerts",
+                            ":alertId",
+                            "locations",
+                            "unlink"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "apikey",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "e47ca2a3-a067-458a-b188-a0e912dc09c9",
+                              "key": "alertId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "914a14df-c80d-4114-a373-d2000b209c41",
+                          "name": "Locations unlinked.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"locationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/alerts/:alertId/locations/unlink?apikey=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "alerts",
+                                ":alertId",
+                                "locations",
+                                "unlink"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "apikey",
+                                  "value": "<API Key>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "alertId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:02:02.000Z",
+                          "updatedAt": "2026-06-05T15:02:02.000Z",
+                          "uid": "35240-914a14df-c80d-4114-a373-d2000b209c41"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:02:02.000Z",
+                      "updatedAt": "2026-06-05T15:02:02.000Z",
+                      "uid": "35240-610736b5-fab0-4db9-a900-141c7919cd0d"
+                    }
+                  ],
+                  "id": "90dfa1fd-bae9-4089-b8f3-958dd052a8de",
+                  "createdAt": "2026-06-05T15:02:02.000Z",
+                  "updatedAt": "2026-06-05T15:02:02.000Z",
+                  "uid": "35240-90dfa1fd-bae9-4089-b8f3-958dd052a8de"
+                },
+                {
+                  "name": "List Alert Locations",
+                  "id": "26270b4d-873c-406a-a953-cd1561a343a5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/alerts/:alertId/locations?apikey=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "alerts",
+                        ":alertId",
+                        "locations"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "apikey",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "4cd43b35-2a1f-4e0e-9ca0-425b0c9906a8",
+                          "key": "alertId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "4cea5b90-2f76-4948-828e-86643b61806d",
+                      "name": "Linked locations.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/alerts/:alertId/locations?apikey=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "alerts",
+                            ":alertId",
+                            "locations"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "apikey",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "alertId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:02:02.000Z",
+                      "updatedAt": "2026-06-05T15:02:02.000Z",
+                      "uid": "35240-4cea5b90-2f76-4948-828e-86643b61806d"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:02:02.000Z",
+                  "updatedAt": "2026-06-05T15:02:02.000Z",
+                  "uid": "35240-26270b4d-873c-406a-a953-cd1561a343a5"
+                }
+              ],
+              "id": "c8d43163-8921-4918-9c94-7b6dedfd22b2",
+              "createdAt": "2026-06-05T15:02:02.000Z",
+              "updatedAt": "2026-06-05T15:02:02.000Z",
+              "uid": "35240-c8d43163-8921-4918-9c94-7b6dedfd22b2"
+            },
+            {
+              "name": "activate",
+              "item": [
+                {
+                  "name": "Activate an Alert",
+                  "id": "782d4298-0271-4287-9c4c-f2c27c8b05f0",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/alerts/:alertId/activate?apikey=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "alerts",
+                        ":alertId",
+                        "activate"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "apikey",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "578f0869-f801-4c91-b1e7-8f9525a9fa1c",
+                          "key": "alertId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "44997b41-080e-440f-987c-c3389b2f4190",
+                      "name": "Alert activated.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/alerts/:alertId/activate?apikey=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "alerts",
+                            ":alertId",
+                            "activate"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "apikey",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "alertId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:02:02.000Z",
+                      "updatedAt": "2026-06-05T15:02:02.000Z",
+                      "uid": "35240-44997b41-080e-440f-987c-c3389b2f4190"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:02:02.000Z",
+                  "updatedAt": "2026-06-05T15:02:02.000Z",
+                  "uid": "35240-782d4298-0271-4287-9c4c-f2c27c8b05f0"
+                }
+              ],
+              "id": "d5f3a8bf-6db8-4e41-b83b-fc26eefa4c79",
+              "createdAt": "2026-06-05T15:02:02.000Z",
+              "updatedAt": "2026-06-05T15:02:02.000Z",
+              "uid": "35240-d5f3a8bf-6db8-4e41-b83b-fc26eefa4c79"
+            },
+            {
+              "name": "deactivate",
+              "item": [
+                {
+                  "name": "Deactivate an Alert",
+                  "id": "24366669-100a-46ce-aa13-71045ba1f496",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/alerts/:alertId/deactivate?apikey=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "alerts",
+                        ":alertId",
+                        "deactivate"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "apikey",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "1e724baa-94ee-43d9-baae-b38e2ececb23",
+                          "key": "alertId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "c5551074-7448-4fd4-aa4e-b2e5da6d2d46",
+                      "name": "Alert deactivated.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/alerts/:alertId/deactivate?apikey=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "alerts",
+                            ":alertId",
+                            "deactivate"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "apikey",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "alertId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:02:02.000Z",
+                      "updatedAt": "2026-06-05T15:02:02.000Z",
+                      "uid": "35240-c5551074-7448-4fd4-aa4e-b2e5da6d2d46"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:02:02.000Z",
+                  "updatedAt": "2026-06-05T15:02:02.000Z",
+                  "uid": "35240-24366669-100a-46ce-aa13-71045ba1f496"
+                }
+              ],
+              "id": "35761257-d861-4d43-a3e0-097c3df3c23b",
+              "createdAt": "2026-06-05T15:02:02.000Z",
+              "updatedAt": "2026-06-05T15:02:02.000Z",
+              "uid": "35240-35761257-d861-4d43-a3e0-097c3df3c23b"
+            },
+            {
+              "name": "Retrieve an Alert",
+              "id": "48c3929a-8aea-40f8-9909-dd4f630c9665",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/alerts/:alertId?apikey=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "alerts",
+                    ":alertId"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "230be002-4f56-4a04-a68e-f20f474ce89e",
+                      "key": "alertId",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "8805126f-63b7-4c65-9aa5-80e9e5c701e9",
+                  "name": "Alert resource.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/alerts/:alertId?apikey=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "alerts",
+                        ":alertId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "apikey",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "alertId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"condition\": {\n    \"field\": \"<string>\",\n    \"operator\": \"neq\",\n    \"value\": \"<number>\"\n  },\n  \"notifications\": {\n    \"webhookUrl\": \"<string>\",\n    \"email\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"linkedLocationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:02:02.000Z",
+                  "updatedAt": "2026-06-05T15:02:02.000Z",
+                  "uid": "35240-8805126f-63b7-4c65-9aa5-80e9e5c701e9"
+                }
+              ],
+              "createdAt": "2026-06-05T15:02:02.000Z",
+              "updatedAt": "2026-06-05T15:02:02.000Z",
+              "uid": "35240-48c3929a-8aea-40f8-9909-dd4f630c9665"
+            },
+            {
+              "name": "Update an Alert",
+              "id": "a76d25bf-d1e8-499e-8457-d0371bfd7411",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"condition\": {\n    \"field\": \"<string>\",\n    \"operator\": \"neq\",\n    \"value\": \"<number>\"\n  },\n  \"notifications\": {\n    \"webhookUrl\": \"<string>\",\n    \"email\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"linkedLocationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/alerts/:alertId?apikey=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "alerts",
+                    ":alertId"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "6f821852-50bb-4c78-8d9e-127ee91c1b34",
+                      "key": "alertId",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "0f343b6f-7b16-4fcf-bf15-4c908e04a561",
+                  "name": "Updated alert.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"condition\": {\n    \"field\": \"<string>\",\n    \"operator\": \"neq\",\n    \"value\": \"<number>\"\n  },\n  \"notifications\": {\n    \"webhookUrl\": \"<string>\",\n    \"email\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"linkedLocationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/alerts/:alertId?apikey=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "alerts",
+                        ":alertId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "apikey",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "alertId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"condition\": {\n    \"field\": \"<string>\",\n    \"operator\": \"neq\",\n    \"value\": \"<number>\"\n  },\n  \"notifications\": {\n    \"webhookUrl\": \"<string>\",\n    \"email\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"linkedLocationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:02:02.000Z",
+                  "updatedAt": "2026-06-05T15:02:02.000Z",
+                  "uid": "35240-0f343b6f-7b16-4fcf-bf15-4c908e04a561"
+                }
+              ],
+              "createdAt": "2026-06-05T15:02:02.000Z",
+              "updatedAt": "2026-06-05T15:02:02.000Z",
+              "uid": "35240-a76d25bf-d1e8-499e-8457-d0371bfd7411"
+            },
+            {
+              "name": "Delete an Alert",
+              "id": "6993f1a0-7428-4b99-8745-f1e83c00f486",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/alerts/:alertId?apikey=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "alerts",
+                    ":alertId"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "7f4af31b-fbbe-4b98-a813-83645978f8fa",
+                      "key": "alertId",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "cc613a3f-f1bc-4be9-92ba-3a02d2a2c900",
+                  "name": "Deleted.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/alerts/:alertId?apikey=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "alerts",
+                        ":alertId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "apikey",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "alertId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:02:02.000Z",
+                  "updatedAt": "2026-06-05T15:02:02.000Z",
+                  "uid": "35240-cc613a3f-f1bc-4be9-92ba-3a02d2a2c900"
+                }
+              ],
+              "createdAt": "2026-06-05T15:02:02.000Z",
+              "updatedAt": "2026-06-05T15:02:02.000Z",
+              "uid": "35240-6993f1a0-7428-4b99-8745-f1e83c00f486"
+            }
+          ],
+          "id": "6866e5d3-3d54-4ace-8713-27001a85dc8e",
+          "createdAt": "2026-06-05T15:02:02.000Z",
+          "updatedAt": "2026-06-05T15:02:02.000Z",
+          "uid": "35240-6866e5d3-3d54-4ace-8713-27001a85dc8e"
+        },
+        {
+          "name": "List Alerts",
+          "id": "2cf5ba0d-74f7-43b3-9446-92c4f4e8ddb7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/alerts?apikey=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "alerts"
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "apikey",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "920279a7-ab26-4522-84af-aaa05cb449d9",
+              "name": "Alert list.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/alerts?apikey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "alerts"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"condition\": {\n        \"field\": \"<string>\",\n        \"operator\": \"lt\",\n        \"value\": \"<number>\"\n      },\n      \"notifications\": {\n        \"webhookUrl\": \"<string>\",\n        \"email\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"linkedLocationIds\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"condition\": {\n        \"field\": \"<string>\",\n        \"operator\": \"lt\",\n        \"value\": \"<number>\"\n      },\n      \"notifications\": {\n        \"webhookUrl\": \"<string>\",\n        \"email\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"linkedLocationIds\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:02:02.000Z",
+              "updatedAt": "2026-06-05T15:02:02.000Z",
+              "uid": "35240-920279a7-ab26-4522-84af-aaa05cb449d9"
+            }
+          ],
+          "createdAt": "2026-06-05T15:02:02.000Z",
+          "updatedAt": "2026-06-05T15:02:02.000Z",
+          "uid": "35240-2cf5ba0d-74f7-43b3-9446-92c4f4e8ddb7"
+        },
+        {
+          "name": "Create an Alert",
+          "id": "f041d8cd-7583-4138-ad59-87d964ef8bd5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"condition\": {\n    \"field\": \"<string>\",\n    \"operator\": \"neq\",\n    \"value\": \"<number>\"\n  },\n  \"notifications\": {\n    \"webhookUrl\": \"<string>\",\n    \"email\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"linkedLocationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/alerts?apikey=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "alerts"
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "apikey",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "db40654c-dd8a-4ef4-8330-57034fb15ff0",
+              "name": "Alert created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"condition\": {\n    \"field\": \"<string>\",\n    \"operator\": \"neq\",\n    \"value\": \"<number>\"\n  },\n  \"notifications\": {\n    \"webhookUrl\": \"<string>\",\n    \"email\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"linkedLocationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/alerts?apikey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "alerts"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"condition\": {\n    \"field\": \"<string>\",\n    \"operator\": \"neq\",\n    \"value\": \"<number>\"\n  },\n  \"notifications\": {\n    \"webhookUrl\": \"<string>\",\n    \"email\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"linkedLocationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-06-05T15:02:02.000Z",
+              "updatedAt": "2026-06-05T15:02:02.000Z",
+              "uid": "35240-db40654c-dd8a-4ef4-8330-57034fb15ff0"
+            }
+          ],
+          "createdAt": "2026-06-05T15:02:02.000Z",
+          "updatedAt": "2026-06-05T15:02:02.000Z",
+          "uid": "35240-f041d8cd-7583-4138-ad59-87d964ef8bd5"
+        }
+      ],
+      "id": "bf59b88c-da28-438a-9fd2-af2d1b4ee38e",
+      "createdAt": "2026-06-05T15:02:02.000Z",
+      "updatedAt": "2026-06-05T15:02:02.000Z",
+      "uid": "35240-bf59b88c-da28-438a-9fd2-af2d1b4ee38e"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tomorrow.io/v4"
+    }
+  ]
+}

@@ -1,0 +1,380 @@
+{
+  "info": {
+    "_postman_id": "a60de27e-8467-45f4-affa-5c44c34814b1",
+    "name": "Tomorrow.io Weather Maps API",
+    "description": "Web Mercator (XYZ) PNG tile service for visualizing Tomorrow.io weather data\nlayers \u2014 precipitation radar, temperature, wind, clouds, air quality, and more.\nDrop directly into Mapbox, MapLibre, Leaflet, OpenLayers, or Google Maps.\n\n\nContact Support:\n Name: Tomorrow.io Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:01:59.000Z",
+    "updatedAt": "2026-06-05T15:01:59.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a60de27e-8467-45f4-affa-5c44c34814b1"
+  },
+  "item": [
+    {
+      "name": "map",
+      "item": [
+        {
+          "name": "tile",
+          "item": [
+            {
+              "name": "{zoom}",
+              "item": [
+                {
+                  "name": "{x}",
+                  "item": [
+                    {
+                      "name": "{y}",
+                      "item": [
+                        {
+                          "name": "{field}",
+                          "item": [
+                            {
+                              "name": "{timeFormat}",
+                              "item": [
+                                {
+                                  "name": "Retrieve a Weather Map Tile",
+                                  "id": "c9f8e457-f6a7-4e09-aea0-67107fa5d8f7",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "image/png"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/map/tile/:zoom/:x/:y/:field/:timeFormat?apikey=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "map",
+                                        "tile",
+                                        ":zoom",
+                                        ":x",
+                                        ":y",
+                                        ":field",
+                                        ":timeFormat"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "apikey",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "d796506b-7895-4789-9ef8-377eb2ca87ed",
+                                          "key": "zoom",
+                                          "value": "<integer>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "e8c262af-958e-4286-9c33-03cd47fa4783",
+                                          "key": "x",
+                                          "value": "<integer>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "5758d3ae-521d-4657-961a-98bf30ec6ef7",
+                                          "key": "y",
+                                          "value": "<integer>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "8ebbba39-b299-441a-a40a-4755bc19bade",
+                                          "key": "field",
+                                          "value": "<string>",
+                                          "description": "(Required) Data layer field (e.g. precipitationIntensity, temperature, windSpeed, cloudCover)."
+                                        },
+                                        {
+                                          "id": "c856dbe4-02d0-4cde-9b44-7579f41d181a",
+                                          "key": "timeFormat",
+                                          "value": "<string>",
+                                          "description": "(Required) ISO-8601 timestamp or 'now'."
+                                        }
+                                      ]
+                                    },
+                                    "description": "Retrieve a 256x256 PNG tile rendering the requested data layer at the given\nXYZ Web Mercator address and time. Supports past, current, and forecast\ntime references via the ``timeFormat`` path parameter.\n"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "015ad091-fe2a-4ac3-ace2-6174b366ecad",
+                                      "name": "PNG tile.",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "image/png"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/map/tile/:zoom/:x/:y/:field/:timeFormat?apikey=<API Key>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "map",
+                                            "tile",
+                                            ":zoom",
+                                            ":x",
+                                            ":y",
+                                            ":field",
+                                            ":timeFormat"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) ",
+                                              "key": "apikey",
+                                              "value": "<API Key>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "zoom"
+                                            },
+                                            {
+                                              "key": "x"
+                                            },
+                                            {
+                                              "key": "y"
+                                            },
+                                            {
+                                              "key": "field"
+                                            },
+                                            {
+                                              "key": "timeFormat"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "image/png"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "<binary>",
+                                      "createdAt": "2026-06-05T15:02:00.000Z",
+                                      "updatedAt": "2026-06-05T15:02:00.000Z",
+                                      "uid": "35240-015ad091-fe2a-4ac3-ace2-6174b366ecad"
+                                    },
+                                    {
+                                      "id": "7d512c95-38c8-4ac0-8ad0-e62e8e5d5063",
+                                      "name": "Missing or invalid API key.",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/map/tile/:zoom/:x/:y/:field/:timeFormat?apikey=<API Key>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "map",
+                                            "tile",
+                                            ":zoom",
+                                            ":x",
+                                            ":y",
+                                            ":field",
+                                            ":timeFormat"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) ",
+                                              "key": "apikey",
+                                              "value": "<API Key>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "zoom"
+                                            },
+                                            {
+                                              "key": "x"
+                                            },
+                                            {
+                                              "key": "y"
+                                            },
+                                            {
+                                              "key": "field"
+                                            },
+                                            {
+                                              "key": "timeFormat"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"code\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                                      "createdAt": "2026-06-05T15:02:00.000Z",
+                                      "updatedAt": "2026-06-05T15:02:00.000Z",
+                                      "uid": "35240-7d512c95-38c8-4ac0-8ad0-e62e8e5d5063"
+                                    },
+                                    {
+                                      "id": "b47f46c6-47c5-4efd-a770-29c1bc1c7b15",
+                                      "name": "Rate limit exceeded.",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/map/tile/:zoom/:x/:y/:field/:timeFormat?apikey=<API Key>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "map",
+                                            "tile",
+                                            ":zoom",
+                                            ":x",
+                                            ":y",
+                                            ":field",
+                                            ":timeFormat"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) ",
+                                              "key": "apikey",
+                                              "value": "<API Key>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "zoom"
+                                            },
+                                            {
+                                              "key": "x"
+                                            },
+                                            {
+                                              "key": "y"
+                                            },
+                                            {
+                                              "key": "field"
+                                            },
+                                            {
+                                              "key": "timeFormat"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Too Many Requests",
+                                      "code": 429,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"code\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                                      "createdAt": "2026-06-05T15:02:00.000Z",
+                                      "updatedAt": "2026-06-05T15:02:00.000Z",
+                                      "uid": "35240-b47f46c6-47c5-4efd-a770-29c1bc1c7b15"
+                                    }
+                                  ],
+                                  "createdAt": "2026-06-05T15:02:00.000Z",
+                                  "updatedAt": "2026-06-05T15:02:00.000Z",
+                                  "uid": "35240-c9f8e457-f6a7-4e09-aea0-67107fa5d8f7"
+                                }
+                              ],
+                              "id": "62bdfaab-0655-4ba4-8a78-d2b1f75e5655",
+                              "createdAt": "2026-06-05T15:02:00.000Z",
+                              "updatedAt": "2026-06-05T15:02:00.000Z",
+                              "uid": "35240-62bdfaab-0655-4ba4-8a78-d2b1f75e5655"
+                            }
+                          ],
+                          "id": "9b041f1a-29c4-4266-818b-f226ecd2dd31",
+                          "createdAt": "2026-06-05T15:02:00.000Z",
+                          "updatedAt": "2026-06-05T15:02:00.000Z",
+                          "uid": "35240-9b041f1a-29c4-4266-818b-f226ecd2dd31"
+                        }
+                      ],
+                      "id": "1e28490b-b587-42b1-a22e-4f597d3c73e8",
+                      "createdAt": "2026-06-05T15:02:00.000Z",
+                      "updatedAt": "2026-06-05T15:02:00.000Z",
+                      "uid": "35240-1e28490b-b587-42b1-a22e-4f597d3c73e8"
+                    }
+                  ],
+                  "id": "ba71d08c-737a-4435-9996-24c74ebca4ad",
+                  "createdAt": "2026-06-05T15:02:00.000Z",
+                  "updatedAt": "2026-06-05T15:02:00.000Z",
+                  "uid": "35240-ba71d08c-737a-4435-9996-24c74ebca4ad"
+                }
+              ],
+              "id": "4d2d43c9-2ec8-490e-bb09-97b1b51bbaa9",
+              "createdAt": "2026-06-05T15:02:00.000Z",
+              "updatedAt": "2026-06-05T15:02:00.000Z",
+              "uid": "35240-4d2d43c9-2ec8-490e-bb09-97b1b51bbaa9"
+            }
+          ],
+          "id": "1a89f986-7553-4ebe-9ab5-6e16552dfe34",
+          "createdAt": "2026-06-05T15:02:00.000Z",
+          "updatedAt": "2026-06-05T15:02:00.000Z",
+          "uid": "35240-1a89f986-7553-4ebe-9ab5-6e16552dfe34"
+        }
+      ],
+      "id": "55e62309-f845-4558-8340-db5e95c03f81",
+      "createdAt": "2026-06-05T15:02:00.000Z",
+      "updatedAt": "2026-06-05T15:02:00.000Z",
+      "uid": "35240-55e62309-f845-4558-8340-db5e95c03f81"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tomorrow.io/v4"
+    }
+  ]
+}
