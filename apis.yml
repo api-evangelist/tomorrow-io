@@ -60,9 +60,9 @@ apis:
       - url: json-structure/tomorrow-io-weather-values-structure.json
         type: JSONStructure
       - url: examples/tomorrow-io-realtime-example.json
-        type: Example
+        type: Examples
       - url: examples/tomorrow-io-timelines-example.json
-        type: Example
+        type: Examples
     description: >-
       Realtime conditions, 14-day forecast (minutely, hourly, daily), and flexible timeline retrieval across the full
       Tomorrow.io 60+ data-layer catalog for any point, polygon, or polyline on Earth.
@@ -108,7 +108,7 @@ apis:
       - url: json-schema/tomorrow-io-event-schema.json
         type: JSONSchema
       - url: examples/tomorrow-io-events-example.json
-        type: Example
+        type: Examples
     description: >-
       Retrieve severe weather events, fires, floods, lightning swarms, and custom vector events affecting a point or
       geometry.
@@ -127,7 +127,7 @@ apis:
       - url: openapi/tomorrow-io-route-api-openapi.yml
         type: OpenAPI
       - url: examples/tomorrow-io-route-example.json
-        type: Example
+        type: Examples
     description: >-
       Retrieve weather along an arbitrary polyline of waypoints at the times each segment is expected to be traversed —
       powers route optimization, logistics planning, and ETA-aware hazard detection.
@@ -185,7 +185,7 @@ apis:
       - url: json-schema/tomorrow-io-alert-schema.json
         type: JSONSchema
       - url: examples/tomorrow-io-alert-example.json
-        type: Example
+        type: Examples
     description: >-
       Create and manage threshold-based weather alerts that evaluate Tomorrow.io data layers against custom rules for
       linked locations and deliver notifications via webhook, email, and the Tomorrow.io app.
@@ -210,45 +210,42 @@ apis:
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/tomorrowio/overview
-  - type: ArazzoWorkflows
-    url: arazzo/
-    workflows:
-      - url: arazzo/tomorrow-io-alert-threshold-tuning-workflow.yml
-        name: Tomorrow.io Alert Threshold Tuning
-        summary: Inspect an existing alert, retune its threshold, and confirm the updated definition.
-      - url: arazzo/tomorrow-io-decommission-location-workflow.yml
-        name: Tomorrow.io Decommission a Monitored Location
-        summary: Confirm a location exists, unlink it from an alert, then delete the saved location.
-      - url: arazzo/tomorrow-io-historical-and-normals-analysis-workflow.yml
-        name: Tomorrow.io Historical and Climate Normals Analysis
-        summary: Save a location, pull its historical weather timeline, and compare against climate normals.
-      - url: arazzo/tomorrow-io-insight-driven-alert-setup-workflow.yml
-        name: Tomorrow.io Insight-Driven Alert Setup
-        summary: Define a reusable insight, build an alert from it, bind locations, and activate monitoring.
-      - url: arazzo/tomorrow-io-insight-scoped-event-query-workflow.yml
-        name: Tomorrow.io Insight-Scoped Event Query
-        summary: Define an insight, then run an advanced event query filtered to that insight over an area.
-      - url: arazzo/tomorrow-io-location-severe-weather-events-workflow.yml
-        name: Tomorrow.io Location Severe Weather Events
-        summary: Save a location, scan it for severe weather events, and branch on whether any are active.
-      - url: arazzo/tomorrow-io-map-tile-precipitation-overlay-workflow.yml
-        name: Tomorrow.io Map Tile Precipitation Overlay
-        summary: Read realtime precipitation for a point, then fetch the matching weather map tile.
-      - url: arazzo/tomorrow-io-realtime-then-timelines-deep-dive-workflow.yml
-        name: Tomorrow.io Realtime Snapshot then Timelines Deep Dive
-        summary: Take a realtime reading, then pull a multi-field timeline window over the same location.
-      - url: arazzo/tomorrow-io-realtime-vs-climate-normals-workflow.yml
-        name: Tomorrow.io Realtime vs Climate Normals Benchmark
-        summary: Compare current conditions for a location against its long-term monthly climate normals.
-      - url: arazzo/tomorrow-io-route-weather-hazard-scan-workflow.yml
-        name: Tomorrow.io Route Weather Hazard Scan
-        summary: Retrieve weather along a planned route, then scan the destination for severe events.
-      - url: arazzo/tomorrow-io-saved-location-realtime-forecast-workflow.yml
-        name: Tomorrow.io Saved Location Realtime and Forecast
-        summary: Create a reusable saved location, then pull realtime conditions and a multi-day forecast for it.
-      - url: arazzo/tomorrow-io-tag-location-cohort-workflow.yml
-        name: Tomorrow.io Tag and Monitor a Location Cohort
-        summary: Create a location, tag it into a cohort, confirm the tag, and read its current conditions.
+  - type: Arazzo
+    url: arazzo/tomorrow-io-alert-threshold-tuning-workflow.yml
+    name: Tomorrow.io Alert Threshold Tuning
+  - type: Arazzo
+    url: arazzo/tomorrow-io-decommission-location-workflow.yml
+    name: Tomorrow.io Decommission a Monitored Location
+  - type: Arazzo
+    url: arazzo/tomorrow-io-historical-and-normals-analysis-workflow.yml
+    name: Tomorrow.io Historical and Climate Normals Analysis
+  - type: Arazzo
+    url: arazzo/tomorrow-io-insight-driven-alert-setup-workflow.yml
+    name: Tomorrow.io Insight-Driven Alert Setup
+  - type: Arazzo
+    url: arazzo/tomorrow-io-insight-scoped-event-query-workflow.yml
+    name: Tomorrow.io Insight-Scoped Event Query
+  - type: Arazzo
+    url: arazzo/tomorrow-io-location-severe-weather-events-workflow.yml
+    name: Tomorrow.io Location Severe Weather Events
+  - type: Arazzo
+    url: arazzo/tomorrow-io-map-tile-precipitation-overlay-workflow.yml
+    name: Tomorrow.io Map Tile Precipitation Overlay
+  - type: Arazzo
+    url: arazzo/tomorrow-io-realtime-then-timelines-deep-dive-workflow.yml
+    name: Tomorrow.io Realtime Snapshot then Timelines Deep Dive
+  - type: Arazzo
+    url: arazzo/tomorrow-io-realtime-vs-climate-normals-workflow.yml
+    name: Tomorrow.io Realtime vs Climate Normals Benchmark
+  - type: Arazzo
+    url: arazzo/tomorrow-io-route-weather-hazard-scan-workflow.yml
+    name: Tomorrow.io Route Weather Hazard Scan
+  - type: Arazzo
+    url: arazzo/tomorrow-io-saved-location-realtime-forecast-workflow.yml
+    name: Tomorrow.io Saved Location Realtime and Forecast
+  - type: Arazzo
+    url: arazzo/tomorrow-io-tag-location-cohort-workflow.yml
+    name: Tomorrow.io Tag and Monitor a Location Cohort
   - url: https://www.tomorrow.io
     type: Portal
   - url: https://docs.tomorrow.io
@@ -262,7 +259,7 @@ common:
     type: Authentication
   - url: https://app.tomorrow.io/signup
     name: Sign Up
-    type: SignUp
+    type: Signup
   - url: https://app.tomorrow.io/signin
     name: Console
     type: Console
@@ -277,7 +274,7 @@ common:
     type: RateLimits
   - url: https://docs.tomorrow.io/reference/error-handling
     name: Error Handling
-    type: Errors
+    type: ErrorCodes
   - url: https://docs.tomorrow.io/reference/release-notes
     name: Release Notes
     type: ChangeLog
@@ -307,34 +304,34 @@ common:
     type: GitHubOrganization
   - url: https://github.com/Tomorrow-IO-API/tomorrow-postman
     name: Official Postman Collection
-    type: SDK
+    type: SDKs
   - url: https://github.com/Tomorrow-IO-API/tomorrow-samples
     name: Official Code Samples
-    type: SDK
+    type: SDKs
   - url: https://github.com/Tomorrow-IO-API/tomorrow-route-mapbox
     name: Weather Navigator Sample (Mapbox)
-    type: SDK
+    type: SDKs
   - url: https://github.com/Tomorrow-IO-API/tomorrow-timelines-widget
     name: Tomorrow.io Timelines Widget
-    type: SDK
+    type: SDKs
   - url: https://github.com/Tomorrow-IO-API/tomorrow-events-charts
     name: Insights Dashboard Sample
-    type: SDK
+    type: SDKs
   - url: https://github.com/Tomorrow-IO-API/tomorrow-api-proxy
     name: Google Cloud Function API Proxy Sample
-    type: SDK
+    type: SDKs
   - url: https://github.com/Tomorrow-IO-API/tomorrow-netlify
     name: Netlify Edge Sample
-    type: SDK
+    type: SDKs
   - url: https://github.com/Tomorrow-IO-API/tomorrow-map-spectrums
     name: Map Spectrums and Legends
-    type: SDK
+    type: SDKs
   - url: https://github.com/Tomorrow-IO-API/tomorrow-weather-codes
     name: Official Weather Icons
-    type: SDK
+    type: SDKs
   - url: https://github.com/Tomorrow-IO-API/climate-normals
     name: Climate Normals Visualization (Python)
-    type: SDK
+    type: SDKs
   - url: https://www.linkedin.com/company/tomorrow-io
     type: LinkedIn
   - url: https://twitter.com/tomorrow_io
