@@ -1,0 +1,25 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/tomorrow-io-alerts-api-openapi.yml, openapi/tomorrow-io-events-api-openapi.yml,
+  openapi/tomorrow-io-historical-api-openapi.yml, openapi/tomorrow-io-insights-api-openapi.yml,
+  openapi/tomorrow-io-locations-api-openapi.yml, openapi/tomorrow-io-map-tiles-api-openapi.yml,
+  openapi/tomorrow-io-route-api-openapi.yml, openapi/tomorrow-io-weather-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - query
+schemes:
+- name: apikeyAuth
+  type: apiKey
+  in: query
+  parameter: apikey
+  sources:
+  - openapi/tomorrow-io-alerts-api-openapi.yml
+  - openapi/tomorrow-io-events-api-openapi.yml
+  - openapi/tomorrow-io-historical-api-openapi.yml
+  - openapi/tomorrow-io-insights-api-openapi.yml
+  - openapi/tomorrow-io-locations-api-openapi.yml
+  - openapi/tomorrow-io-map-tiles-api-openapi.yml
+  - openapi/tomorrow-io-route-api-openapi.yml
+  - openapi/tomorrow-io-weather-api-openapi.yml
