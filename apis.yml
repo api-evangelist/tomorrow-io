@@ -208,6 +208,8 @@ apis:
       Define and manage reusable Insights — named rules combining Tomorrow.io data layers, operators, and thresholds —
       that power the Events and Alerts APIs.
 common:
+  - type: AgenticAccess
+    url: agentic-access/tomorrow-io-agentic-access.yml
   - type: DomainSecurity
     url: security/tomorrow-io-domain-security.yml
   - type: Authentication
