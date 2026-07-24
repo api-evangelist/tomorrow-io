@@ -1,0 +1,164 @@
+openapi: 3.1.0
+info:
+  title: Tomorrow.io Alerts Realtime API
+  version: '4.0'
+  description: 'Create, manage, and trigger weather-based alerts. Alerts evaluate Tomorrow.io
+
+    weather data layers against custom thresholds for one or more linked locations
+
+    and deliver notifications via webhook, email, and the Tomorrow.io app.
+
+    '
+  contact:
+    name: Tomorrow.io Support
+    url: https://support.tomorrow.io
+servers:
+- url: https://api.tomorrow.io/v4
+  description: Tomorrow.io Production
+security:
+- apikeyAuth: []
+tags:
+- name: Realtime
+  description: Current weather conditions for a point or location.
+paths:
+  /weather/realtime:
+    get:
+      tags:
+      - Realtime
+      summary: Get Realtime Weather
+      operationId: getRealtimeWeather
+      description: 'Retrieve the current weather conditions for a given latitude/longitude or
+
+        named location, including temperature, wind, precipitation, humidity, UV,
+
+        and 60+ optional data layers.
+
+        '
+      parameters:
+      - name: location
+        in: query
+        required: true
+        description: Either 'lat,lng' or a Tomorrow.io locationId.
+        schema:
+          type: string
+      - name: units
+        in: query
+        schema:
+          type: string
+          enum:
+          - metric
+          - imperial
+          default: metric
+      - name: apikey
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Realtime weather payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RealtimeResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  responses:
+    RateLimited:
+      description: Rate limit exceeded for the plan tier.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    Location:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: float
+        lon:
+          type: number
+          format: float
+        name:
+          type: string
+        type:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        type:
+          type: string
+        message:
+          type: string
+    WeatherValues:
+      type: object
+      description: Subset of the 60+ Tomorrow.io data layers requested via the fields parameter.
+      properties:
+        temperature:
+          type: number
+          description: Air temperature in C or F depending on units.
+        temperatureApparent:
+          type: number
+        humidity:
+          type: number
+        windSpeed:
+          type: number
+        windDirection:
+          type: number
+        windGust:
+          type: number
+        precipitationIntensity:
+          type: number
+        precipitationProbability:
+          type: number
+        precipitationType:
+          type: integer
+        cloudCover:
+          type: number
+        visibility:
+          type: number
+        pressureSurfaceLevel:
+          type: number
+        uvIndex:
+          type: integer
+        weatherCode:
+          type: integer
+          description: Tomorrow.io weather code (e.g. 1000 Clear, 4000 Drizzle, 5000 Snow).
+        epaIndex:
+          type: integer
+        treeIndex:
+          type: integer
+        grassIndex:
+          type: integer
+        weedIndex:
+          type: integer
+    RealtimeResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            time:
+              type: string
+              format: date-time
+            values:
+              $ref: '#/components/schemas/WeatherValues'
+        location:
+          $ref: '#/components/schemas/Location'
+  securitySchemes:
+    apikeyAuth:
+      type: apiKey
+      in: query
+      name: apikey
