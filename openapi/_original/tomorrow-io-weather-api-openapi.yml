@@ -1,0 +1,382 @@
+openapi: 3.1.0
+info:
+  title: Tomorrow.io Weather API
+  version: '4.0'
+  description: |
+    Realtime, forecast, and timeline weather retrieval from the Tomorrow.io weather
+    intelligence platform. Returns 60+ hyperlocal weather data layers (core weather,
+    air quality, pollen, solar, fire, flood, lightning, maritime, soil, road) for
+    any point on Earth, with minute-by-minute resolution available on higher tiers.
+  contact:
+    name: Tomorrow.io Support
+    url: https://support.tomorrow.io
+  license:
+    name: Tomorrow.io Terms of Service
+    url: https://www.tomorrow.io/legal/tos/
+servers:
+  - url: https://api.tomorrow.io/v4
+    description: Tomorrow.io Production
+security:
+  - apikeyAuth: []
+tags:
+  - name: Realtime
+    description: Current weather conditions for a point or location.
+  - name: Forecast
+    description: 1h / 1d step weather forecast for the next 14 days.
+  - name: Timelines
+    description: Flexible timeline retrieval across any combination of fields and timesteps.
+paths:
+  /weather/realtime:
+    get:
+      tags:
+        - Realtime
+      summary: Get Realtime Weather
+      operationId: getRealtimeWeather
+      description: |
+        Retrieve the current weather conditions for a given latitude/longitude or
+        named location, including temperature, wind, precipitation, humidity, UV,
+        and 60+ optional data layers.
+      parameters:
+        - name: location
+          in: query
+          required: true
+          description: 'Either ''lat,lng'' or a Tomorrow.io locationId.'
+          schema:
+            type: string
+        - name: units
+          in: query
+          schema:
+            type: string
+            enum: [metric, imperial]
+            default: metric
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Realtime weather payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RealtimeResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /weather/forecast:
+    get:
+      tags:
+        - Forecast
+      summary: Get Weather Forecast
+      operationId: getWeatherForecast
+      description: |
+        Retrieve a structured forecast for a point or location, broken into
+        ``minutely`` (60m), ``hourly`` (up to 120h), and ``daily`` (up to 14d)
+        intervals depending on plan tier.
+      parameters:
+        - name: location
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: timesteps
+          in: query
+          description: Comma separated steps from minutely, 1h, 1d.
+          schema:
+            type: string
+            example: 1h,1d
+        - name: units
+          in: query
+          schema:
+            type: string
+            enum: [metric, imperial]
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Forecast timelines.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForecastResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /timelines:
+    get:
+      tags:
+        - Timelines
+      summary: Retrieve Timelines (Basic)
+      operationId: getTimelines
+      description: |
+        Query weather, air quality, pollen, fire, and other data layers across an
+        arbitrary time range and timestep with a simple query-string request.
+      parameters:
+        - name: location
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: fields
+          in: query
+          required: true
+          description: 'Comma separated list of data layer field names (e.g. temperature,windSpeed,precipitationIntensity).'
+          schema:
+            type: string
+        - name: startTime
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: endTime
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: timesteps
+          in: query
+          schema:
+            type: string
+        - name: units
+          in: query
+          schema:
+            type: string
+            enum: [metric, imperial]
+        - name: timezone
+          in: query
+          schema:
+            type: string
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Timeline payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimelinesResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+    post:
+      tags:
+        - Timelines
+      summary: Retrieve Timelines (Advanced)
+      operationId: postTimelines
+      description: |
+        Advanced timelines request supporting polygon and polyline geometries,
+        large field lists, and complex unit and timezone configuration in the
+        request body.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TimelinesRequest'
+      parameters:
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Timeline payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimelinesResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  securitySchemes:
+    apikeyAuth:
+      type: apiKey
+      in: query
+      name: apikey
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    RateLimited:
+      description: Rate limit exceeded for the plan tier.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    RealtimeResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            time:
+              type: string
+              format: date-time
+            values:
+              $ref: '#/components/schemas/WeatherValues'
+        location:
+          $ref: '#/components/schemas/Location'
+    ForecastResponse:
+      type: object
+      properties:
+        timelines:
+          type: object
+          properties:
+            minutely:
+              type: array
+              items:
+                $ref: '#/components/schemas/TimelineInterval'
+            hourly:
+              type: array
+              items:
+                $ref: '#/components/schemas/TimelineInterval'
+            daily:
+              type: array
+              items:
+                $ref: '#/components/schemas/TimelineInterval'
+        location:
+          $ref: '#/components/schemas/Location'
+    TimelinesRequest:
+      type: object
+      required:
+        - location
+        - fields
+        - timesteps
+      properties:
+        location:
+          oneOf:
+            - type: string
+              description: 'lat,lng or locationId'
+            - type: object
+              description: GeoJSON Point/Polygon/LineString geometry
+        fields:
+          type: array
+          items:
+            type: string
+        timesteps:
+          type: array
+          items:
+            type: string
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        units:
+          type: string
+          enum: [metric, imperial]
+        timezone:
+          type: string
+    TimelinesResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            timelines:
+              type: array
+              items:
+                type: object
+                properties:
+                  timestep:
+                    type: string
+                  startTime:
+                    type: string
+                    format: date-time
+                  endTime:
+                    type: string
+                    format: date-time
+                  intervals:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TimelineInterval'
+    TimelineInterval:
+      type: object
+      properties:
+        startTime:
+          type: string
+          format: date-time
+        values:
+          $ref: '#/components/schemas/WeatherValues'
+    WeatherValues:
+      type: object
+      description: Subset of the 60+ Tomorrow.io data layers requested via the fields parameter.
+      properties:
+        temperature:
+          type: number
+          description: Air temperature in C or F depending on units.
+        temperatureApparent:
+          type: number
+        humidity:
+          type: number
+        windSpeed:
+          type: number
+        windDirection:
+          type: number
+        windGust:
+          type: number
+        precipitationIntensity:
+          type: number
+        precipitationProbability:
+          type: number
+        precipitationType:
+          type: integer
+        cloudCover:
+          type: number
+        visibility:
+          type: number
+        pressureSurfaceLevel:
+          type: number
+        uvIndex:
+          type: integer
+        weatherCode:
+          type: integer
+          description: Tomorrow.io weather code (e.g. 1000 Clear, 4000 Drizzle, 5000 Snow).
+        epaIndex:
+          type: integer
+        treeIndex:
+          type: integer
+        grassIndex:
+          type: integer
+        weedIndex:
+          type: integer
+    Location:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: float
+        lon:
+          type: number
+          format: float
+        name:
+          type: string
+        type:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        type:
+          type: string
+        message:
+          type: string

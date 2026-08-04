@@ -1,0 +1,106 @@
+openapi: 3.1.0
+info:
+  title: Tomorrow.io Weather Maps API
+  version: '4.0'
+  description: |
+    Web Mercator (XYZ) PNG tile service for visualizing Tomorrow.io weather data
+    layers — precipitation radar, temperature, wind, clouds, air quality, and more.
+    Drop directly into Mapbox, MapLibre, Leaflet, OpenLayers, or Google Maps.
+  contact:
+    name: Tomorrow.io Support
+    url: https://support.tomorrow.io
+servers:
+  - url: https://api.tomorrow.io/v4
+    description: Tomorrow.io Production
+security:
+  - apikeyAuth: []
+tags:
+  - name: Maps
+    description: Web Mercator tile service for weather layers.
+paths:
+  /map/tile/{zoom}/{x}/{y}/{field}/{timeFormat}:
+    get:
+      tags:
+        - Maps
+      summary: Retrieve a Weather Map Tile
+      operationId: getMapTile
+      description: |
+        Retrieve a 256x256 PNG tile rendering the requested data layer at the given
+        XYZ Web Mercator address and time. Supports past, current, and forecast
+        time references via the ``timeFormat`` path parameter.
+      parameters:
+        - name: zoom
+          in: path
+          required: true
+          schema:
+            type: integer
+            minimum: 0
+            maximum: 12
+        - name: x
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: y
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: field
+          in: path
+          required: true
+          description: 'Data layer field (e.g. precipitationIntensity, temperature, windSpeed, cloudCover).'
+          schema:
+            type: string
+        - name: timeFormat
+          in: path
+          required: true
+          description: 'ISO-8601 timestamp or ''now''.'
+          schema:
+            type: string
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: PNG tile.
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  securitySchemes:
+    apikeyAuth:
+      type: apiKey
+      in: query
+      name: apikey
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    RateLimited:
+      description: Rate limit exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        type:
+          type: string
+        message:
+          type: string

@@ -1,0 +1,32 @@
+{
+  "provider": "tomorrow-io",
+  "sources": [
+    "tomorrow-io-alerts-api-openapi.yml",
+    "tomorrow-io-events-api-openapi.yml",
+    "tomorrow-io-forecast-api-openapi.yml",
+    "tomorrow-io-historical-api-openapi.yml",
+    "tomorrow-io-insights-api-openapi.yml",
+    "tomorrow-io-locations-api-openapi.yml",
+    "tomorrow-io-maps-api-openapi.yml",
+    "tomorrow-io-realtime-api-openapi.yml",
+    "tomorrow-io-route-api-openapi.yml",
+    "tomorrow-io-timelines-api-openapi.yml"
+  ],
+  "outputs": [
+    "tomorrow-io-alerts-api-openapi.yml",
+    "tomorrow-io-events-api-openapi.yml",
+    "tomorrow-io-forecast-api-openapi.yml",
+    "tomorrow-io-historical-api-openapi.yml",
+    "tomorrow-io-insights-api-openapi.yml",
+    "tomorrow-io-locations-api-openapi.yml",
+    "tomorrow-io-maps-api-openapi.yml",
+    "tomorrow-io-realtime-api-openapi.yml",
+    "tomorrow-io-route-api-openapi.yml",
+    "tomorrow-io-timelines-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
