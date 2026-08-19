@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Tomorrow.io Insights API",
+    "name": "Tomorrow.io Alerts Insights API",
     "version": "4.0"
   },
   "request": {

@@ -1,30 +1,42 @@
 {
   "item": [
     {
-      "id": "a020ec8e-48fc-4153-890c-afd1b2cef939",
-      "name": "Route",
+      "id": "c1294132-be38-43e8-9d00-f37bbdcd3a9a",
+      "name": "Realtime",
       "description": {
-        "content": "Weather along a route.",
+        "content": "Current weather conditions for a point or location.",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "d920b9a7-533e-42c5-97b9-ad31a04c6789",
-          "name": "Retrieve Weather Along Route",
+          "id": "2ea26e6c-7914-42b9-8f57-c021eedde87e",
+          "name": "Get Realtime Weather",
           "request": {
-            "name": "Retrieve Weather Along Route",
+            "name": "Get Realtime Weather",
             "description": {
-              "content": "Submit a polyline of waypoints with arrival times and receive weather data\nlayers at each waypoint at its predicted arrival time.\n",
+              "content": "Retrieve the current weather conditions for a given latitude/longitude or\nnamed location, including temperature, wind, precipitation, humidity, UV,\nand 60+ optional data layers.\n",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "route"
+                "weather",
+                "realtime"
               ],
               "host": [
                 "{{baseUrl}}"
               ],
               "query": [
+                {
+                  "disabled": false,
+                  "key": "location",
+                  "value": "<string>",
+                  "description": "(Required) Either 'lat,lng' or a Tomorrow.io locationId."
+                },
+                {
+                  "disabled": false,
+                  "key": "units",
+                  "value": "metric"
+                },
                 {
                   "disabled": false,
                   "key": "apikey",
@@ -36,39 +48,35 @@
             },
             "header": [
               {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"waypoints\": [\n    {\n      \"location\": {\n        \"type\": \"<string>\",\n        \"coordinates\": [\n          \"<number>\",\n          \"<number>\"\n        ]\n      },\n      \"time\": \"<dateTime>\"\n    },\n    {\n      \"location\": {\n        \"type\": \"<string>\",\n        \"coordinates\": [\n          \"<number>\",\n          \"<number>\"\n        ]\n      },\n      \"time\": \"<dateTime>\"\n    }\n  ],\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"units\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
+            "method": "GET",
+            "auth": null
           },
           "response": [
             {
-              "id": "81464d32-dce8-4650-9705-548faada61f8",
-              "name": "Per-waypoint weather payload.",
+              "id": "e9d988ab-a57d-45e6-ab30-0fba654506c4",
+              "name": "Realtime weather payload.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "route"
+                    "weather",
+                    "realtime"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
                   "query": [
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "metric"
+                    },
                     {
                       "key": "apikey",
                       "value": "<string>"
@@ -86,16 +94,8 @@
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"waypoints\": [\n    {\n      \"location\": {\n        \"type\": \"<string>\",\n        \"coordinates\": [\n          \"<number>\",\n          \"<number>\"\n        ]\n      },\n      \"time\": \"<dateTime>\"\n    },\n    {\n      \"location\": {\n        \"type\": \"<string>\",\n        \"coordinates\": [\n          \"<number>\",\n          \"<number>\"\n        ]\n      },\n      \"time\": \"<dateTime>\"\n    }\n  ],\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"units\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
+                "method": "GET",
+                "body": {}
               },
               "status": "OK",
               "code": 200,
@@ -105,22 +105,31 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"data\": {\n    \"waypoints\": [\n      {\n        \"location\": {\n          \"lat\": 1321.4712367878335,\n          \"lon\": 8492.477748980842\n        },\n        \"time\": \"2003-06-04T03:51:22.614Z\",\n        \"values\": {\n          \"key_0\": 4676,\n          \"key_1\": \"string\"\n        }\n      },\n      {\n        \"location\": {\n          \"lat\": 3732.818838870985,\n          \"lon\": 1596.6875996805097\n        },\n        \"time\": \"1974-07-07T06:30:33.702Z\",\n        \"values\": {\n          \"key_0\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "body": "{\n  \"data\": {\n    \"time\": \"1967-05-01T16:47:21.377Z\",\n    \"values\": {\n      \"temperature\": 4433.472599664768,\n      \"temperatureApparent\": 8472.658800192354,\n      \"humidity\": 9461.132768127682,\n      \"windSpeed\": 6588.545337884107,\n      \"windDirection\": 1675.0591485423981,\n      \"windGust\": 981.2154514346638,\n      \"precipitationIntensity\": 4412.6446123087035,\n      \"precipitationProbability\": 7237.109708688005,\n      \"precipitationType\": 9228,\n      \"cloudCover\": 7829.655700092264,\n      \"visibility\": 7633.322671608103,\n      \"pressureSurfaceLevel\": 2931.321255839665,\n      \"uvIndex\": 2774,\n      \"weatherCode\": 7127,\n      \"epaIndex\": 1937,\n      \"treeIndex\": 8551,\n      \"grassIndex\": 2481,\n      \"weedIndex\": 6598\n    }\n  },\n  \"location\": {\n    \"lat\": 8197.36822822526,\n    \"lon\": 4191.929447832215,\n    \"name\": \"string\",\n    \"type\": \"string\"\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "73f7c25c-45b8-4b92-bf67-cdfee0859f58",
+              "id": "ad817220-5b95-4fc0-ad98-1a039343f498",
               "name": "Missing or invalid API key.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "route"
+                    "weather",
+                    "realtime"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
                   "query": [
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "metric"
+                    },
                     {
                       "key": "apikey",
                       "value": "<string>"
@@ -138,16 +147,8 @@
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"waypoints\": [\n    {\n      \"location\": {\n        \"type\": \"<string>\",\n        \"coordinates\": [\n          \"<number>\",\n          \"<number>\"\n        ]\n      },\n      \"time\": \"<dateTime>\"\n    },\n    {\n      \"location\": {\n        \"type\": \"<string>\",\n        \"coordinates\": [\n          \"<number>\",\n          \"<number>\"\n        ]\n      },\n      \"time\": \"<dateTime>\"\n    }\n  ],\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"units\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
+                "method": "GET",
+                "body": {}
               },
               "status": "Unauthorized",
               "code": 401,
@@ -157,22 +158,31 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": 5557,\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "body": "{\n  \"code\": 9805,\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "2cc9c486-53e7-4716-9312-6ff672b6e78e",
-              "name": "Rate limit exceeded.",
+              "id": "09863a32-bbea-49ec-a00b-e4d47857f3fb",
+              "name": "Rate limit exceeded for the plan tier.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "route"
+                    "weather",
+                    "realtime"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
                   "query": [
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "metric"
+                    },
                     {
                       "key": "apikey",
                       "value": "<string>"
@@ -190,16 +200,8 @@
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"waypoints\": [\n    {\n      \"location\": {\n        \"type\": \"<string>\",\n        \"coordinates\": [\n          \"<number>\",\n          \"<number>\"\n        ]\n      },\n      \"time\": \"<dateTime>\"\n    },\n    {\n      \"location\": {\n        \"type\": \"<string>\",\n        \"coordinates\": [\n          \"<number>\",\n          \"<number>\"\n        ]\n      },\n      \"time\": \"<dateTime>\"\n    }\n  ],\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"units\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
+                "method": "GET",
+                "body": {}
               },
               "status": "Too Many Requests",
               "code": 429,
@@ -209,7 +211,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": 5557,\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "body": "{\n  \"code\": 9805,\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -249,8 +251,8 @@
     ]
   },
   "info": {
-    "_postman_id": "cf548ed9-a808-45a9-8e08-794da5d50987",
-    "name": "Tomorrow.io Alerts Route API",
+    "_postman_id": "b5c46321-d033-4e41-af02-b9a01b8b39d4",
+    "name": "Tomorrow.io Alerts Realtime API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "Create, manage, and trigger weather-based alerts. Alerts evaluate Tomorrow.io\nweather data layers against custom thresholds for one or more linked locations\nand deliver notifications via webhook, email, and the Tomorrow.io app.\n\n\nContact Support:\n Name: Tomorrow.io Support",

@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Tomorrow.io Locations API",
+    "name": "Tomorrow.io Alerts Locations API",
     "version": "4.0"
   },
   "request": {

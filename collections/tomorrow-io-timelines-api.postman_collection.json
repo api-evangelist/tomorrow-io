@@ -1,0 +1,555 @@
+{
+  "item": [
+    {
+      "id": "3bb6b9f8-63f7-49ef-abf0-9fad8953de03",
+      "name": "Timelines",
+      "description": {
+        "content": "Flexible timeline retrieval across any combination of fields and timesteps.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "659b43a1-5513-4af8-aa47-b18a82385c76",
+          "name": "Retrieve Timelines (Basic)",
+          "request": {
+            "name": "Retrieve Timelines (Basic)",
+            "description": {
+              "content": "Query weather, air quality, pollen, fire, and other data layers across an\narbitrary time range and timestep with a simple query-string request.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "timelines"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "location",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "(Required) Comma separated list of data layer field names (e.g. temperature,windSpeed,precipitationIntensity)."
+                },
+                {
+                  "disabled": false,
+                  "key": "startTime",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endTime",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "timesteps",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "units",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "timezone",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "653924be-8cb6-4f92-99ea-6d88f05813d3",
+              "name": "Timeline payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "timesteps",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"timelines\": [\n      {\n        \"timestep\": \"string\",\n        \"startTime\": \"2003-06-26T21:18:41.046Z\",\n        \"endTime\": \"1986-03-02T20:59:28.052Z\",\n        \"intervals\": [\n          {\n            \"startTime\": \"1978-05-14T14:47:00.387Z\",\n            \"values\": {\n              \"temperature\": 5450.468356069838,\n              \"temperatureApparent\": 6350.564529670058,\n              \"humidity\": 336.53414102147616,\n              \"windSpeed\": 7923.818551391254,\n              \"windDirection\": 1844.0224322764143,\n              \"windGust\": 1827.5498359875287,\n              \"precipitationIntensity\": 3243.47860822645,\n              \"precipitationProbability\": 185.88750074064464,\n              \"precipitationType\": 4627,\n              \"cloudCover\": 9820.864645469763,\n              \"visibility\": 5384.580524040071,\n              \"pressureSurfaceLevel\": 2427.6452663099303,\n              \"uvIndex\": 4005,\n              \"weatherCode\": 2049,\n              \"epaIndex\": 1348,\n              \"treeIndex\": 3295,\n              \"grassIndex\": 1142,\n              \"weedIndex\": 4924\n            }\n          },\n          {\n            \"startTime\": \"1991-04-26T18:47:18.054Z\",\n            \"values\": {\n              \"temperature\": 1158.8352926151713,\n              \"temperatureApparent\": 655.6971704725345,\n              \"humidity\": 9917.776220830487,\n              \"windSpeed\": 9112.513358823771,\n              \"windDirection\": 8035.044347928288,\n              \"windGust\": 7583.447661428589,\n              \"precipitationIntensity\": 1105.6057185931102,\n              \"precipitationProbability\": 1642.3245807388187,\n              \"precipitationType\": 75,\n              \"cloudCover\": 8830.163738571546,\n              \"visibility\": 841.7714851090285,\n              \"pressureSurfaceLevel\": 4700.767965943976,\n              \"uvIndex\": 3074,\n              \"weatherCode\": 9293,\n              \"epaIndex\": 6868,\n              \"treeIndex\": 9458,\n              \"grassIndex\": 7865,\n              \"weedIndex\": 9632\n            }\n          }\n        ]\n      },\n      {\n        \"timestep\": \"string\",\n        \"startTime\": \"1955-03-01T05:03:43.734Z\",\n        \"endTime\": \"2019-01-05T16:13:25.322Z\",\n        \"intervals\": [\n          {\n            \"startTime\": \"1957-09-13T11:25:47.459Z\",\n            \"values\": {\n              \"temperature\": 3128.604566186811,\n              \"temperatureApparent\": 9627.064893705265,\n              \"humidity\": 2832.2728473545158,\n              \"windSpeed\": 4212.873527613309,\n              \"windDirection\": 6616.058110244151,\n              \"windGust\": 4189.396999176104,\n              \"precipitationIntensity\": 8402.094621141307,\n              \"precipitationProbability\": 9840.526133759557,\n              \"precipitationType\": 1930,\n              \"cloudCover\": 7335.415130691634,\n              \"visibility\": 8131.149453176938,\n              \"pressureSurfaceLevel\": 4090.050245707556,\n              \"uvIndex\": 8547,\n              \"weatherCode\": 4417,\n              \"epaIndex\": 4399,\n              \"treeIndex\": 543,\n              \"grassIndex\": 281,\n              \"weedIndex\": 7862\n            }\n          },\n          {\n            \"startTime\": \"1947-02-02T06:13:45.220Z\",\n            \"values\": {\n              \"temperature\": 9271.076281605543,\n              \"temperatureApparent\": 8590.623504568786,\n              \"humidity\": 7441.40101040809,\n              \"windSpeed\": 6822.623415354332,\n              \"windDirection\": 1834.9387046485788,\n              \"windGust\": 4642.886428737313,\n              \"precipitationIntensity\": 6783.764103451164,\n              \"precipitationProbability\": 320.1216428202347,\n              \"precipitationType\": 5423,\n              \"cloudCover\": 9998.65702053396,\n              \"visibility\": 729.1074785204121,\n              \"pressureSurfaceLevel\": 6135.8361733674465,\n              \"uvIndex\": 9984,\n              \"weatherCode\": 2573,\n              \"epaIndex\": 6397,\n              \"treeIndex\": 1599,\n              \"grassIndex\": 6820,\n              \"weedIndex\": 2656\n            }\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04c67da5-58c0-4e79-b7d5-6f1ca4df852c",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "timesteps",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9172,\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a929c477-3390-4d89-8cd5-18e0b47cb001",
+              "name": "Rate limit exceeded for the plan tier.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "timesteps",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9172,\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9540cfe0-feeb-4219-a048-aa56719355b7",
+          "name": "Retrieve Timelines (Advanced)",
+          "request": {
+            "name": "Retrieve Timelines (Advanced)",
+            "description": {
+              "content": "Advanced timelines request supporting polygon and polyline geometries,\nlarge field lists, and complex unit and timezone configuration in the\nrequest body.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "timelines"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"location\": \"<string>\",\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"timesteps\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"units\": \"<string>\",\n  \"timezone\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "77da3bdd-1278-4ace-97a6-634855febead",
+              "name": "Timeline payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"timesteps\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"units\": \"<string>\",\n  \"timezone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"timelines\": [\n      {\n        \"timestep\": \"string\",\n        \"startTime\": \"2003-06-26T21:18:41.046Z\",\n        \"endTime\": \"1986-03-02T20:59:28.052Z\",\n        \"intervals\": [\n          {\n            \"startTime\": \"1978-05-14T14:47:00.387Z\",\n            \"values\": {\n              \"temperature\": 5450.468356069838,\n              \"temperatureApparent\": 6350.564529670058,\n              \"humidity\": 336.53414102147616,\n              \"windSpeed\": 7923.818551391254,\n              \"windDirection\": 1844.0224322764143,\n              \"windGust\": 1827.5498359875287,\n              \"precipitationIntensity\": 3243.47860822645,\n              \"precipitationProbability\": 185.88750074064464,\n              \"precipitationType\": 4627,\n              \"cloudCover\": 9820.864645469763,\n              \"visibility\": 5384.580524040071,\n              \"pressureSurfaceLevel\": 2427.6452663099303,\n              \"uvIndex\": 4005,\n              \"weatherCode\": 2049,\n              \"epaIndex\": 1348,\n              \"treeIndex\": 3295,\n              \"grassIndex\": 1142,\n              \"weedIndex\": 4924\n            }\n          },\n          {\n            \"startTime\": \"1991-04-26T18:47:18.054Z\",\n            \"values\": {\n              \"temperature\": 1158.8352926151713,\n              \"temperatureApparent\": 655.6971704725345,\n              \"humidity\": 9917.776220830487,\n              \"windSpeed\": 9112.513358823771,\n              \"windDirection\": 8035.044347928288,\n              \"windGust\": 7583.447661428589,\n              \"precipitationIntensity\": 1105.6057185931102,\n              \"precipitationProbability\": 1642.3245807388187,\n              \"precipitationType\": 75,\n              \"cloudCover\": 8830.163738571546,\n              \"visibility\": 841.7714851090285,\n              \"pressureSurfaceLevel\": 4700.767965943976,\n              \"uvIndex\": 3074,\n              \"weatherCode\": 9293,\n              \"epaIndex\": 6868,\n              \"treeIndex\": 9458,\n              \"grassIndex\": 7865,\n              \"weedIndex\": 9632\n            }\n          }\n        ]\n      },\n      {\n        \"timestep\": \"string\",\n        \"startTime\": \"1955-03-01T05:03:43.734Z\",\n        \"endTime\": \"2019-01-05T16:13:25.322Z\",\n        \"intervals\": [\n          {\n            \"startTime\": \"1957-09-13T11:25:47.459Z\",\n            \"values\": {\n              \"temperature\": 3128.604566186811,\n              \"temperatureApparent\": 9627.064893705265,\n              \"humidity\": 2832.2728473545158,\n              \"windSpeed\": 4212.873527613309,\n              \"windDirection\": 6616.058110244151,\n              \"windGust\": 4189.396999176104,\n              \"precipitationIntensity\": 8402.094621141307,\n              \"precipitationProbability\": 9840.526133759557,\n              \"precipitationType\": 1930,\n              \"cloudCover\": 7335.415130691634,\n              \"visibility\": 8131.149453176938,\n              \"pressureSurfaceLevel\": 4090.050245707556,\n              \"uvIndex\": 8547,\n              \"weatherCode\": 4417,\n              \"epaIndex\": 4399,\n              \"treeIndex\": 543,\n              \"grassIndex\": 281,\n              \"weedIndex\": 7862\n            }\n          },\n          {\n            \"startTime\": \"1947-02-02T06:13:45.220Z\",\n            \"values\": {\n              \"temperature\": 9271.076281605543,\n              \"temperatureApparent\": 8590.623504568786,\n              \"humidity\": 7441.40101040809,\n              \"windSpeed\": 6822.623415354332,\n              \"windDirection\": 1834.9387046485788,\n              \"windGust\": 4642.886428737313,\n              \"precipitationIntensity\": 6783.764103451164,\n              \"precipitationProbability\": 320.1216428202347,\n              \"precipitationType\": 5423,\n              \"cloudCover\": 9998.65702053396,\n              \"visibility\": 729.1074785204121,\n              \"pressureSurfaceLevel\": 6135.8361733674465,\n              \"uvIndex\": 9984,\n              \"weatherCode\": 2573,\n              \"epaIndex\": 6397,\n              \"treeIndex\": 1599,\n              \"grassIndex\": 6820,\n              \"weedIndex\": 2656\n            }\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a9e95982-d29b-4d97-908e-68d084b24c06",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"timesteps\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"units\": \"<string>\",\n  \"timezone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9172,\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f71b2fa5-caeb-4dc5-82f7-23baf18e4565",
+              "name": "Rate limit exceeded for the plan tier.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"timesteps\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"units\": \"<string>\",\n  \"timezone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9172,\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tomorrow.io/v4",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "31e5e3ef-7aba-4f97-b2e3-2b8df1e80678",
+    "name": "Tomorrow.io Alerts Timelines API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Create, manage, and trigger weather-based alerts. Alerts evaluate Tomorrow.io\nweather data layers against custom thresholds for one or more linked locations\nand deliver notifications via webhook, email, and the Tomorrow.io app.\n\n\nContact Support:\n Name: Tomorrow.io Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "7f4a9cc0-1494-40ae-80bd-1dd02dfcb1de",
+      "id": "8215ea51-f56b-44ab-826b-2c63742fb7e5",
       "name": "Historical",
       "description": {
         "content": "Retrieve historical weather data and climate normals.",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "7d2d37b5-f30c-4da2-9f31-72ce68459377",
+          "id": "f618dd72-ca9d-4436-a476-6f7b38f08aab",
           "name": "Retrieve Historical Timeline",
           "request": {
             "name": "Retrieve Historical Timeline",
@@ -58,7 +58,7 @@
           },
           "response": [
             {
-              "id": "d39172c4-aa15-4faf-9f42-74773ec270a7",
+              "id": "20180eba-2e64-4086-92c3-9d05b2bb703d",
               "name": "Historical timeline payload.",
               "originalRequest": {
                 "url": {
@@ -105,12 +105,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"data\": {\n    \"timelines\": [\n      {\n        \"timestep\": \"string\",\n        \"startTime\": \"string\",\n        \"endTime\": \"string\",\n        \"intervals\": [\n          {\n            \"startTime\": \"1992-11-08T10:54:59.039Z\",\n            \"values\": {\n              \"key_0\": \"string\",\n              \"key_1\": false\n            }\n          },\n          {\n            \"startTime\": \"1994-08-17T20:44:41.700Z\",\n            \"values\": {\n              \"key_0\": \"string\"\n            }\n          }\n        ]\n      },\n      {\n        \"timestep\": \"string\",\n        \"startTime\": \"string\",\n        \"endTime\": \"string\",\n        \"intervals\": [\n          {\n            \"startTime\": \"1985-06-09T07:08:50.337Z\",\n            \"values\": {\n              \"key_0\": 9778.144181777829,\n              \"key_1\": 4709,\n              \"key_2\": \"string\"\n            }\n          },\n          {\n            \"startTime\": \"1959-11-26T21:09:54.766Z\",\n            \"values\": {\n              \"key_0\": \"string\",\n              \"key_1\": false,\n              \"key_2\": \"string\",\n              \"key_3\": 7942.473412219488\n            }\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "body": "{\n  \"data\": {\n    \"timelines\": [\n      {\n        \"timestep\": \"string\",\n        \"startTime\": \"string\",\n        \"endTime\": \"string\",\n        \"intervals\": [\n          {\n            \"startTime\": \"2006-12-19T18:30:23.238Z\",\n            \"values\": {\n              \"key_0\": 7897\n            }\n          },\n          {\n            \"startTime\": \"1952-12-14T08:52:22.708Z\",\n            \"values\": {\n              \"key_0\": 1608\n            }\n          }\n        ]\n      },\n      {\n        \"timestep\": \"string\",\n        \"startTime\": \"string\",\n        \"endTime\": \"string\",\n        \"intervals\": [\n          {\n            \"startTime\": \"1986-12-01T02:40:49.039Z\",\n            \"values\": {\n              \"key_0\": 6880\n            }\n          },\n          {\n            \"startTime\": \"2013-01-03T10:54:02.992Z\",\n            \"values\": {\n              \"key_0\": 7129.11038175342,\n              \"key_1\": false\n            }\n          }\n        ]\n      }\n    ]\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "3e2cf75b-552a-4149-a5ef-fc050dbc5d21",
+              "id": "253b550c-2abf-4662-bdc2-12af395c284b",
               "name": "Missing or invalid API key.",
               "originalRequest": {
                 "url": {
@@ -157,12 +157,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": 2007,\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "body": "{\n  \"code\": 816,\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "de5ee173-6a75-4743-9990-d82596d3a50a",
+              "id": "ad7c45d1-d063-45ac-87c1-15e2f0587ea9",
               "name": "Rate limit exceeded for the plan tier.",
               "originalRequest": {
                 "url": {
@@ -209,7 +209,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": 2007,\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "body": "{\n  \"code\": 816,\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -220,7 +220,7 @@
           }
         },
         {
-          "id": "734a70b3-3028-4de8-8c3d-52d2d0a99125",
+          "id": "935ee339-4661-448f-a599-ab7336322bd6",
           "name": "Get Climate Normals",
           "request": {
             "name": "Get Climate Normals",
@@ -269,7 +269,7 @@
           },
           "response": [
             {
-              "id": "baabd9e0-0161-4ea8-a21c-711cafe63610",
+              "id": "d6179fe1-5632-4ffe-9663-70b96add2f13",
               "name": "Climate normals payload.",
               "originalRequest": {
                 "url": {
@@ -318,12 +318,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"location\": {\n    \"lat\": 5341.548998315928,\n    \"lon\": 3884.044033269548\n  },\n  \"data\": {\n    \"months\": [\n      {\n        \"month\": 5323,\n        \"values\": {\n          \"key_0\": 6661.77825102652\n        }\n      },\n      {\n        \"month\": 1454,\n        \"values\": {\n          \"key_0\": 8236.61071380125\n        }\n      }\n    ]\n  }\n}",
+              "body": "{\n  \"location\": {\n    \"lat\": 520.8925430474453,\n    \"lon\": 1226.2430239854239\n  },\n  \"data\": {\n    \"months\": [\n      {\n        \"month\": 7458,\n        \"values\": {\n          \"key_0\": 2585.2227694011663,\n          \"key_1\": 9225.666321950352,\n          \"key_2\": 2580.328682220756\n        }\n      },\n      {\n        \"month\": 7745,\n        \"values\": {\n          \"key_0\": 4738.076707132208\n        }\n      }\n    ]\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "438bb01a-b479-4cf3-8e4d-4d7a1a134de4",
+              "id": "33d96817-c604-4a4c-b3b3-1c5b9ba7b1f2",
               "name": "Missing or invalid API key.",
               "originalRequest": {
                 "url": {
@@ -372,12 +372,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": 2007,\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "body": "{\n  \"code\": 816,\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "37036e52-9bec-4732-9aae-3889a5a1eef1",
+              "id": "93f5b5f7-65b6-411e-910a-bfc176c702df",
               "name": "Rate limit exceeded for the plan tier.",
               "originalRequest": {
                 "url": {
@@ -426,7 +426,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": 2007,\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "body": "{\n  \"code\": 816,\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -466,11 +466,11 @@
     ]
   },
   "info": {
-    "_postman_id": "9e8e9157-8b30-42be-b695-65182d85026d",
-    "name": "Tomorrow.io Historical Weather API",
+    "_postman_id": "52a6f36d-ecce-49fe-85ac-2c53f763d8fe",
+    "name": "Tomorrow.io Alerts Historical API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "Retrieve historical weather observations and climate normals for any point or\npolygon on Earth. Covers recent history (hourly), long-term archives (going\nback decades), and monthly climate normals, all with the same field catalog as\nthe realtime and forecast APIs.\n\n\nContact Support:\n Name: Tomorrow.io Support",
+      "content": "Create, manage, and trigger weather-based alerts. Alerts evaluate Tomorrow.io\nweather data layers against custom thresholds for one or more linked locations\nand deliver notifications via webhook, email, and the Tomorrow.io app.\n\n\nContact Support:\n Name: Tomorrow.io Support",
       "type": "text/plain"
     }
   }

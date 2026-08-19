@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Tomorrow.io Events API",
+    "name": "Tomorrow.io Alerts Events API",
     "version": "4.0"
   },
   "request": {

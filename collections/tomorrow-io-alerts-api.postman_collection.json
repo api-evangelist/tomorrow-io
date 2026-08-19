@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "07842391-b5e7-4fcd-be41-dd0fec9cd1c5",
+      "id": "fa12a355-3b1d-462e-8d03-53526f684a90",
       "name": "Alerts",
       "description": {
         "content": "Manage weather alerts and their location bindings.",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "659aa5d5-d375-469b-b8f7-ce7aa0400aab",
+          "id": "4099546b-80b9-4566-9955-6463d6eff426",
           "name": "List Alerts",
           "request": {
             "name": "List Alerts",
@@ -42,7 +42,7 @@
           },
           "response": [
             {
-              "id": "3800adc6-cb16-4a1e-94a9-c593882e1cad",
+              "id": "2a7fef9f-7ba2-4e0d-9cc0-ac7ccf9e7b76",
               "name": "Alert list.",
               "originalRequest": {
                 "url": {
@@ -81,7 +81,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"active\": false,\n      \"condition\": {\n        \"field\": \"string\",\n        \"operator\": \"lt\",\n        \"value\": 4173.987538760775\n      },\n      \"notifications\": {\n        \"webhookUrl\": \"string\",\n        \"email\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"linkedLocationIds\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"active\": false,\n      \"condition\": {\n        \"field\": \"string\",\n        \"operator\": \"lte\",\n        \"value\": 7636.09109614848\n      },\n      \"notifications\": {\n        \"webhookUrl\": \"string\",\n        \"email\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"linkedLocationIds\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"active\": false,\n      \"condition\": {\n        \"field\": \"string\",\n        \"operator\": \"neq\",\n        \"value\": 1775.1864990480126\n      },\n      \"notifications\": {\n        \"webhookUrl\": \"string\",\n        \"email\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"linkedLocationIds\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"active\": true,\n      \"condition\": {\n        \"field\": \"string\",\n        \"operator\": \"gte\",\n        \"value\": 7965.661214035371\n      },\n      \"notifications\": {\n        \"webhookUrl\": \"string\",\n        \"email\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"linkedLocationIds\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -92,7 +92,7 @@
           }
         },
         {
-          "id": "38dd4197-5ebd-4ce3-8a4f-88c3ee523b3a",
+          "id": "855477b8-1e0d-46dc-b8b7-2abb0703f550",
           "name": "Create an Alert",
           "request": {
             "name": "Create an Alert",
@@ -138,7 +138,7 @@
           },
           "response": [
             {
-              "id": "ba03953b-2c28-4d29-957e-537aae656e81",
+              "id": "8e1c0020-9fb5-4b09-90d3-8a1116a5a4c1",
               "name": "Alert created.",
               "originalRequest": {
                 "url": {
@@ -185,7 +185,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"active\": false,\n  \"condition\": {\n    \"field\": \"string\",\n    \"operator\": \"eq\",\n    \"value\": 9463.223659023997\n  },\n  \"notifications\": {\n    \"webhookUrl\": \"string\",\n    \"email\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"linkedLocationIds\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"active\": false,\n  \"condition\": {\n    \"field\": \"string\",\n    \"operator\": \"lt\",\n    \"value\": 2154.1609788717133\n  },\n  \"notifications\": {\n    \"webhookUrl\": \"string\",\n    \"email\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"linkedLocationIds\": [\n    \"string\",\n    \"string\"\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -196,7 +196,7 @@
           }
         },
         {
-          "id": "c4558529-4bb2-4b05-bbe9-ba37e4f7dcca",
+          "id": "f9d79220-bd93-4136-a5ad-625155d2feb3",
           "name": "Retrieve an Alert",
           "request": {
             "name": "Retrieve an Alert",
@@ -238,7 +238,7 @@
           },
           "response": [
             {
-              "id": "9e84f344-8123-44b4-b3e3-a48b1a7b2dd9",
+              "id": "0a325aa1-4430-41a8-b911-4d9e157d6963",
               "name": "Alert resource.",
               "originalRequest": {
                 "url": {
@@ -286,7 +286,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"active\": false,\n  \"condition\": {\n    \"field\": \"string\",\n    \"operator\": \"eq\",\n    \"value\": 9463.223659023997\n  },\n  \"notifications\": {\n    \"webhookUrl\": \"string\",\n    \"email\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"linkedLocationIds\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"active\": false,\n  \"condition\": {\n    \"field\": \"string\",\n    \"operator\": \"lt\",\n    \"value\": 2154.1609788717133\n  },\n  \"notifications\": {\n    \"webhookUrl\": \"string\",\n    \"email\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"linkedLocationIds\": [\n    \"string\",\n    \"string\"\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -297,7 +297,7 @@
           }
         },
         {
-          "id": "a9db7e18-2228-4df3-9681-41d64a764baa",
+          "id": "4c7f9399-a077-4946-863f-a5c6fb3809c2",
           "name": "Update an Alert",
           "request": {
             "name": "Update an Alert",
@@ -352,7 +352,7 @@
           },
           "response": [
             {
-              "id": "aab58e67-68d9-43ee-8bc3-81497e02ae9d",
+              "id": "9ff492cb-49fc-4867-9458-388742a73c0a",
               "name": "Updated alert.",
               "originalRequest": {
                 "url": {
@@ -408,7 +408,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"active\": false,\n  \"condition\": {\n    \"field\": \"string\",\n    \"operator\": \"eq\",\n    \"value\": 9463.223659023997\n  },\n  \"notifications\": {\n    \"webhookUrl\": \"string\",\n    \"email\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"linkedLocationIds\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"active\": false,\n  \"condition\": {\n    \"field\": \"string\",\n    \"operator\": \"lt\",\n    \"value\": 2154.1609788717133\n  },\n  \"notifications\": {\n    \"webhookUrl\": \"string\",\n    \"email\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"linkedLocationIds\": [\n    \"string\",\n    \"string\"\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -419,7 +419,7 @@
           }
         },
         {
-          "id": "ff624e04-843a-4cf2-b815-7c06f242e2e6",
+          "id": "1a1f0533-dece-4ef2-9a04-4c7b89c9cf18",
           "name": "Delete an Alert",
           "request": {
             "name": "Delete an Alert",
@@ -455,7 +455,7 @@
           },
           "response": [
             {
-              "id": "2810736f-7fc7-44cc-9a27-7a9ee7fc3431",
+              "id": "0be6538b-a1a4-4120-95fa-1f38ddeeeeab",
               "name": "Deleted.",
               "originalRequest": {
                 "url": {
@@ -508,7 +508,7 @@
           }
         },
         {
-          "id": "25a26a0b-e2e0-47e0-8470-4ab0efc2fe94",
+          "id": "8bc12078-09c8-40ff-baa3-974c36b7504a",
           "name": "List Alert Locations",
           "request": {
             "name": "List Alert Locations",
@@ -545,7 +545,7 @@
           },
           "response": [
             {
-              "id": "033e8e63-505c-416e-8f13-d5bedccbf432",
+              "id": "c5d7e358-1f4d-4e5e-bf20-2f06bfd89086",
               "name": "Linked locations.",
               "originalRequest": {
                 "url": {
@@ -599,7 +599,7 @@
           }
         },
         {
-          "id": "b2192d7c-5a5f-42c2-9124-5b4f43ea7379",
+          "id": "7162cd89-277d-4e7b-8eca-7e0a2fa18994",
           "name": "Link Locations To Alert",
           "request": {
             "name": "Link Locations To Alert",
@@ -652,7 +652,7 @@
           },
           "response": [
             {
-              "id": "85f4c06a-6755-4fc3-a1b0-f4561fd9f42a",
+              "id": "97dde0ea-1d15-4dfc-88da-f7f6c75d347f",
               "name": "Locations linked.",
               "originalRequest": {
                 "url": {
@@ -715,7 +715,7 @@
           }
         },
         {
-          "id": "e19851bf-1c13-4be3-8281-ee9a99f344d3",
+          "id": "34400a53-e5db-4440-b21c-40dbe869beda",
           "name": "Unlink Locations From Alert",
           "request": {
             "name": "Unlink Locations From Alert",
@@ -768,7 +768,7 @@
           },
           "response": [
             {
-              "id": "d93ab918-f4ee-4369-a691-7caa8fcf3948",
+              "id": "47bf0073-201a-4f36-8002-46f35047b36f",
               "name": "Locations unlinked.",
               "originalRequest": {
                 "url": {
@@ -831,7 +831,7 @@
           }
         },
         {
-          "id": "1b6f13d5-147c-4933-83c6-b8e2d1d9769b",
+          "id": "afb1d273-3a4e-4d2b-8074-ac4959cada11",
           "name": "Activate an Alert",
           "request": {
             "name": "Activate an Alert",
@@ -868,7 +868,7 @@
           },
           "response": [
             {
-              "id": "d0c7f09c-a416-42e2-95f8-c3fde61dc866",
+              "id": "402096be-eb9b-4145-9664-ba8238d850a3",
               "name": "Alert activated.",
               "originalRequest": {
                 "url": {
@@ -922,7 +922,7 @@
           }
         },
         {
-          "id": "bb73f423-8a6c-4e8e-b632-b8e6b4fd7e92",
+          "id": "e94ad059-7813-47e0-852f-4a54f9291104",
           "name": "Deactivate an Alert",
           "request": {
             "name": "Deactivate an Alert",
@@ -959,7 +959,7 @@
           },
           "response": [
             {
-              "id": "e3c3d72c-d833-4206-8495-8c25ce7a7767",
+              "id": "a18a5b92-7b93-45b0-93db-83da6428a41b",
               "name": "Alert deactivated.",
               "originalRequest": {
                 "url": {
@@ -1042,7 +1042,7 @@
     ]
   },
   "info": {
-    "_postman_id": "223fb355-db84-4b91-97d5-16f692da4fa7",
+    "_postman_id": "f595c801-0225-4986-90dd-0dca1c248d28",
     "name": "Tomorrow.io Alerts API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {

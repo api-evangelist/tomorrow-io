@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "31aa2b79-579d-4e30-981b-3adf9e0dbbf0",
+      "id": "80304999-d9cc-4d23-ad6b-2d52414857f8",
       "name": "Locations",
       "description": {
         "content": "Manage reusable location resources.",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "4dcc10a8-8017-4065-8859-6a9f1c143154",
+          "id": "caefb6dd-f037-4dee-9093-40baea6e0bf1",
           "name": "List Locations",
           "request": {
             "name": "List Locations",
@@ -45,7 +45,7 @@
           },
           "response": [
             {
-              "id": "b2aa66e0-ae16-49d3-a48e-a44d529c7861",
+              "id": "b2f98381-688c-4402-aedb-0a0ce81eb0e5",
               "name": "Location list.",
               "originalRequest": {
                 "url": {
@@ -95,7 +95,7 @@
           }
         },
         {
-          "id": "18440b88-e914-4a05-8f2e-7267413e1750",
+          "id": "829dfb0d-5c89-48cc-be13-bc4175b6833c",
           "name": "Create a Location",
           "request": {
             "name": "Create a Location",
@@ -144,7 +144,7 @@
           },
           "response": [
             {
-              "id": "15ac7b86-23e1-4b49-8055-3acdff01183c",
+              "id": "473fdfec-8708-41da-8850-39c7232654b9",
               "name": "Location created.",
               "originalRequest": {
                 "url": {
@@ -191,7 +191,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"location\": {\n    \"type\": \"LineString\"\n  },\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"location\": {\n    \"type\": \"Polygon\"\n  },\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -202,7 +202,7 @@
           }
         },
         {
-          "id": "3b550903-942c-4300-850f-a23b1b844854",
+          "id": "95ac5609-f203-4cde-8bc4-b069446c6a3a",
           "name": "Retrieve a Location",
           "request": {
             "name": "Retrieve a Location",
@@ -244,7 +244,7 @@
           },
           "response": [
             {
-              "id": "93b57ff9-cd68-4634-a946-2d59e27e81fa",
+              "id": "1518da3b-1e9e-4207-9ff5-14d0ebb9af50",
               "name": "Location resource.",
               "originalRequest": {
                 "url": {
@@ -292,7 +292,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"location\": {\n    \"type\": \"LineString\"\n  },\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"location\": {\n    \"type\": \"Polygon\"\n  },\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -303,7 +303,7 @@
           }
         },
         {
-          "id": "6e977444-2889-43c8-ae8e-cf4c9471b4ff",
+          "id": "a9ad117e-0ede-4bee-b818-4cb2bfa163e0",
           "name": "Update a Location",
           "request": {
             "name": "Update a Location",
@@ -358,7 +358,7 @@
           },
           "response": [
             {
-              "id": "b986db01-7cd7-48e2-ac1f-bc5c96485347",
+              "id": "0d5d8fbd-b046-4f6d-9080-978c2dd3cbe2",
               "name": "Updated location.",
               "originalRequest": {
                 "url": {
@@ -414,7 +414,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"location\": {\n    \"type\": \"LineString\"\n  },\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"location\": {\n    \"type\": \"Polygon\"\n  },\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -425,7 +425,7 @@
           }
         },
         {
-          "id": "390c9bbc-cf09-44b3-8ec6-0d78473ea1a9",
+          "id": "0ba8b7a9-2514-40a7-a0bf-b039ff25a2e7",
           "name": "Delete a Location",
           "request": {
             "name": "Delete a Location",
@@ -461,7 +461,7 @@
           },
           "response": [
             {
-              "id": "932beaae-05e7-427f-b2b3-3f04018af51b",
+              "id": "7705b040-d37c-4ec1-ba13-6db19846fb52",
               "name": "Deleted.",
               "originalRequest": {
                 "url": {
@@ -514,7 +514,7 @@
           }
         },
         {
-          "id": "c4625c35-3ffe-456c-9828-bb2811e4c7fe",
+          "id": "792bc0c4-5b08-4384-9b2c-16699717686e",
           "name": "Add Location Tags",
           "request": {
             "name": "Add Location Tags",
@@ -561,7 +561,7 @@
           },
           "response": [
             {
-              "id": "31f30274-af56-43f5-a285-62c281eb89e8",
+              "id": "250e4b08-34bb-489e-93a6-e13b9c6273d9",
               "name": "Tag operation complete.",
               "originalRequest": {
                 "url": {
@@ -615,7 +615,7 @@
           }
         },
         {
-          "id": "78bbc992-3aad-49d8-851a-a26ed47ed4aa",
+          "id": "76c74647-b257-4411-9360-855467495167",
           "name": "Remove Location Tags",
           "request": {
             "name": "Remove Location Tags",
@@ -662,7 +662,7 @@
           },
           "response": [
             {
-              "id": "fdd86a20-3b3c-46fa-b1dd-2f248cc2e037",
+              "id": "396afc15-3914-4d9c-83e8-c03e8c94cc7c",
               "name": "Tag operation complete.",
               "originalRequest": {
                 "url": {
@@ -745,11 +745,11 @@
     ]
   },
   "info": {
-    "_postman_id": "fd36943c-ab3d-42d2-8da2-a7fef9b7c230",
-    "name": "Tomorrow.io Locations API",
+    "_postman_id": "27b0cdaa-a4f3-4d41-9f11-9cebd4d7b4aa",
+    "name": "Tomorrow.io Alerts Locations API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "Manage saved locations (points, polygons, lines) that can be reused across the\nTomorrow.io APIs and referenced by ``locationId`` in realtime, timelines,\nhistorical, alerts, and events requests. Supports tagging for cohort\norganization.\n\n\nContact Support:\n Name: Tomorrow.io Support",
+      "content": "Create, manage, and trigger weather-based alerts. Alerts evaluate Tomorrow.io\nweather data layers against custom thresholds for one or more linked locations\nand deliver notifications via webhook, email, and the Tomorrow.io app.\n\n\nContact Support:\n Name: Tomorrow.io Support",
       "type": "text/plain"
     }
   }

@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Tomorrow.io Weather on Routes API",
+    "name": "Tomorrow.io Alerts Route API",
     "version": "4.0"
   },
   "request": {

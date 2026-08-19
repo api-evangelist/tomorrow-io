@@ -1,0 +1,280 @@
+{
+  "item": [
+    {
+      "id": "e5717a73-67d9-449a-82ca-a300a9265929",
+      "name": "Forecast",
+      "description": {
+        "content": "1h / 1d step weather forecast for the next 14 days.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9a81c2bf-d0c3-407b-98db-dcee12d516d6",
+          "name": "Get Weather Forecast",
+          "request": {
+            "name": "Get Weather Forecast",
+            "description": {
+              "content": "Retrieve a structured forecast for a point or location, broken into\n``minutely`` (60m), ``hourly`` (up to 120h), and ``daily`` (up to 14d)\nintervals depending on plan tier.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "weather",
+                "forecast"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "location",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "timesteps",
+                  "value": "<string>",
+                  "description": "Comma separated steps from minutely, 1h, 1d."
+                },
+                {
+                  "disabled": false,
+                  "key": "units",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3c8bcdfd-f182-46f1-979e-bf4ff92a77c6",
+              "name": "Forecast timelines.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "weather",
+                    "forecast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timesteps",
+                      "value": "1h,1d"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"timelines\": {\n    \"minutely\": [\n      {\n        \"startTime\": \"1956-04-14T17:43:08.931Z\",\n        \"values\": {\n          \"temperature\": 4135.757721541248,\n          \"temperatureApparent\": 9845.576854093331,\n          \"humidity\": 9811.74255925115,\n          \"windSpeed\": 628.6047724263244,\n          \"windDirection\": 8076.384213479222,\n          \"windGust\": 164.02469404673047,\n          \"precipitationIntensity\": 3665.984618273296,\n          \"precipitationProbability\": 6921.077104963876,\n          \"precipitationType\": 9107,\n          \"cloudCover\": 5959.914106371513,\n          \"visibility\": 7463.554576982896,\n          \"pressureSurfaceLevel\": 5956.680988765281,\n          \"uvIndex\": 4105,\n          \"weatherCode\": 8076,\n          \"epaIndex\": 8072,\n          \"treeIndex\": 277,\n          \"grassIndex\": 5669,\n          \"weedIndex\": 7165\n        }\n      },\n      {\n        \"startTime\": \"2013-03-14T08:06:10.791Z\",\n        \"values\": {\n          \"temperature\": 3582.688360134837,\n          \"temperatureApparent\": 3968.589687972618,\n          \"humidity\": 7540.956524577509,\n          \"windSpeed\": 9893.58955831277,\n          \"windDirection\": 3574.37115195389,\n          \"windGust\": 15.818148345647653,\n          \"precipitationIntensity\": 7367.383423724487,\n          \"precipitationProbability\": 1078.1730076181973,\n          \"precipitationType\": 5213,\n          \"cloudCover\": 206.3507607655646,\n          \"visibility\": 1291.6842090164994,\n          \"pressureSurfaceLevel\": 1516.0345608899318,\n          \"uvIndex\": 7529,\n          \"weatherCode\": 4733,\n          \"epaIndex\": 1064,\n          \"treeIndex\": 3475,\n          \"grassIndex\": 9771,\n          \"weedIndex\": 9608\n        }\n      }\n    ],\n    \"hourly\": [\n      {\n        \"startTime\": \"2008-01-18T18:30:23.461Z\",\n        \"values\": {\n          \"temperature\": 2239.4112731041173,\n          \"temperatureApparent\": 131.50594002195092,\n          \"humidity\": 7074.12962557136,\n          \"windSpeed\": 6991.146867015884,\n          \"windDirection\": 7461.298347917812,\n          \"windGust\": 9330.843676263663,\n          \"precipitationIntensity\": 5002.187489622714,\n          \"precipitationProbability\": 8528.394119554981,\n          \"precipitationType\": 37,\n          \"cloudCover\": 2095.7475843988836,\n          \"visibility\": 4137.364373109782,\n          \"pressureSurfaceLevel\": 348.6003867841192,\n          \"uvIndex\": 4126,\n          \"weatherCode\": 1332,\n          \"epaIndex\": 1405,\n          \"treeIndex\": 3225,\n          \"grassIndex\": 7861,\n          \"weedIndex\": 9234\n        }\n      },\n      {\n        \"startTime\": \"1985-06-18T22:53:44.648Z\",\n        \"values\": {\n          \"temperature\": 7735.767866122677,\n          \"temperatureApparent\": 6274.004766503111,\n          \"humidity\": 7312.012683587706,\n          \"windSpeed\": 1911.7207971897942,\n          \"windDirection\": 9894.780679444832,\n          \"windGust\": 593.002011756314,\n          \"precipitationIntensity\": 5330.158051346251,\n          \"precipitationProbability\": 2143.9288928858937,\n          \"precipitationType\": 9855,\n          \"cloudCover\": 3624.2895159926256,\n          \"visibility\": 2271.3841078923538,\n          \"pressureSurfaceLevel\": 5713.1238870383495,\n          \"uvIndex\": 4560,\n          \"weatherCode\": 9683,\n          \"epaIndex\": 662,\n          \"treeIndex\": 8686,\n          \"grassIndex\": 8341,\n          \"weedIndex\": 5416\n        }\n      }\n    ],\n    \"daily\": [\n      {\n        \"startTime\": \"1946-10-11T01:28:56.067Z\",\n        \"values\": {\n          \"temperature\": 7058.7489263042535,\n          \"temperatureApparent\": 6416.2648325775535,\n          \"humidity\": 7517.621304867711,\n          \"windSpeed\": 7035.086288513375,\n          \"windDirection\": 457.7557046536351,\n          \"windGust\": 9325.337500237256,\n          \"precipitationIntensity\": 2849.034329241156,\n          \"precipitationProbability\": 2143.8173831770423,\n          \"precipitationType\": 7451,\n          \"cloudCover\": 1837.3289190001142,\n          \"visibility\": 186.76353074255636,\n          \"pressureSurfaceLevel\": 2759.786176866883,\n          \"uvIndex\": 2071,\n          \"weatherCode\": 7098,\n          \"epaIndex\": 1515,\n          \"treeIndex\": 8773,\n          \"grassIndex\": 6759,\n          \"weedIndex\": 318\n        }\n      },\n      {\n        \"startTime\": \"2013-11-20T19:21:51.498Z\",\n        \"values\": {\n          \"temperature\": 5986.440182992456,\n          \"temperatureApparent\": 35.99327650226192,\n          \"humidity\": 9849.709626136946,\n          \"windSpeed\": 9590.47139130352,\n          \"windDirection\": 8351.197151532926,\n          \"windGust\": 1855.3206292705293,\n          \"precipitationIntensity\": 5734.756649743618,\n          \"precipitationProbability\": 9114.406793967735,\n          \"precipitationType\": 4776,\n          \"cloudCover\": 9033.677293163024,\n          \"visibility\": 7883.707284933214,\n          \"pressureSurfaceLevel\": 5538.1675132302025,\n          \"uvIndex\": 7398,\n          \"weatherCode\": 7028,\n          \"epaIndex\": 2268,\n          \"treeIndex\": 4559,\n          \"grassIndex\": 6872,\n          \"weedIndex\": 9614\n        }\n      }\n    ]\n  },\n  \"location\": {\n    \"lat\": 2766.7795160993137,\n    \"lon\": 5215.679508100012,\n    \"name\": \"string\",\n    \"type\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2900f7c8-d18b-4e4c-a207-e8443e7d966c",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "weather",
+                    "forecast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timesteps",
+                      "value": "1h,1d"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7315,\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d6a8275a-e563-4b0b-837c-52694c9be069",
+              "name": "Rate limit exceeded for the plan tier.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "weather",
+                    "forecast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timesteps",
+                      "value": "1h,1d"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7315,\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tomorrow.io/v4",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "dcbc1a93-d85d-4a27-aa8b-c31eeb46b331",
+    "name": "Tomorrow.io Alerts Forecast API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Create, manage, and trigger weather-based alerts. Alerts evaluate Tomorrow.io\nweather data layers against custom thresholds for one or more linked locations\nand deliver notifications via webhook, email, and the Tomorrow.io app.\n\n\nContact Support:\n Name: Tomorrow.io Support",
+      "type": "text/plain"
+    }
+  }
+}
