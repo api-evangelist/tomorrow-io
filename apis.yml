@@ -45,7 +45,7 @@ kind: contract
 access: 3rd-Party
 created: '2026-05-24'
 modified: '2026-05-24'
-specificationVersion: '0.16'
+specificationVersion: '0.23'
 type: Index
 apis:
 - aid: tomorrow-io:tomorrow-io-historical-api
