@@ -12,11 +12,11 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: weatherApi
-  url: ../openapi/tomorrow-io-weather-api-openapi.yml
-  type: openapi
 - name: historicalApi
   url: ../openapi/tomorrow-io-historical-api-openapi.yml
+  type: openapi
+- name: realtimeApi
+  url: ../openapi/tomorrow-io-realtime-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: realtime-vs-climate-normals

@@ -14,8 +14,8 @@ sourceDescriptions:
 - name: locationsApi
   url: ../openapi/tomorrow-io-locations-api-openapi.yml
   type: openapi
-- name: weatherApi
-  url: ../openapi/tomorrow-io-weather-api-openapi.yml
+- name: realtimeApi
+  url: ../openapi/tomorrow-io-realtime-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: tag-location-cohort

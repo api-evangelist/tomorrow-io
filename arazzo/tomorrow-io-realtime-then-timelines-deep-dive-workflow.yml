@@ -12,8 +12,11 @@ info:
     underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: weatherApi
-  url: ../openapi/tomorrow-io-weather-api-openapi.yml
+- name: realtimeApi
+  url: ../openapi/tomorrow-io-realtime-api-openapi.yml
+  type: openapi
+- name: timelinesApi
+  url: ../openapi/tomorrow-io-timelines-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: realtime-then-timelines-deep-dive

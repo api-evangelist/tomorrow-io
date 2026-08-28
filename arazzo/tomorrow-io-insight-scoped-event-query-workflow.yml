@@ -12,11 +12,11 @@ info:
     opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: insightsApi
-  url: ../openapi/tomorrow-io-insights-api-openapi.yml
-  type: openapi
 - name: eventsApi
   url: ../openapi/tomorrow-io-events-api-openapi.yml
+  type: openapi
+- name: insightsApi
+  url: ../openapi/tomorrow-io-insights-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: insight-scoped-event-query

@@ -12,11 +12,11 @@ info:
     underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: locationsApi
-  url: ../openapi/tomorrow-io-locations-api-openapi.yml
-  type: openapi
 - name: eventsApi
   url: ../openapi/tomorrow-io-events-api-openapi.yml
+  type: openapi
+- name: locationsApi
+  url: ../openapi/tomorrow-io-locations-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: location-severe-weather-events

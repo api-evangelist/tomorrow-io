@@ -12,11 +12,11 @@ info:
     can be read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: insightsApi
-  url: ../openapi/tomorrow-io-insights-api-openapi.yml
-  type: openapi
 - name: alertsApi
   url: ../openapi/tomorrow-io-alerts-api-openapi.yml
+  type: openapi
+- name: insightsApi
+  url: ../openapi/tomorrow-io-insights-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: insight-driven-alert-setup
