@@ -34,7 +34,7 @@ accessModel:
   - authentication
   generated: '2026-07-22'
   method: derived
-image: https://www.tomorrow.io/favicon-32x32.png
+image: ''
 humanURL: https://www.tomorrow.io
 baseURL: https://api.tomorrow.io/v4
 tags:
