@@ -317,6 +317,8 @@ apis:
   - type: APIReference
     url: https://docs.tomorrow.io/reference/retrieve-a-tile-basic
 common:
+  - type: Website
+    url: https://www.tomorrow.io/
   - type: AgenticAccess
     url: agentic-access/tomorrow-io-agentic-access.yml
   - type: DomainSecurity
