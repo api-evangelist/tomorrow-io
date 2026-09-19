@@ -136,6 +136,10 @@ apis:
   name: Tomorrow.io Locations API
   tags:
   - Weather
+  - Location
+  - Geometry
+  tags_raw:
+  - Weather
   - Locations
   - Geometry
   humanURL: https://docs.tomorrow.io/reference/list-locations
