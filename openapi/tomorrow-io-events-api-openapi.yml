@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Tomorrow.io Alerts Events API
   version: '4.0'
@@ -6,9 +6,7 @@ info:
 
     weather data layers against custom thresholds for one or more linked locations
 
-    and deliver notifications via webhook, email, and the Tomorrow.io app.
-
-    '
+    and deliver notifications via webhook, email, and the Tomorrow.io app.'
   contact:
     name: Tomorrow.io Support
     url: https://support.tomorrow.io
@@ -29,9 +27,7 @@ paths:
       operationId: getEvents
       description: 'Retrieve weather events for a point or location, filtered by insight
 
-        category (severe weather, fires, floods, lightning, custom).
-
-        '
+        category (severe weather, fires, floods, lightning, custom).'
       parameters:
       - name: location
         in: query
@@ -94,30 +90,7 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
-  responses:
-    RateLimited:
-      description: Rate limit exceeded.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Missing or invalid API key.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    EventsResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            events:
-              type: array
-              items:
-                $ref: '#/components/schemas/Event'
     Event:
       type: object
       properties:
@@ -149,6 +122,15 @@ components:
           type: string
         description:
           type: string
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        type:
+          type: string
+        message:
+          type: string
     EventsRequest:
       type: object
       required:
@@ -170,15 +152,29 @@ components:
         endTime:
           type: string
           format: date-time
-    ErrorResponse:
+    EventsResponse:
       type: object
       properties:
-        code:
-          type: integer
-        type:
-          type: string
-        message:
-          type: string
+        data:
+          type: object
+          properties:
+            events:
+              type: array
+              items:
+                $ref: '#/components/schemas/Event'
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    RateLimited:
+      description: Rate limit exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     apikeyAuth:
       type: apiKey

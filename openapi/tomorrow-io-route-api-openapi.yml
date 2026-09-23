@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Tomorrow.io Alerts Route API
   version: '4.0'
@@ -6,9 +6,7 @@ info:
 
     weather data layers against custom thresholds for one or more linked locations
 
-    and deliver notifications via webhook, email, and the Tomorrow.io app.
-
-    '
+    and deliver notifications via webhook, email, and the Tomorrow.io app.'
   contact:
     name: Tomorrow.io Support
     url: https://support.tomorrow.io
@@ -29,9 +27,7 @@ paths:
       operationId: postRoute
       description: 'Submit a polyline of waypoints with arrival times and receive weather data
 
-        layers at each waypoint at its predicted arrival time.
-
-        '
+        layers at each waypoint at its predicted arrival time.'
       requestBody:
         required: true
         content:
@@ -56,20 +52,16 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
-  responses:
-    RateLimited:
-      description: Rate limit exceeded.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Missing or invalid API key.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        type:
+          type: string
+        message:
+          type: string
     RouteResponse:
       type: object
       properties:
@@ -94,15 +86,6 @@ components:
                   values:
                     type: object
                     additionalProperties: true
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-        type:
-          type: string
-        message:
-          type: string
     RouteRequest:
       type: object
       required:
@@ -140,6 +123,19 @@ components:
           enum:
           - metric
           - imperial
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    RateLimited:
+      description: Rate limit exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     apikeyAuth:
       type: apiKey

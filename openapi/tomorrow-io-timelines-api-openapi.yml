@@ -1,17 +1,20 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tomorrow.io Alerts Timelines API
+  title: Tomorrow.io Weather Timelines API
   version: '4.0'
-  description: 'Create, manage, and trigger weather-based alerts. Alerts evaluate Tomorrow.io
+  description: 'Realtime, forecast, and timeline weather retrieval from the Tomorrow.io weather
 
-    weather data layers against custom thresholds for one or more linked locations
+    intelligence platform. Returns 60+ hyperlocal weather data layers (core weather,
 
-    and deliver notifications via webhook, email, and the Tomorrow.io app.
+    air quality, pollen, solar, fire, flood, lightning, maritime, soil, road) for
 
-    '
+    any point on Earth, with minute-by-minute resolution available on higher tiers.'
   contact:
     name: Tomorrow.io Support
     url: https://support.tomorrow.io
+  license:
+    name: Tomorrow.io Terms of Service
+    url: https://www.tomorrow.io/legal/tos/
 servers:
 - url: https://api.tomorrow.io/v4
   description: Tomorrow.io Production
@@ -29,9 +32,7 @@ paths:
       operationId: getTimelines
       description: 'Query weather, air quality, pollen, fire, and other data layers across an
 
-        arbitrary time range and timestep with a simple query-string request.
-
-        '
+        arbitrary time range and timestep with a simple query-string request.'
       parameters:
       - name: location
         in: query
@@ -94,9 +95,7 @@ paths:
 
         large field lists, and complex unit and timezone configuration in the
 
-        request body.
-
-        '
+        request body.'
       requestBody:
         required: true
         content:
@@ -122,29 +121,6 @@ paths:
           $ref: '#/components/responses/RateLimited'
 components:
   schemas:
-    TimelinesResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            timelines:
-              type: array
-              items:
-                type: object
-                properties:
-                  timestep:
-                    type: string
-                  startTime:
-                    type: string
-                    format: date-time
-                  endTime:
-                    type: string
-                    format: date-time
-                  intervals:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/TimelineInterval'
     ErrorResponse:
       type: object
       properties:
@@ -162,40 +138,6 @@ components:
           format: date-time
         values:
           $ref: '#/components/schemas/WeatherValues'
-    TimelinesRequest:
-      type: object
-      required:
-      - location
-      - fields
-      - timesteps
-      properties:
-        location:
-          oneOf:
-          - type: string
-            description: lat,lng or locationId
-          - type: object
-            description: GeoJSON Point/Polygon/LineString geometry
-        fields:
-          type: array
-          items:
-            type: string
-        timesteps:
-          type: array
-          items:
-            type: string
-        startTime:
-          type: string
-          format: date-time
-        endTime:
-          type: string
-          format: date-time
-        units:
-          type: string
-          enum:
-          - metric
-          - imperial
-        timezone:
-          type: string
     WeatherValues:
       type: object
       description: Subset of the 60+ Tomorrow.io data layers requested via the fields parameter.
@@ -238,15 +180,72 @@ components:
           type: integer
         weedIndex:
           type: integer
+    TimelinesRequest:
+      type: object
+      required:
+      - location
+      - fields
+      - timesteps
+      properties:
+        location:
+          oneOf:
+          - type: string
+            description: lat,lng or locationId
+          - type: object
+            description: GeoJSON Point/Polygon/LineString geometry
+        fields:
+          type: array
+          items:
+            type: string
+        timesteps:
+          type: array
+          items:
+            type: string
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        units:
+          type: string
+          enum:
+          - metric
+          - imperial
+        timezone:
+          type: string
+    TimelinesResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            timelines:
+              type: array
+              items:
+                type: object
+                properties:
+                  timestep:
+                    type: string
+                  startTime:
+                    type: string
+                    format: date-time
+                  endTime:
+                    type: string
+                    format: date-time
+                  intervals:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TimelineInterval'
   responses:
-    RateLimited:
-      description: Rate limit exceeded for the plan tier.
+    Unauthorized:
+      description: Missing or invalid API key.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Missing or invalid API key.
+    RateLimited:
+      description: Rate limit exceeded for the plan tier.
       content:
         application/json:
           schema:

@@ -1,17 +1,20 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tomorrow.io Alerts Forecast API
+  title: Tomorrow.io Weather Forecast API
   version: '4.0'
-  description: 'Create, manage, and trigger weather-based alerts. Alerts evaluate Tomorrow.io
+  description: 'Realtime, forecast, and timeline weather retrieval from the Tomorrow.io weather
 
-    weather data layers against custom thresholds for one or more linked locations
+    intelligence platform. Returns 60+ hyperlocal weather data layers (core weather,
 
-    and deliver notifications via webhook, email, and the Tomorrow.io app.
+    air quality, pollen, solar, fire, flood, lightning, maritime, soil, road) for
 
-    '
+    any point on Earth, with minute-by-minute resolution available on higher tiers.'
   contact:
     name: Tomorrow.io Support
     url: https://support.tomorrow.io
+  license:
+    name: Tomorrow.io Terms of Service
+    url: https://www.tomorrow.io/legal/tos/
 servers:
 - url: https://api.tomorrow.io/v4
   description: Tomorrow.io Production
@@ -31,9 +34,7 @@ paths:
 
         ``minutely`` (60m), ``hourly`` (up to 120h), and ``daily`` (up to 14d)
 
-        intervals depending on plan tier.
-
-        '
+        intervals depending on plan tier.'
       parameters:
       - name: location
         in: query
@@ -70,33 +71,7 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
-  responses:
-    RateLimited:
-      description: Rate limit exceeded for the plan tier.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Missing or invalid API key.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    Location:
-      type: object
-      properties:
-        lat:
-          type: number
-          format: float
-        lon:
-          type: number
-          format: float
-        name:
-          type: string
-        type:
-          type: string
     ForecastResponse:
       type: object
       properties:
@@ -176,6 +151,32 @@ components:
           type: integer
         weedIndex:
           type: integer
+    Location:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: float
+        lon:
+          type: number
+          format: float
+        name:
+          type: string
+        type:
+          type: string
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    RateLimited:
+      description: Rate limit exceeded for the plan tier.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     apikeyAuth:
       type: apiKey

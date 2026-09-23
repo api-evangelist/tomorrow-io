@@ -1,32 +1,47 @@
 {
   "provider": "tomorrow-io",
   "sources": [
+    "_original/tomorrow-io-map-tiles-api-openapi.yml",
+    "_original/tomorrow-io-weather-api-openapi.yml",
     "tomorrow-io-alerts-api-openapi.yml",
     "tomorrow-io-events-api-openapi.yml",
-    "tomorrow-io-forecast-api-openapi.yml",
     "tomorrow-io-historical-api-openapi.yml",
     "tomorrow-io-insights-api-openapi.yml",
     "tomorrow-io-locations-api-openapi.yml",
-    "tomorrow-io-maps-api-openapi.yml",
-    "tomorrow-io-realtime-api-openapi.yml",
-    "tomorrow-io-route-api-openapi.yml",
-    "tomorrow-io-timelines-api-openapi.yml"
+    "tomorrow-io-route-api-openapi.yml"
   ],
   "outputs": [
+    "tomorrow-io-maps-api-openapi.yml",
+    "tomorrow-io-forecast-api-openapi.yml",
+    "tomorrow-io-realtime-api-openapi.yml",
+    "tomorrow-io-timelines-api-openapi.yml",
     "tomorrow-io-alerts-api-openapi.yml",
     "tomorrow-io-events-api-openapi.yml",
-    "tomorrow-io-forecast-api-openapi.yml",
     "tomorrow-io-historical-api-openapi.yml",
     "tomorrow-io-insights-api-openapi.yml",
     "tomorrow-io-locations-api-openapi.yml",
-    "tomorrow-io-maps-api-openapi.yml",
-    "tomorrow-io-realtime-api-openapi.yml",
-    "tomorrow-io-route-api-openapi.yml",
-    "tomorrow-io-timelines-api-openapi.yml"
+    "tomorrow-io-route-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
-  "warnings": [],
-  "notes": [],
-  "skipped": []
+  "warnings": [
+    "tomorrow-io-alerts-api-openapi.yml: previously refined output kept for 10 operation(s) no archived document covers (e.g. /alerts get, /alerts post, /alerts/{alertId} delete); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "tomorrow-io-events-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /events get, /events post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "tomorrow-io-historical-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /historical post, /historical/climate/normals get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "tomorrow-io-insights-api-openapi.yml: previously refined output kept for 5 operation(s) no archived document covers (e.g. /insights get, /insights post, /insights/{insightId} delete); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "tomorrow-io-locations-api-openapi.yml: previously refined output kept for 7 operation(s) no archived document covers (e.g. /locations get, /locations post, /locations/tags/add post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "tomorrow-io-route-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /route post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
+  ],
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "tomorrow-io-map-tiles-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "tomorrow-io-weather-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "tomorrow-io-forecast-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tomorrow-io-maps-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tomorrow-io-realtime-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tomorrow-io-timelines-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

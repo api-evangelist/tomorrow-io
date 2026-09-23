@@ -1,14 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tomorrow.io Alerts Maps API
+  title: Tomorrow.io Weather Maps API
   version: '4.0'
-  description: 'Create, manage, and trigger weather-based alerts. Alerts evaluate Tomorrow.io
+  description: 'Web Mercator (XYZ) PNG tile service for visualizing Tomorrow.io weather data
 
-    weather data layers against custom thresholds for one or more linked locations
+    layers — precipitation radar, temperature, wind, clouds, air quality, and more.
 
-    and deliver notifications via webhook, email, and the Tomorrow.io app.
-
-    '
+    Drop directly into Mapbox, MapLibre, Leaflet, OpenLayers, or Google Maps.'
   contact:
     name: Tomorrow.io Support
     url: https://support.tomorrow.io
@@ -31,9 +29,7 @@ paths:
 
         XYZ Web Mercator address and time. Supports past, current, and forecast
 
-        time references via the ``timeFormat`` path parameter.
-
-        '
+        time references via the ``timeFormat`` path parameter.'
       parameters:
       - name: zoom
         in: path
