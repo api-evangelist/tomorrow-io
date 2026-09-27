@@ -122,6 +122,16 @@ components:
           type: string
         description:
           type: string
+    EventsResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            events:
+              type: array
+              items:
+                $ref: '#/components/schemas/Event'
     ErrorResponse:
       type: object
       properties:
@@ -152,25 +162,15 @@ components:
         endTime:
           type: string
           format: date-time
-    EventsResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            events:
-              type: array
-              items:
-                $ref: '#/components/schemas/Event'
   responses:
-    Unauthorized:
-      description: Missing or invalid API key.
+    RateLimited:
+      description: Rate limit exceeded.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    RateLimited:
-      description: Rate limit exceeded.
+    Unauthorized:
+      description: Missing or invalid API key.
       content:
         application/json:
           schema:

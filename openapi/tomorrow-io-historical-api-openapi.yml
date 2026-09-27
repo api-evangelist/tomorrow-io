@@ -91,57 +91,20 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
+  responses:
+    RateLimited:
+      description: Rate limit exceeded for the plan tier.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-        type:
-          type: string
-        message:
-          type: string
-    HistoricalRequest:
-      type: object
-      required:
-      - location
-      - fields
-      - timesteps
-      - startTime
-      - endTime
-      properties:
-        location:
-          oneOf:
-          - type: string
-          - type: object
-            description: GeoJSON Point/Polygon/LineString
-        fields:
-          type: array
-          items:
-            type: string
-        timesteps:
-          type: array
-          items:
-            type: string
-            enum:
-            - 1m
-            - 5m
-            - 15m
-            - 1h
-            - 1d
-        startTime:
-          type: string
-          format: date-time
-        endTime:
-          type: string
-          format: date-time
-        units:
-          type: string
-          enum:
-          - metric
-          - imperial
-        timezone:
-          type: string
     ClimateNormalsResponse:
       type: object
       properties:
@@ -194,19 +157,56 @@ components:
                         values:
                           type: object
                           additionalProperties: true
-  responses:
-    Unauthorized:
-      description: Missing or invalid API key.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    RateLimited:
-      description: Rate limit exceeded for the plan tier.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+    HistoricalRequest:
+      type: object
+      required:
+      - location
+      - fields
+      - timesteps
+      - startTime
+      - endTime
+      properties:
+        location:
+          oneOf:
+          - type: string
+          - type: object
+            description: GeoJSON Point/Polygon/LineString
+        fields:
+          type: array
+          items:
+            type: string
+        timesteps:
+          type: array
+          items:
+            type: string
+            enum:
+            - 1m
+            - 5m
+            - 15m
+            - 1h
+            - 1d
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        units:
+          type: string
+          enum:
+          - metric
+          - imperial
+        timezone:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        type:
+          type: string
+        message:
+          type: string
   securitySchemes:
     apikeyAuth:
       type: apiKey

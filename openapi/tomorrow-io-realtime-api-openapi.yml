@@ -67,15 +67,32 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
+  responses:
+    RateLimited:
+      description: Rate limit exceeded for the plan tier.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    ErrorResponse:
+    Location:
       type: object
       properties:
-        code:
-          type: integer
-        type:
+        lat:
+          type: number
+          format: float
+        lon:
+          type: number
+          format: float
+        name:
           type: string
-        message:
+        type:
           type: string
     WeatherValues:
       type: object
@@ -132,32 +149,15 @@ components:
               $ref: '#/components/schemas/WeatherValues'
         location:
           $ref: '#/components/schemas/Location'
-    Location:
+    ErrorResponse:
       type: object
       properties:
-        lat:
-          type: number
-          format: float
-        lon:
-          type: number
-          format: float
-        name:
-          type: string
+        code:
+          type: integer
         type:
           type: string
-  responses:
-    Unauthorized:
-      description: Missing or invalid API key.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    RateLimited:
-      description: Rate limit exceeded for the plan tier.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+        message:
+          type: string
   securitySchemes:
     apikeyAuth:
       type: apiKey

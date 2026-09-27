@@ -121,14 +121,39 @@ paths:
           $ref: '#/components/responses/RateLimited'
 components:
   schemas:
-    ErrorResponse:
+    TimelinesRequest:
       type: object
+      required:
+      - location
+      - fields
+      - timesteps
       properties:
-        code:
-          type: integer
-        type:
+        location:
+          oneOf:
+          - type: string
+            description: lat,lng or locationId
+          - type: object
+            description: GeoJSON Point/Polygon/LineString geometry
+        fields:
+          type: array
+          items:
+            type: string
+        timesteps:
+          type: array
+          items:
+            type: string
+        startTime:
           type: string
-        message:
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        units:
+          type: string
+          enum:
+          - metric
+          - imperial
+        timezone:
           type: string
     TimelineInterval:
       type: object
@@ -180,40 +205,6 @@ components:
           type: integer
         weedIndex:
           type: integer
-    TimelinesRequest:
-      type: object
-      required:
-      - location
-      - fields
-      - timesteps
-      properties:
-        location:
-          oneOf:
-          - type: string
-            description: lat,lng or locationId
-          - type: object
-            description: GeoJSON Point/Polygon/LineString geometry
-        fields:
-          type: array
-          items:
-            type: string
-        timesteps:
-          type: array
-          items:
-            type: string
-        startTime:
-          type: string
-          format: date-time
-        endTime:
-          type: string
-          format: date-time
-        units:
-          type: string
-          enum:
-          - metric
-          - imperial
-        timezone:
-          type: string
     TimelinesResponse:
       type: object
       properties:
@@ -237,15 +228,24 @@ components:
                     type: array
                     items:
                       $ref: '#/components/schemas/TimelineInterval'
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        type:
+          type: string
+        message:
+          type: string
   responses:
-    Unauthorized:
-      description: Missing or invalid API key.
+    RateLimited:
+      description: Rate limit exceeded for the plan tier.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    RateLimited:
-      description: Rate limit exceeded for the plan tier.
+    Unauthorized:
+      description: Missing or invalid API key.
       content:
         application/json:
           schema:

@@ -52,40 +52,20 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
+  responses:
+    RateLimited:
+      description: Rate limit exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-        type:
-          type: string
-        message:
-          type: string
-    RouteResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            waypoints:
-              type: array
-              items:
-                type: object
-                properties:
-                  location:
-                    type: object
-                    properties:
-                      lat:
-                        type: number
-                      lon:
-                        type: number
-                  time:
-                    type: string
-                    format: date-time
-                  values:
-                    type: object
-                    additionalProperties: true
     RouteRequest:
       type: object
       required:
@@ -123,19 +103,39 @@ components:
           enum:
           - metric
           - imperial
-  responses:
-    Unauthorized:
-      description: Missing or invalid API key.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    RateLimited:
-      description: Rate limit exceeded.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+    RouteResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            waypoints:
+              type: array
+              items:
+                type: object
+                properties:
+                  location:
+                    type: object
+                    properties:
+                      lat:
+                        type: number
+                      lon:
+                        type: number
+                  time:
+                    type: string
+                    format: date-time
+                  values:
+                    type: object
+                    additionalProperties: true
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        type:
+          type: string
+        message:
+          type: string
   securitySchemes:
     apikeyAuth:
       type: apiKey
