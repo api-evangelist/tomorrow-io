@@ -182,6 +182,20 @@ paths:
           description: Tag operation complete.
 components:
   schemas:
+    TagRequest:
+      type: object
+      required:
+      - locationIds
+      - tags
+      properties:
+        locationIds:
+          type: array
+          items:
+            type: string
+        tags:
+          type: array
+          items:
+            type: string
     Location:
       type: object
       properties:
@@ -201,20 +215,6 @@ components:
               - LineString
             coordinates:
               type: array
-        tags:
-          type: array
-          items:
-            type: string
-    TagRequest:
-      type: object
-      required:
-      - locationIds
-      - tags
-      properties:
-        locationIds:
-          type: array
-          items:
-            type: string
         tags:
           type: array
           items:

@@ -71,41 +71,7 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
-  responses:
-    RateLimited:
-      description: Rate limit exceeded for the plan tier.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Missing or invalid API key.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    Location:
-      type: object
-      properties:
-        lat:
-          type: number
-          format: float
-        lon:
-          type: number
-          format: float
-        name:
-          type: string
-        type:
-          type: string
-    TimelineInterval:
-      type: object
-      properties:
-        startTime:
-          type: string
-          format: date-time
-        values:
-          $ref: '#/components/schemas/WeatherValues'
     ForecastResponse:
       type: object
       properties:
@@ -168,6 +134,19 @@ components:
           type: integer
         weedIndex:
           type: integer
+    Location:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: float
+        lon:
+          type: number
+          format: float
+        name:
+          type: string
+        type:
+          type: string
     ErrorResponse:
       type: object
       properties:
@@ -177,6 +156,27 @@ components:
           type: string
         message:
           type: string
+    TimelineInterval:
+      type: object
+      properties:
+        startTime:
+          type: string
+          format: date-time
+        values:
+          $ref: '#/components/schemas/WeatherValues'
+  responses:
+    RateLimited:
+      description: Rate limit exceeded for the plan tier.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     apikeyAuth:
       type: apiKey

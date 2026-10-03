@@ -90,7 +90,29 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
+  responses:
+    RateLimited:
+      description: Rate limit exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        type:
+          type: string
+        message:
+          type: string
     Event:
       type: object
       properties:
@@ -122,25 +144,6 @@ components:
           type: string
         description:
           type: string
-    EventsResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            events:
-              type: array
-              items:
-                $ref: '#/components/schemas/Event'
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-        type:
-          type: string
-        message:
-          type: string
     EventsRequest:
       type: object
       required:
@@ -162,19 +165,16 @@ components:
         endTime:
           type: string
           format: date-time
-  responses:
-    RateLimited:
-      description: Rate limit exceeded.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Missing or invalid API key.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+    EventsResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            events:
+              type: array
+              items:
+                $ref: '#/components/schemas/Event'
   securitySchemes:
     apikeyAuth:
       type: apiKey

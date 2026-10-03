@@ -91,44 +91,7 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
-  responses:
-    RateLimited:
-      description: Rate limit exceeded for the plan tier.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Missing or invalid API key.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    ClimateNormalsResponse:
-      type: object
-      properties:
-        location:
-          type: object
-          properties:
-            lat:
-              type: number
-            lon:
-              type: number
-        data:
-          type: object
-          properties:
-            months:
-              type: array
-              items:
-                type: object
-                properties:
-                  month:
-                    type: integer
-                  values:
-                    type: object
-                    additionalProperties:
-                      type: number
     HistoricalResponse:
       type: object
       properties:
@@ -157,6 +120,39 @@ components:
                         values:
                           type: object
                           additionalProperties: true
+    ClimateNormalsResponse:
+      type: object
+      properties:
+        location:
+          type: object
+          properties:
+            lat:
+              type: number
+            lon:
+              type: number
+        data:
+          type: object
+          properties:
+            months:
+              type: array
+              items:
+                type: object
+                properties:
+                  month:
+                    type: integer
+                  values:
+                    type: object
+                    additionalProperties:
+                      type: number
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        type:
+          type: string
+        message:
+          type: string
     HistoricalRequest:
       type: object
       required:
@@ -198,15 +194,19 @@ components:
           - imperial
         timezone:
           type: string
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-        type:
-          type: string
-        message:
-          type: string
+  responses:
+    RateLimited:
+      description: Rate limit exceeded for the plan tier.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     apikeyAuth:
       type: apiKey
