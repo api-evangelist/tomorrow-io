@@ -53,6 +53,14 @@ tags:
   - Radar
   - Geospatial
   - Alerts
+  - Historical Weather
+  - Fire
+  - Flood
+  - Routes
+  - Map Tiles
+  - Aviation
+  - Maritime
+  - Public APIs
 tags_raw:
   - Weather
   - Forecast
@@ -69,6 +77,14 @@ tags_raw:
   - Radar
   - Geospatial
   - Alerts
+  - Historical Weather
+  - Fire
+  - Flood
+  - Routes
+  - Map Tiles
+  - Aviation
+  - Maritime
+  - Public APIs
 kind: contract
 access: 3rd-Party
 created: '2026-05-24'
@@ -336,6 +352,20 @@ apis:
     url: https://docs.tomorrow.io/reference/map-overview
   - type: APIReference
     url: https://docs.tomorrow.io/reference/retrieve-a-tile-basic
+- aid: tomorrow-io:tomorrow-io-climate-api
+  name: Tomorrow.io Climate API
+  description: 30-year climate normals for a location.
+  humanURL: https://docs.tomorrow.io/reference/welcome
+  baseURL: https://api.tomorrow.io/v4
+  tags:
+  - Climate
+  properties:
+  - type: OpenAPI
+    url: openapi/tomorrow-io-climate-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tomorrow.io/reference/welcome
+  - type: CodeExamples
+    url: https://github.com/Tomorrow-IO-API/climate-normals
 common:
   - type: Website
     url: https://www.tomorrow.io/
@@ -583,6 +613,9 @@ common:
         description: >-
           Tomorrow.io serves the US Air Force and other defense and government customers with operational weather
           intelligence and proprietary space-based weather radar.
+  - type: GitHubOrganization
+    url: https://github.com/tomorrowio
+    title: Tomorrow.io (corporate org)
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
