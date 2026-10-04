@@ -36,7 +36,7 @@
     "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "tomorrow-io-map-tiles-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "tomorrow-io-weather-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "apis.yml register: written (+0 apis, 10 total)"
   ],
   "skipped": [
     "tomorrow-io-forecast-api-openapi.yml: previously refined output, superseded by openapi/_original/",

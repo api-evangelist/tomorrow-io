@@ -196,6 +196,13 @@ components:
           type: array
           items:
             type: string
+    LocationList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Location'
     Location:
       type: object
       properties:
@@ -219,13 +226,6 @@ components:
           type: array
           items:
             type: string
-    LocationList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Location'
   securitySchemes:
     apikeyAuth:
       type: apiKey

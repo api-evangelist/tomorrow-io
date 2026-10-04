@@ -352,20 +352,6 @@ apis:
     url: https://docs.tomorrow.io/reference/map-overview
   - type: APIReference
     url: https://docs.tomorrow.io/reference/retrieve-a-tile-basic
-- aid: tomorrow-io:tomorrow-io-climate-api
-  name: Tomorrow.io Climate API
-  description: 30-year climate normals for a location.
-  humanURL: https://docs.tomorrow.io/reference/welcome
-  baseURL: https://api.tomorrow.io/v4
-  tags:
-  - Climate
-  properties:
-  - type: OpenAPI
-    url: openapi/tomorrow-io-climate-api-openapi.yml
-  - type: Documentation
-    url: https://docs.tomorrow.io/reference/welcome
-  - type: CodeExamples
-    url: https://github.com/Tomorrow-IO-API/climate-normals
 common:
   - type: Website
     url: https://www.tomorrow.io/

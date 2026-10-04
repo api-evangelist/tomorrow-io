@@ -121,6 +121,48 @@ paths:
           $ref: '#/components/responses/RateLimited'
 components:
   schemas:
+    TimelinesRequest:
+      type: object
+      required:
+      - location
+      - fields
+      - timesteps
+      properties:
+        location:
+          oneOf:
+          - type: string
+            description: lat,lng or locationId
+          - type: object
+            description: GeoJSON Point/Polygon/LineString geometry
+        fields:
+          type: array
+          items:
+            type: string
+        timesteps:
+          type: array
+          items:
+            type: string
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        units:
+          type: string
+          enum:
+          - metric
+          - imperial
+        timezone:
+          type: string
+    TimelineInterval:
+      type: object
+      properties:
+        startTime:
+          type: string
+          format: date-time
+        values:
+          $ref: '#/components/schemas/WeatherValues'
     WeatherValues:
       type: object
       description: Subset of the 60+ Tomorrow.io data layers requested via the fields parameter.
@@ -163,40 +205,6 @@ components:
           type: integer
         weedIndex:
           type: integer
-    TimelinesRequest:
-      type: object
-      required:
-      - location
-      - fields
-      - timesteps
-      properties:
-        location:
-          oneOf:
-          - type: string
-            description: lat,lng or locationId
-          - type: object
-            description: GeoJSON Point/Polygon/LineString geometry
-        fields:
-          type: array
-          items:
-            type: string
-        timesteps:
-          type: array
-          items:
-            type: string
-        startTime:
-          type: string
-          format: date-time
-        endTime:
-          type: string
-          format: date-time
-        units:
-          type: string
-          enum:
-          - metric
-          - imperial
-        timezone:
-          type: string
     ErrorResponse:
       type: object
       properties:
@@ -206,14 +214,6 @@ components:
           type: string
         message:
           type: string
-    TimelineInterval:
-      type: object
-      properties:
-        startTime:
-          type: string
-          format: date-time
-        values:
-          $ref: '#/components/schemas/WeatherValues'
     TimelinesResponse:
       type: object
       properties:

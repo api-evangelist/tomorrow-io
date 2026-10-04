@@ -256,6 +256,13 @@ paths:
           description: Alert deactivated.
 components:
   schemas:
+    AlertList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Alert'
     Alert:
       type: object
       properties:
@@ -296,13 +303,6 @@ components:
           type: array
           items:
             type: string
-    AlertList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Alert'
   securitySchemes:
     apikeyAuth:
       type: apiKey
