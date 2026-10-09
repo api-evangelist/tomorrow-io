@@ -1,3 +1,8 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (dated 2026-05-24 by the file itself), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
+generated: '2026-05-24'
 specification: API Commons Plans
 specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
@@ -118,3 +123,53 @@ discounts: []
 notes:
   - All plans authenticate with the apikey query parameter.
   - Enterprise customers receive rate-limit headers on every response for programmatic monitoring; lower tiers do not.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - metered
+  units:
+  - compute
+  - money
+  - period
+  - request
+  plans:
+  - name: Free
+    access: free
+    model: free
+    model_how: derived
+    units:
+    - compute
+    - other
+    - period
+    - request
+    periods:
+    - day
+    - hour
+    - per-use
+    - second
+  - name: Basic
+    access: paid
+    model: metered
+    model_how: derived
+    units:
+    - request
+    periods: []
+  - name: Professional
+    access: paid
+    model: metered
+    model_how: derived
+    units:
+    - other
+    - request
+    periods: []
+  - name: Enterprise
+    access: paid
+    model: metered
+    model_how: derived
+    units:
+    - money
+    - request
+    periods:
+    - per-use
