@@ -136,6 +136,13 @@ paths:
           description: Deleted.
 components:
   schemas:
+    InsightList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Insight'
     Insight:
       type: object
       properties:
@@ -164,13 +171,6 @@ components:
           - medium
           - high
           - severe
-    InsightList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Insight'
   securitySchemes:
     apikeyAuth:
       type: apiKey

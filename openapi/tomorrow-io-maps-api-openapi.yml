@@ -79,14 +79,14 @@ paths:
           $ref: '#/components/responses/RateLimited'
 components:
   responses:
-    Unauthorized:
-      description: Missing or invalid API key.
+    RateLimited:
+      description: Rate limit exceeded.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    RateLimited:
-      description: Rate limit exceeded.
+    Unauthorized:
+      description: Missing or invalid API key.
       content:
         application/json:
           schema:

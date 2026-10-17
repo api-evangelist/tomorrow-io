@@ -121,6 +121,37 @@ paths:
           $ref: '#/components/responses/RateLimited'
 components:
   schemas:
+    TimelineInterval:
+      type: object
+      properties:
+        startTime:
+          type: string
+          format: date-time
+        values:
+          $ref: '#/components/schemas/WeatherValues'
+    TimelinesResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            timelines:
+              type: array
+              items:
+                type: object
+                properties:
+                  timestep:
+                    type: string
+                  startTime:
+                    type: string
+                    format: date-time
+                  endTime:
+                    type: string
+                    format: date-time
+                  intervals:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TimelineInterval'
     TimelinesRequest:
       type: object
       required:
@@ -155,14 +186,15 @@ components:
           - imperial
         timezone:
           type: string
-    TimelineInterval:
+    ErrorResponse:
       type: object
       properties:
-        startTime:
+        code:
+          type: integer
+        type:
           type: string
-          format: date-time
-        values:
-          $ref: '#/components/schemas/WeatherValues'
+        message:
+          type: string
     WeatherValues:
       type: object
       description: Subset of the 60+ Tomorrow.io data layers requested via the fields parameter.
@@ -205,38 +237,6 @@ components:
           type: integer
         weedIndex:
           type: integer
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-        type:
-          type: string
-        message:
-          type: string
-    TimelinesResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            timelines:
-              type: array
-              items:
-                type: object
-                properties:
-                  timestep:
-                    type: string
-                  startTime:
-                    type: string
-                    format: date-time
-                  endTime:
-                    type: string
-                    format: date-time
-                  intervals:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/TimelineInterval'
   responses:
     RateLimited:
       description: Rate limit exceeded for the plan tier.

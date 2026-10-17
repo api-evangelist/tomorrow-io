@@ -53,6 +53,30 @@ paths:
           $ref: '#/components/responses/RateLimited'
 components:
   schemas:
+    RouteResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            waypoints:
+              type: array
+              items:
+                type: object
+                properties:
+                  location:
+                    type: object
+                    properties:
+                      lat:
+                        type: number
+                      lon:
+                        type: number
+                  time:
+                    type: string
+                    format: date-time
+                  values:
+                    type: object
+                    additionalProperties: true
     RouteRequest:
       type: object
       required:
@@ -90,30 +114,6 @@ components:
           enum:
           - metric
           - imperial
-    RouteResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            waypoints:
-              type: array
-              items:
-                type: object
-                properties:
-                  location:
-                    type: object
-                    properties:
-                      lat:
-                        type: number
-                      lon:
-                        type: number
-                  time:
-                    type: string
-                    format: date-time
-                  values:
-                    type: object
-                    additionalProperties: true
     ErrorResponse:
       type: object
       properties:

@@ -72,6 +72,26 @@ paths:
           $ref: '#/components/responses/RateLimited'
 components:
   schemas:
+    ForecastResponse:
+      type: object
+      properties:
+        timelines:
+          type: object
+          properties:
+            minutely:
+              type: array
+              items:
+                $ref: '#/components/schemas/TimelineInterval'
+            hourly:
+              type: array
+              items:
+                $ref: '#/components/schemas/TimelineInterval'
+            daily:
+              type: array
+              items:
+                $ref: '#/components/schemas/TimelineInterval'
+        location:
+          $ref: '#/components/schemas/Location'
     TimelineInterval:
       type: object
       properties:
@@ -80,6 +100,28 @@ components:
           format: date-time
         values:
           $ref: '#/components/schemas/WeatherValues'
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        type:
+          type: string
+        message:
+          type: string
+    Location:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: float
+        lon:
+          type: number
+          format: float
+        name:
+          type: string
+        type:
+          type: string
     WeatherValues:
       type: object
       description: Subset of the 60+ Tomorrow.io data layers requested via the fields parameter.
@@ -122,48 +164,6 @@ components:
           type: integer
         weedIndex:
           type: integer
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-        type:
-          type: string
-        message:
-          type: string
-    Location:
-      type: object
-      properties:
-        lat:
-          type: number
-          format: float
-        lon:
-          type: number
-          format: float
-        name:
-          type: string
-        type:
-          type: string
-    ForecastResponse:
-      type: object
-      properties:
-        timelines:
-          type: object
-          properties:
-            minutely:
-              type: array
-              items:
-                $ref: '#/components/schemas/TimelineInterval'
-            hourly:
-              type: array
-              items:
-                $ref: '#/components/schemas/TimelineInterval'
-            daily:
-              type: array
-              items:
-                $ref: '#/components/schemas/TimelineInterval'
-        location:
-          $ref: '#/components/schemas/Location'
   responses:
     RateLimited:
       description: Rate limit exceeded for the plan tier.

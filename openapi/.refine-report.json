@@ -4,6 +4,7 @@
     "_original/tomorrow-io-map-tiles-api-openapi.yml",
     "_original/tomorrow-io-weather-api-openapi.yml",
     "tomorrow-io-alerts-api-openapi.yml",
+    "tomorrow-io-climate-api-openapi.yml",
     "tomorrow-io-events-api-openapi.yml",
     "tomorrow-io-historical-api-openapi.yml",
     "tomorrow-io-insights-api-openapi.yml",
@@ -16,6 +17,7 @@
     "tomorrow-io-realtime-api-openapi.yml",
     "tomorrow-io-timelines-api-openapi.yml",
     "tomorrow-io-alerts-api-openapi.yml",
+    "tomorrow-io-climate-api-openapi.yml",
     "tomorrow-io-events-api-openapi.yml",
     "tomorrow-io-historical-api-openapi.yml",
     "tomorrow-io-insights-api-openapi.yml",
@@ -26,6 +28,7 @@
   "errors": [],
   "warnings": [
     "tomorrow-io-alerts-api-openapi.yml: previously refined output kept for 10 operation(s) no archived document covers (e.g. /alerts get, /alerts post, /alerts/{alertId} delete); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "tomorrow-io-climate-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /historical/normals post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
     "tomorrow-io-events-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /events get, /events post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
     "tomorrow-io-historical-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /historical post, /historical/climate/normals get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
     "tomorrow-io-insights-api-openapi.yml: previously refined output kept for 5 operation(s) no archived document covers (e.g. /insights get, /insights post, /insights/{insightId} delete); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
@@ -36,7 +39,7 @@
     "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "tomorrow-io-map-tiles-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "tomorrow-io-weather-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "apis.yml register: written (+0 apis, 10 total)"
+    "apis.yml register: written (+1 apis, 11 total)"
   ],
   "skipped": [
     "tomorrow-io-forecast-api-openapi.yml: previously refined output, superseded by openapi/_original/",

@@ -67,20 +67,42 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
-  responses:
-    RateLimited:
-      description: Rate limit exceeded for the plan tier.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Missing or invalid API key.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    RealtimeResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            time:
+              type: string
+              format: date-time
+            values:
+              $ref: '#/components/schemas/WeatherValues'
+        location:
+          $ref: '#/components/schemas/Location'
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        type:
+          type: string
+        message:
+          type: string
+    Location:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: float
+        lon:
+          type: number
+          format: float
+        name:
+          type: string
+        type:
+          type: string
     WeatherValues:
       type: object
       description: Subset of the 60+ Tomorrow.io data layers requested via the fields parameter.
@@ -123,41 +145,19 @@ components:
           type: integer
         weedIndex:
           type: integer
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-        type:
-          type: string
-        message:
-          type: string
-    Location:
-      type: object
-      properties:
-        lat:
-          type: number
-          format: float
-        lon:
-          type: number
-          format: float
-        name:
-          type: string
-        type:
-          type: string
-    RealtimeResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            time:
-              type: string
-              format: date-time
-            values:
-              $ref: '#/components/schemas/WeatherValues'
-        location:
-          $ref: '#/components/schemas/Location'
+  responses:
+    RateLimited:
+      description: Rate limit exceeded for the plan tier.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     apikeyAuth:
       type: apiKey
