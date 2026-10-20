@@ -4,6 +4,9 @@ checked:
 - geotab/integrations/geotab-integration-edges.yml
 - https://azuremarketplace.microsoft.com/
 - mirror
+- https://registry.opendata.aws/
+- https://stacindex.org/api/catalogs
+- https://www.fcc.gov/sites/default/files/ssal.xlsx
 edges:
 - partner_name: Microsoft Azure Marketplace
   partner: microsoft-azure
@@ -36,6 +39,45 @@ edges:
   listing_count: 1
   detected: '2026-10-20'
   detected_by: mirror-platform-listings.py
+- partner_name: FCC Space Station Authorizations (Part 25)
+  partner: null
+  partner_match: register
+  type: contract
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.fcc.gov/approved-space-station-list
+  category: FCC-authorised space station operator
+  contract_reference:
+    register: FCC Approved Space Station List (fcc.gov/approved-space-station-list, ssal.xlsx; IBFS/ICFS is the
+      official database)
+    standard: FCC Part 25
+    spec_file: null
+    role: fcc-space-station-licensee
+    registered_name: The Tomorrow Companies, Inc.
+    register_id: https://www.fcc.gov/sites/default/files/ssal.xlsx
+    matched_domain: tomorrow.io
+    matched_by: domain+verified
+    domain_source: wikidata:wikidata Q30668374 'Tomorrow.io' P856 https://www.tomorrow.io/
+    authorisations:
+    - US licence
+    administrations:
+    - U.S.A.
+    space_stations:
+    - TOMORROW.IO WEATHER CONSTELLATION
+    certified_products:
+    - product: 'FCC space station authorisation: EESS'
+      service: EESS
+      lapsed: false
+    signal_note: certified_products = one per SERVICE TYPE authorised (the licence / market-access grant is the
+      certification); satellites, call signs and orbital slots are context, never counted. The list carries current
+      authorisations only (lapsed false)
+    detected_by: sweep-space-satellite.py
+    detected: '2026-10-20'
+    identity_source: 'wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1): wikidata Q30668374 ''Tomorrow.io''
+      P856 https://www.tomorrow.io/'
+  detected_by: sweep-space-satellite.py
+  first_seen: '2026-10-20'
 marketplace_apps: []
 source:
 - geotab/integrations/geotab-integration-edges.yml
