@@ -7,6 +7,7 @@ checked:
 - https://registry.opendata.aws/
 - https://stacindex.org/api/catalogs
 - https://www.fcc.gov/sites/default/files/ssal.xlsx
+- https://aws.amazon.com/marketplace/search/results?FULFILLMENT_OPTION_TYPE=DATA_EXCHANGE
 edges:
 - partner_name: Microsoft Azure Marketplace
   partner: microsoft-azure
@@ -78,6 +79,36 @@ edges:
       P856 https://www.tomorrow.io/'
   detected_by: sweep-space-satellite.py
   first_seen: '2026-10-20'
+- partner_name: AWS Data Exchange
+  partner: amazon-data-exchange
+  partner_match: aggregator
+  type: marketplace
+  marketplace: amazon-data-exchange-marketplace
+  channel: distribution
+  relationship: distribution-channel
+  direction: third-party
+  evidence: https://aws.amazon.com/marketplace/seller-profile?id=b130a96b-d84c-4738-8528-1a652cc1a710
+  category: data product listing
+  contract_reference:
+    register: AWS Data Exchange (AWS Marketplace discovery search, FULFILLMENT_OPTION_TYPE=DATA_EXCHANGE + seller-profile
+      sellerWebsiteUrl)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Tomorrow.io ®
+    matched_domain: tomorrow.io
+    matched_by: domain
+    listings: 2
+    sample_listings:
+    - Customizable Historical Weather & Air Quality Data
+    - Fire Index and Air Quality Data for the Top 20 Cities in California
+    signal_note: 'participation: the provider lists data products on this marketplace; counts are context'
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+  publisher_verified:
+  - Deployed on AWS
+  - Standard Data Agreement
 marketplace_apps: []
 source:
 - geotab/integrations/geotab-integration-edges.yml
