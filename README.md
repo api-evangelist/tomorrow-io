@@ -1,0 +1,335 @@
+# Tomorrow.io (tomorrow-io)
+
+<!-- API-EVANGELIST-PROVENANCE:BEGIN -->
+> ### About this repository
+>
+> **This is not our API.** This repository is an independent, third-party profile of a company's
+> **publicly available** API surface, maintained by [API Evangelist](https://apievangelist.com).
+> API Evangelist does not operate, host, resell, or support this company's APIs, and is not
+> affiliated with or endorsed by the company unless stated on the profile.
+>
+> **Where the information came from.** Everything here is assembled from material a member of the
+> public can reach with a browser and no credentials — the company's own website, developer portal
+> and documentation, the specifications it publishes for public use (OpenAPI, AsyncAPI, JSON Schema,
+> `apis.json`, `llms.txt` and similar), its public repositories, and its public status, pricing and
+> changelog pages. **Nothing here is obtained by breaching a system, defeating an access control, or
+> using credentials of any kind.**
+>
+> **The rating is an independent assessment.** The Kin Score and Agent Readiness rating are
+> independently calculated scores of a company's *public* API artifacts, produced by API Evangelist
+> against a published rubric. They are not certifications, endorsements, security assessments, or
+> audits, and they score published artifacts — not the quality, safety, or security of the software.
+>
+> **Corrections, re-scores, and removal are free.** No partnership, contract, or purchase is
+> required, and you do not need to justify the request.
+>
+> - **Something wrong?** Open an issue on this repository, or email
+>   [info@apievangelist.com](mailto:info@apievangelist.com).
+> - **Published something new?** Ask for a re-score and we will re-run the rating.
+> - **Want the listing taken down?** Say so and we will honor it. The profile is reduced to your
+>   company name, a factual description, and a link to your own site, and the company is recorded as
+>   **unrated** — never scored zero for having asked.
+>
+> **Response times.** Acknowledgement within **one business day**; removal or restriction within
+> **two business days**; corrections and re-scores within **five business days**.
+>
+> **Not from the company, and here with a question?** You are welcome here — we would rather be the
+> front line and point you the right way than have a good report go nowhere. What this repository
+> can answer is narrow, though, so it is worth knowing who you are actually looking for:
+>
+> - **A question about how the API works, an account, billing, or a bug in the service** — that is
+>   the company's own support, not us. We profile this API; we do not operate it and cannot see
+>   your account.
+> - **A bug in an open-source project we only catalog** — file it on that project's own repository.
+>   This has happened with a real and correct bug report that reached us instead of the people who
+>   could fix it, which helped nobody.
+> - **Anything about this listing itself** — the description, the tags, the rating, a missing or
+>   wrong artifact — is ours. Open an issue here.
+> - **Not sure, or something general about API Evangelist or APIs.io** — open an issue on the
+>   [APIs.io Inbox](https://github.com/api-search/inbox) and we will route it.
+>
+> **This repository contains no software, and we will never ask you to download anything.** There is
+> no build, release, installer, or binary here — only text and machine-readable API descriptions, so
+> there is nothing here that can be "corrupt" or need "repairing". Any issue, comment, or email
+> claiming otherwise and offering a download link is not from us and is hostile. Do not follow the
+> link; it is a lure. Report it to GitHub and, if you like, tell us at
+> [info@apievangelist.com](mailto:info@apievangelist.com) so we can take it down.
+>
+> **On a security or compliance team?** Email
+> [info@apievangelist.com](mailto:info@apievangelist.com) with *security* in the subject line and
+> you will get a person, not a form. We will tell you exactly which public URLs this profile was
+> built from so your team can see the same surface we did, and we will take the listing down on
+> request while you work through it.
+>
+> Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
+<!-- API-EVANGELIST-PROVENANCE:END -->
+
+Tomorrow.io is a Boston-based weather intelligence platform combining a global proprietary numerical weather model, a constellation of microsatellite weather radars, and a developer-facing v4 REST API. The platform exposes 60+ hyperlocal data layers — core weather, air quality, pollen, solar, soil, fire, flood, lightning, maritime, aviation, road — together with map tiles, severe-weather event detection, routable forecast queries, climate normals, historical archive access, customer-defined locations, named insights, and threshold-based webhook alerts. Used by airlines, on-demand logistics platforms, agriculture, energy, and the US Air Force, Tomorrow.io's API is designed for ETA-aware route planning, geofenced alerting, agentic workflows, and large-scale operational decisioning under weather risk.
+
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/tomorrow-io/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/tomorrow-io/refs/heads/main/apis.yml)
+
+## Scope
+
+- **Type:** Index
+- **Access:** 3rd-Party
+
+## Tags
+
+- Weather
+- Forecast
+- Climate
+- Risk
+- Air Quality
+- Pollen
+- Lightning
+- Severe Weather
+- Maps
+- Routing
+- Satellite
+- Microsatellites
+- Radar
+- Geospatial
+- Alerts
+
+## Timestamps
+
+- **Created:** 2026-05-24
+- **Modified:** 2026-05-24
+
+## APIs
+
+### Tomorrow.io Weather API
+
+Realtime conditions, 14-day forecast (minutely, hourly, daily), and flexible timeline retrieval across the full Tomorrow.io 60+ data-layer catalog for any point, polygon, or polyline on Earth.
+
+- **Human URL:** [https://docs.tomorrow.io/reference/welcome](https://docs.tomorrow.io/reference/welcome)
+- **Base URL:** `https://api.tomorrow.io/v4`
+
+#### Tags
+
+- Weather
+- Realtime
+- Forecast
+- Timelines
+
+#### Properties
+
+- [Documentation](https://docs.tomorrow.io/reference/welcome)
+- [API Reference](https://docs.tomorrow.io/reference/realtime-weather)
+- [API Reference](https://docs.tomorrow.io/reference/weather-forecast)
+- [API Reference](https://docs.tomorrow.io/reference/timelines-overview)
+- [OpenAPI](openapi/tomorrow-io-weather-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/tomorrow-io-weather-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/tomorrow-io-weather-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON Schema](json-schema/tomorrow-io-weather-values-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Structure](json-structure/tomorrow-io-weather-values-structure.json)
+- [Example](examples/tomorrow-io-realtime-example.json)
+- [Example](examples/tomorrow-io-timelines-example.json)
+
+### Tomorrow.io Historical Weather API
+
+Retrieve historical weather observations and monthly climate normals for any point or polygon on Earth using the same field catalog as the realtime and forecast APIs.
+
+- **Human URL:** [https://docs.tomorrow.io/reference/historical](https://docs.tomorrow.io/reference/historical)
+- **Base URL:** `https://api.tomorrow.io/v4`
+
+#### Tags
+
+- Weather
+- Historical
+- Climate
+- Climate Normals
+
+#### Properties
+
+- [Documentation](https://docs.tomorrow.io/reference/historical)
+- [API Reference](https://docs.tomorrow.io/reference/historical-weather-retrieval)
+- [API Reference](https://docs.tomorrow.io/reference/climate-normals)
+- [OpenAPI](openapi/tomorrow-io-historical-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/tomorrow-io-historical-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/tomorrow-io-historical-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Tomorrow.io Events API
+
+Retrieve severe weather events, fires, floods, lightning swarms, and custom vector events affecting a point or geometry.
+
+- **Human URL:** [https://docs.tomorrow.io/reference/retrieve-events-basic](https://docs.tomorrow.io/reference/retrieve-events-basic)
+- **Base URL:** `https://api.tomorrow.io/v4`
+
+#### Tags
+
+- Weather
+- Events
+- Severe Weather
+- Lightning
+- Floods
+- Fire
+
+#### Properties
+
+- [API Reference](https://docs.tomorrow.io/reference/retrieve-events-basic)
+- [Documentation](https://docs.tomorrow.io/reference/severe-weather-events)
+- [OpenAPI](openapi/tomorrow-io-events-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/tomorrow-io-events-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/tomorrow-io-events-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON Schema](json-schema/tomorrow-io-event-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [Example](examples/tomorrow-io-events-example.json)
+
+### Tomorrow.io Weather on Routes API
+
+Retrieve weather along an arbitrary polyline of waypoints at the times each segment is expected to be traversed — powers route optimization, logistics planning, and ETA-aware hazard detection.
+
+- **Human URL:** [https://docs.tomorrow.io/reference/route](https://docs.tomorrow.io/reference/route)
+- **Base URL:** `https://api.tomorrow.io/v4`
+
+#### Tags
+
+- Weather
+- Route
+- Logistics
+- ETA
+
+#### Properties
+
+- [API Reference](https://docs.tomorrow.io/reference/route)
+- [OpenAPI](openapi/tomorrow-io-route-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/tomorrow-io-route-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/tomorrow-io-route-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Example](examples/tomorrow-io-route-example.json)
+
+### Tomorrow.io Weather Maps API
+
+Web Mercator (XYZ) PNG tile service for rendering Tomorrow.io weather data layers — precipitation radar, temperature, wind, clouds, air quality — directly into Mapbox, MapLibre, Leaflet, OpenLayers, or Google Maps.
+
+- **Human URL:** [https://docs.tomorrow.io/reference/map-overview](https://docs.tomorrow.io/reference/map-overview)
+- **Base URL:** `https://api.tomorrow.io/v4`
+
+#### Tags
+
+- Weather
+- Maps
+- Tiles
+- Visualization
+
+#### Properties
+
+- [Documentation](https://docs.tomorrow.io/reference/map-overview)
+- [API Reference](https://docs.tomorrow.io/reference/retrieve-a-tile-basic)
+- [OpenAPI](openapi/tomorrow-io-map-tiles-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/tomorrow-io-map-tiles-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/tomorrow-io-map-tiles-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Tomorrow.io Locations API
+
+Manage saved locations (points, polygons, lines) referenced by ``locationId`` across the Tomorrow.io APIs, with tag-based cohorts for fleet, customer, or asset organization.
+
+- **Human URL:** [https://docs.tomorrow.io/reference/list-locations](https://docs.tomorrow.io/reference/list-locations)
+- **Base URL:** `https://api.tomorrow.io/v4`
+
+#### Tags
+
+- Weather
+- Locations
+- Geometry
+
+#### Properties
+
+- [API Reference](https://docs.tomorrow.io/reference/list-locations)
+- [OpenAPI](openapi/tomorrow-io-locations-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/tomorrow-io-locations-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/tomorrow-io-locations-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON Schema](json-schema/tomorrow-io-location-schema.json) — [JSON Schema](https://json-schema.org/specification)
+
+### Tomorrow.io Alerts API
+
+Create and manage threshold-based weather alerts that evaluate Tomorrow.io data layers against custom rules for linked locations and deliver notifications via webhook, email, and the Tomorrow.io app.
+
+- **Human URL:** [https://docs.tomorrow.io/reference/create-alerts](https://docs.tomorrow.io/reference/create-alerts)
+- **Base URL:** `https://api.tomorrow.io/v4`
+
+#### Tags
+
+- Weather
+- Alerts
+- Webhooks
+- Notifications
+
+#### Properties
+
+- [API Reference](https://docs.tomorrow.io/reference/create-alerts)
+- [OpenAPI](openapi/tomorrow-io-alerts-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/tomorrow-io-alerts-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/tomorrow-io-alerts-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON Schema](json-schema/tomorrow-io-alert-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [Example](examples/tomorrow-io-alert-example.json)
+
+### Tomorrow.io Insights API
+
+Define and manage reusable Insights — named rules combining Tomorrow.io data layers, operators, and thresholds — that power the Events and Alerts APIs.
+
+- **Human URL:** [https://docs.tomorrow.io/reference/list-insights](https://docs.tomorrow.io/reference/list-insights)
+- **Base URL:** `https://api.tomorrow.io/v4`
+
+#### Tags
+
+- Weather
+- Insights
+- Rules
+
+#### Properties
+
+- [API Reference](https://docs.tomorrow.io/reference/list-insights)
+- [OpenAPI](openapi/tomorrow-io-insights-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/tomorrow-io-insights-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/tomorrow-io-insights-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON Schema](json-schema/tomorrow-io-insight-schema.json) — [JSON Schema](https://json-schema.org/specification)
+
+## Common Properties
+
+- [Arazzo Workflows](arazzo/) — [Arazzo Specification](https://spec.openapis.org/arazzo/latest.html)
+- [Portal](https://www.tomorrow.io)
+- [Documentation](https://docs.tomorrow.io)
+- [API Reference](https://docs.tomorrow.io/reference/welcome)
+- [Authentication](https://app.tomorrow.io/development/keys)
+- [Sign Up](https://app.tomorrow.io/signup)
+- [Console](https://app.tomorrow.io/signin)
+- [Sandbox](https://docs.tomorrow.io/recipes)
+- [Getting Started](https://docs.tomorrow.io/reference/getting-started)
+- [Rate Limits](https://docs.tomorrow.io/reference/rate-limiting)
+- [Errors](https://docs.tomorrow.io/reference/error-handling)
+- [Changelog](https://docs.tomorrow.io/reference/release-notes)
+- [Documentation](https://docs.tomorrow.io/llms.txt)
+- [Documentation](https://docs.tomorrow.io/reference/tomorrow-io-mcp)
+- [Pricing](https://www.tomorrow.io/pricing/)
+- [Terms of Service](https://www.tomorrow.io/legal/tos/)
+- [Privacy Policy](https://www.tomorrow.io/legal/privacy-policy/)
+- [Support](https://support.tomorrow.io)
+- [Blog](https://www.tomorrow.io/blog/)
+- [GitHub Organization](https://github.com/Tomorrow-IO-API)
+- [SDK](https://github.com/Tomorrow-IO-API/tomorrow-postman)
+- [SDK](https://github.com/Tomorrow-IO-API/tomorrow-samples)
+- [SDK](https://github.com/Tomorrow-IO-API/tomorrow-route-mapbox)
+- [SDK](https://github.com/Tomorrow-IO-API/tomorrow-timelines-widget)
+- [SDK](https://github.com/Tomorrow-IO-API/tomorrow-events-charts)
+- [SDK](https://github.com/Tomorrow-IO-API/tomorrow-api-proxy)
+- [SDK](https://github.com/Tomorrow-IO-API/tomorrow-netlify)
+- [SDK](https://github.com/Tomorrow-IO-API/tomorrow-map-spectrums)
+- [SDK](https://github.com/Tomorrow-IO-API/tomorrow-weather-codes)
+- [SDK](https://github.com/Tomorrow-IO-API/climate-normals)
+- [LinkedIn](https://www.linkedin.com/company/tomorrow-io)
+- [Twitter](https://twitter.com/tomorrow_io)
+- [Spectral Rules](rules/tomorrow-io-rules.yml)
+- [Vocabulary](vocabulary/tomorrow-io-vocabulary.yml)
+- [JSON-LD](json-ld/tomorrow-io-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+- [Plans](plans/tomorrow-io-plans-pricing.yml)
+- [Rate Limits](rate-limits/tomorrow-io-rate-limits.yml)
+- [Fin Ops](finops/tomorrow-io-finops.yml)
+- [Features](undefined)
+- [Use Cases](undefined)
+- [Integrations](undefined)
+- [Solutions](undefined)
+
+## Maintainers
+
+**FN:** Kin Lane
+**Email:** kin@apievangelist.com
